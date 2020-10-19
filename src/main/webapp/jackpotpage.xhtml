@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//AR"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	 xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:param name="page_name" value="subscribe" />
+	<ui:define name="menu">
+
+		<ui:insert name="productCard" />
+		<ui:insert name="productSideBar" />
+		
+		<f:view transient="true">
+		 
+		<!-- Product Style -->
+		<h:panelGroup class="product-area shop-sidebar shop section">
+			
+			<div class="container">
+				<div class="row">
+			
+					<p:repeat value="#{jackpotControllerImpl.jakpotes}" var="jackpot" > 
+				
+							<div class="col-lg-4 col-md-6 col-12">
+								<div class="single-product">
+								 <div class=" pad-10 animated fadeInRight visible" p:data-animation="fadeInRight">
+								 <div class="item grids size1of1 mix all category-30" style="display: inline-block;">
+    <div class="visible card-1">
+								
+								<div class="img-wrapper">
+                <div class="tags-fund-type animated fadeIn visible" p:data-animation="fadeIn"><i class="icon-organization"></i><h:outputText value="#{jackpot.typeJackpot}"/></div>
+                <div class="tags-fund-right animated fadeIn visible" p:data-animation="fadeIn"><i class="fa fa-eye"></i><h:outputText value="#{jackpot.nbrvue}"/></div>
+                               			
+						<div class="thumb-fund"><h:graphicImage value="../../resources/uploads/#{jackpot.image}" style="width:500px;height:300px;"  /></div>
+						 <div class="fund-organizer text-white text-left">Organisé pour : Les familles défavorisées</div>
+            </div>
+						<p:progressBar value="#{jackpotControllerImpl.pourcentageByJackpot(jackpot.id)}" labelTemplate="{value}%" displayOnly="true"/>
+					
+									<div class="product-img">
+										<a href="product-details.html">
+											
+										</a>
+										<div class="button-head">
+											<div class="product-action">
+												<a p:data-toggle="modal" p:data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+											</div>
+											<div class="product-action-2">
+												<a title="Add to cart" href="#">Add to cart</a>
+											</div>
+										</div>
+									</div>
+									<hr class="margin-10"/>
+									<div class="product-content">
+									
+										<h3><a href="product-details.html"><h:outputText value="#{jackpot.titre}" /></a></h3>
+										
+										<div style="max-height: 80px; height: 80px; overflow: hidden; text-align: justify ; minlength:4; maxlength:18">
+                                         <p class="sp"><h:outputText value="#{jackpot.descriptionjackpot}" /></p>
+                                            </div>
+                                               <hr class="margin-10"/>
+										<div class="row">
+										
+										
+										
+										
+										
+										<div class="col-xs-4 col-sm-4 text-center fund-bottom-border lr-pad-10">
+                                           <strong><span style="color: red"><h:outputText value="#{jackpot.maxValue} DT" /></span></strong> 
+                                         
+                                                Objectif 
+                                               </div>
+                               
+                               
+                               
+                               <div class="col-xs-4 col-sm-4 text-center fund-bottom-border lr-pad-10">
+                    <strong><span style="color: red">#{jackpotControllerImpl.montant(jackpot.id)}.000 DT</span></strong> collecter
+                </div>
+                               
+                               
+                               <div class="col-xs-4 col-sm-4 text-center lr-pad-10">
+                    <strong><span style="color: red">#{jackpotControllerImpl.GeParticipantByJackpot(jackpot.id)}</span></strong> Participant(s)
+                 </div>
+										</div>
+									
+                 
+        
+
+                                    <div class="product-content text-center pad-5"> <span style="background-color:powderblue; text-align:center" >
+                                    
+                                          
+                 
+        
+                                    
+                                    <h:form>
+                             
+                                        <h:commandButton id = "submit" 
+            value = "Découvrir" action = "#{Stockdata.showdata(jackpot.id)}"
+            actionListener = "#{jackpotControllerImpl.visit(jackpot.id)}">
+         </h:commandButton>
+  
+                                    
+                                 </h:form>   
+                                    
+                                        
+                                               </span>
+                                               
+                                               </div>
+                                              
+                            
+                                               <div><span style="color: red">expire dans <h:outputText value="#{jackpotControllerImpl.daysBetween(jackpot.id)}" />  jours  le  <h:outputText value="#{jackpot.datefin}" pattern="MM/dd/yyyy" type="date" /> </span></div>
+									</div>
+								</div>
+							</div>
+					</div></div>
+				 </div>
+				</p:repeat>
+				
+				
+						</div>
+					</div>
+		
+			
+		</h:panelGroup >
+		
+		
+		<!--/ End Product Style 1  -->	
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr class="margin-10"/>
+
+
+		<!-- Start Shop Newsletter  -->
+		<h:panelGroup  class="shop-newsletter section">
+			
+
+							<!-- Start Newsletter Inner -->
+							<div class="inner">
+								<h4>Newsletter</h4>
+								<p> Subscribe to our newsletter and get <span>10%</span> off your first purchase</p>
+								
+								
+								
+								<h:form    class="newsletter-inner">
+								
+									<h:inputText value="#{jackpotControllerImpl.email}"></h:inputText>
+								
+									<h:commandButton  value="subscribe" action="#{jackpotControllerImpl.ajouternewsletter()}" />
+								
+								</h:form>
+								
+
+					
+								
+								
+								
+								
+							</div>
+							<!-- End Newsletter Inner -->
+					
+			
+		</h:panelGroup >
+		<!-- End Shop Newsletter -->
+<style type="text/css">
+    .animated .ui-progressbar-value { 
+        background-image: url("/showcase/javax.faces.resource/demo/images/pbar-ani.gif.xhtml"); 
+    }
+</style>
+ 
+<script type="text/javascript">
+    //<![CDATA[
+function start() {
+    PF('startButton1').disable();
+     
+    window['progress'] = setInterval(function() {
+var pbClient = PF('pbClient'),
+oldValue = pbClient.getValue(),
+newValue = oldValue + 10;
+         
+pbClient.setValue(pbClient.getValue() + 10);
+     
+if(newValue === 100) {
+    clearInterval(window['progress']);
+}
+ 
+ 
+    }, 1000);
+}
+ 
+function cancel() {
+    clearInterval(window['progress']);
+    PF('pbClient').setValue(0);
+    PF('startButton1').enable();
+}
+    //]]>
+</script>
+
+</f:view>
+	</ui:define>
+</ui:composition>

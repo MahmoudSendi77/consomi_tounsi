@@ -1,0 +1,559 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+
+
+
+
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="menu">
+
+
+
+
+
+		<!-- 		<link -->
+		<!-- 			href="../bredfr/%2b%2btheme%2b%2bbredfr/assets/styles/main.min.css" -->
+		<!-- 			rel="stylesheet" /> -->
+
+		<h:outputStylesheet library="css" name="main.min.css" />
+		<h:outputStylesheet library="css" name="composite.css" />
+
+
+
+
+
+<style>
+
+.ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+	width: 2.5em;
+    height: 3.2em;
+ 
+    color: #e23636;
+    
+}
+.ui-slider .ui-slider-handle {
+
+    background: url("../resources/images/Curseur.png");
+  
+}
+.ui-slider-horizontal .ui-slider-handle {
+    top: -1.3em;
+    margin-left: -.6em;
+}
+.ui-state-default, .ui-widget-header .ui-state-default {
+
+}
+.ui-corner-all {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+
+.ui-slider {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #df0101;
+
+}
+
+.ui-slider-horizontal {
+    height: 0.8em;
+    width: 676px;
+}
+
+#credit-valeur {
+    height: 52px;
+    background: url("../resources/images/Calendre.png");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    width: 100%;
+    position: relative;
+}
+
+/* #out { */
+/*     font-family: impact; */
+/*     font-size: 42px; */
+/*     width: 100%; */
+/*     height: 58px; */
+/*     margin: auto; */
+/*     position: absolute; */
+/*     top: 0; */
+/*     left: 0; */
+/*     bottom: 0; */
+/*     right: 0; */
+/*     text-align: center; */
+/*     color: #005ba0; */
+/* } */
+
+
+
+.form-box-tounsi{
+    border-top: 5px solid #fa0504;
+    -webkit-box-shadow: 0px 5px 21px -2px rgba(0,0,0,0.47);
+    -moz-box-shadow: 0px 5px 21px -2px rgba(0,0,0,0.47);
+    box-shadow: 0px 5px 21px -2px rgba(0,0,0,0.47);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+}
+
+
+
+.margin-10 {
+    margin: 10px;
+}
+
+
+.fs20 { font-size: 20px !important; }
+
+.igive-btn{
+    color:white !important;
+    min-width: 240px;
+}
+
+
+
+
+
+
+
+</style>
+
+
+
+
+
+
+
+
+
+		<section class="section--bgpic bg-color-grey-3"
+			style="background-image: url('../resources/images/ban-simulateur.jpg');"
+			data-mce-style="background-image: url('../medias/images/bannieres/ban-simulateur.jpg');">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="cover cover--regular cover--no-img">
+						<div class="cover__content">
+							<h1 class="cover__title">Simulateur Frais de notaire</h1>
+							<div class="cover__baseline">Calculez vos frais d'achat
+								immobilier selon le type de bien que vous désirez !</div>
+							<div class="cover__baseline__buttons">
+								<div class="LnkWcbForm-trigger LnkWcbForm-trigger-position"
+									title="Rappel immédiat et gratuit !" style="width: 196px;"
+									data-mce-style="width: 196px;">
+									<br />
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /.cover -->
+				</div>
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container --></section>
+		<!-- /.cover -->
+	
+
+
+
+
+
+
+
+
+		<div id="mainFastAccess" class="fast-access fast-access--cover">
+			<a class="btn-regular btn-regular--small btn-contrast"
+				title="Ouvrir un compte" href="/login/editprofile.jsf">
+				<div class="fast-access__icon fast-access__icon--client"> </div>
+				Mon compte
+			</a> <a class="btn-regular btn-regular--small" title="Contact"
+				href="/login/convertirpoints.jsf">
+				<div class="fast-access__icon fast-access__icon--phone"> </div>
+				Mes points
+			</a> <a class="btn-regular btn-regular--small" title="Simulateurs"
+				href="/login/convertirpoints.jsf">
+				<div class="fast-access__icon fast-access__icon--simulator"> </div>
+				Simulateurs
+			</a> <a class="btn-regular btn-regular--small btn-contrast desktop-only"
+				title="Urgence" href="/login/parrainagetemp.jsf">
+				<div class="fast-access__icon fast-access__icon--emergency"> </div>
+				Parrainage
+			</a>
+		</div>
+
+
+		<div id="container" style="opacity: 1;">
+
+
+
+			
+			
+
+
+
+
+
+
+
+
+
+
+	<div id="container" style="opacity: 1;">
+
+
+<br/>
+
+<nav class="navbar1">
+			
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+
+			
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="#" id="nav-saisie" class="nav-panel">
+							<span class="icon-pencil"></span>Votre projet
+						</a>
+					<div class="arrow-active"></div></li>
+					<li class="desactive">
+						<a href="#" id="nav-resultats" class="nav-panel">
+							<span class="icon-bar-chart"></span>Résultats détaillés
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+
+			<main role="main">
+			<div id="panel-scrollpane">
+
+
+				<div id="saisie" class="panel" style="display: block;">
+					<div class="row">
+						<div class="col-md-12">
+							<section>
+							<div class="section-header">
+								<span class="icon-pencil"></span> Convertir vos points
+							</div>
+							<div class="section-content">
+								<div class="form">
+									<div class="form-group form-radio form-radio-horizontal">
+										<div class="form-group-left">
+											<label>Type de bien <span
+												class="marqueur-obligatoire">*</span> :
+											</label>
+										</div>
+										<div class="form-group-right">
+											<ul>
+												<li><input type="radio" class="required type-bien"
+													id="neuf" name="typeBien" value="NEUF"
+													errormessagelbl="Veuillez renseigner le type de bien"
+													autocomplete="off" /> <label for="neuf">Neuf</label></li>
+												<li><input type="radio" class="required type-bien"
+													id="ancien" name="typeBien" value="ANCIEN"
+													errormessagelbl="Veuillez renseigner le type de bien"
+													autocomplete="off" /> <label for="ancien">Ancien</label></li>
+												<li><input type="radio" class="required type-bien"
+													id="terrain" name="typeBien" value="TERRAIN_BATIR"
+													errormessagelbl="Veuillez renseigner le type de bien"
+													autocomplete="off" /> <label for="terrain">Terrain
+														à bâtir</label></li>
+											</ul>
+											<span class="icon-info-sign" title="" style=" font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;"
+												data-original-title="Logement neuf : tout logement construit ou acquis en vue de sa première occupation   Logement ancien : tout logement ayant déjà été habité. Depuis le 1er janvier 2013, tout logement VEFA ou construit sur plan achevé depuis moins de 5 ans lors de la revente par un particulier n'est plus considéré comme un logement neuf et ne bénéficie donc plus des frais de notaire réduits."
+												aria-labelledby="tooltip657241"></span>
+										</div>
+									</div>
+									<hr />
+								
+								
+								
+							
+								
+								<div class="container">
+  <div class="row">
+    <div class="col-sm">
+														
+									
+										
+										
+										
+							<div>
+
+								<p:chart type="metergauge"  model="#{ChartView.meterGaugeModel2}"
+									style="width:500px;height:300px;" />
+
+							</div>
+		
+						</div>
+									
+					<div class="col-sm">		
+										
+								
+					
+					<br/>
+					<br/>
+										<p:repeat var="abon" value="#{ChartView.absbase}">
+
+
+										<div class="ligne_couleur_stat"
+											style="overflow: hidden; display: block; margin: 5px 0px;">
+															<div class="color_stat silver_bg"
+										style="background: ##{abon.couleur} ;width: 37px;
+    height: 37px;"></div>
+											<div class="libel_couleur_stat" style="float: left;">
+												#{abon.type}</div>
+										</div>
+
+									</p:repeat>
+
+
+
+
+
+
+								
+							</div>	
+							
+							
+						
+						</div>
+						</div>	
+							
+								
+								
+								
+	
+								
+								
+									<hr />
+									
+									
+								
+									<div class="form-group">
+										<div class="form-group-left">
+<!-- 											<label for="france">Solde   <span -->
+<!-- 												class="marqueur-obligatoire"></span> : -->
+<!-- 											</label> -->
+										</div>
+										<div class="form-group-right">
+										
+										
+										
+										<div class="slider-saisie"><div class="arrow-bloc-saisie text"></div><div class="bloc-saisie bloc-saisie-notext  bloc-saisie-0">
+						<div class="bloc-saisie-left">
+							<div class="bloc-saisie-input">
+								<div class="slider-value" id="slider-value-prix-acquisition">1</div>
+							  <h:outputText id="out" value="#{sliderView.ajaxnb} "  style=" font-family: auto;
+    font-size: 42px;
+  
+    color: #df0101;"/>
+								<div id="slider-unit-prix-acquisition" class="slider-unit">  DT </div></div>
+							<div class="slider-label"></div>
+						</div>
+						<div class="icon-pencil icon-slider-edit" title="" data-original-title="Vous avez la possibilité de renseigner une valeur en dehors des limites fixées par les bornes du slider, ainsi les bornes se réajusteront automatiquement jusqu'à atteindre le plancher ou le plafond." aria-labelledby="tooltip531527"></div></div></div>
+										
+										
+			
+										
+										
+										
+<!-- 											<input type="text" class="required" id="france" -->
+<!-- 												name="departement" maxlength="3" -->
+<!-- 												errormessagelbl="Veuillez renseigner la localisation du bien" -->
+<!-- 												autocomplete="off" /> <span class="icon-info-sign" title="" -->
+<!-- 												data-original-title="La localisation de l'acquisition intervient dans l'estimation du montant des frais de notaire dans la mesure où, dans les DOM, la TVA à appliquer est inférieure à celle de la France métropolitaine. Par ailleurs, selon les départements, le taux du droit départemental d'enregistrement peut varier.&lt;br>&lt;br>Pour les DOM, seuls les départements de la Martinique, de la Guadeloupe et de la Réunion sont gérés ici."></span> -->
+										</div>
+									</div>
+									<hr />
+									
+									
+									
+
+									<div class="form-group ">
+										
+										
+										
+										
+										
+										
+		
+										
+										
+										
+										<table>
+<tr>
+ <td>    <p:inputText id="txt5" value="#{sliderView.number7}" title="Points" disabled="true"  style="width: 56px;" />
+ 
+   </td>
+<td>   
+
+<div class="slider-legend even" id="slider-legend-1" style="left: 90%; margin-left: -20px;"> max :   #{ChartView.points()} </div>
+     <p:slider for="txt5" step="10" maxValue="#{sliderView.sliderpoints}" > 
+
+
+            <p:ajax event="slideEnd" listener="#{sliderView.onSlideEnd}" update="out" render="compElem"  />
+        </p:slider> </td>
+        
+       
+       
+       
+       
+      <td> 
+      
+
+
+     
+ 
+        </td>
+
+        
+        </tr> 
+    
+  </table>
+										
+										
+										
+										
+										
+										
+										
+										
+										
+									</div>
+
+
+
+									<div
+										class="form-group garantie-hypotheque-item form-group-slider"
+										style="display: none;">
+										<div class="form-group-left">
+											<label for="pret-libre">Prêt bancaire classique :</label>
+										</div>
+
+										<div class="form-group-right">
+											<input type="text" size="6" class="montantEntier"
+												id="pret-libre" name="pretLibre.montant" maxlength="9"
+												autocomplete="off" />
+											<div class="unit">€</div>
+										</div>
+									</div>
+									<div
+										class="form-group garantie-hypotheque-item form-group-slider"
+										style="display: none;">
+										<div class="form-group-left">
+											<label for="pret-secteur-aide">Prêts aidés, PEL, CEL,
+												etc :</label>
+										</div>
+
+										<div class="form-group-right">
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+											<input type="text" size="6" class="montantEntier"
+												id="pret-secteur-aide" name="pretSecteurAide.montant"
+												maxlength="9" autocomplete="off" />
+											<div class="unit">€</div>
+											<span class="icon-info-sign" title=""
+												data-original-title="Prêts éligibles : PEL, CEL, FGAS, PAS, PSI, PAP, PLA, PTZ"></span>
+										</div>
+									</div>
+								</div>
+								<div class="champs-obligatoires">
+									<span class="marqueur-obligatoire">*</span>&nbsp;Champs
+									obligatoires
+								</div>
+							</div>
+							</section>
+						</div>
+					</div>
+
+					<div id="bt-calculer-container" class="row">
+						<div class="col-md-12">
+							<section>
+							<div class="section-content">
+							
+							<h:form>
+							<h:commandButton value="Convertir" style="border: 1px solid;
+    border-color: #ccc #ccc #bbb;
+    border-radius: 3px;
+    background: #df0101;
+    color: rgba(255, 242, 242, 0.8);
+    line-height: 1;
+    width: 26%;" id="bt-calculer"   action="#{sliderView.convertpoint()}" class="btn btn-primaire ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" />
+						</h:form>
+<!-- 								<button id="bt-calculer"  -->
+<!-- 									class="btn btn-primaire ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" -->
+<!-- 									role="button"> -->
+<!-- 									<span class="ui-button-text"> -->
+<!-- 										<div class="icon-calculator btn-icon"></div> -->
+<!-- 										<div class="btn-label">Calculer</div> -->
+<!-- 									</span> -->
+<!-- 								</button> -->
+							</div>
+							</section>
+						</div>
+					</div>
+
+	
+
+				</div>
+
+
+
+			</div>
+			</main>
+
+
+</div>
+
+
+			<div style="clear: both"></div>
+
+
+
+		</div>
+
+
+
+
+	</ui:define>
+</ui:composition>

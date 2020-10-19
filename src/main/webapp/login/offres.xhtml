@@ -1,0 +1,562 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+
+
+
+
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="menu">
+
+
+
+
+
+
+		<style>
+@import
+	url("https://fonts.googleapis.com/css?family=Raleway:300,400,600&amp;subset=latin-ext")
+	;
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	font-family: 'Raleway', sans-serif;
+	font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+	html, body {
+		font-size: 12px;
+	}
+}
+
+.container {
+/* 	background-color: #9191E9; */
+/* 	display: -webkit-box; */
+/* 	display: flex; */
+/* 	-webkit-box-align: center; */
+/* 	align-items: center; */
+/* 	-webkit-box-pack: center; */
+/* 	justify-content: center; */
+/* 	width: 100vw; */
+/* 	height: 100vh; */
+}
+
+.button {
+	text-decoration: none;
+	font-size: .875rem;
+	font-weight: 300;
+	text-transform: uppercase;
+	display: inline-block;
+	border-radius: 1.5rem;
+	background-color: #fff;
+	color: #9191E9;
+	padding: 1rem 2rem;
+}
+
+.popup {
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+	z-index: 2;
+	visibility: hidden;
+	opacity: 0;
+	overflow: hiden;
+	-webkit-transition: .64s ease-in-out;
+	transition: .64s ease-in-out;
+}
+
+.popup-inner {
+	position: relative;
+	bottom: -100vw;
+	right: -100vh;
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	max-width: 800px;
+	max-height: 600px;
+	width: 60%;
+	height: 80%;
+	background-color: #fff;
+	-webkit-transform: rotate(32deg);
+	transform: rotate(32deg);
+	-webkit-transition: .64s ease-in-out;
+	transition: .64s ease-in-out;
+}
+
+.popup__photo {
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-pack: end;
+	justify-content: flex-end;
+	-webkit-box-align: end;
+	align-items: flex-end;
+	width: 40%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.popup__photo img {
+	width: auto;
+	height: 100%;
+}
+
+.popup__text {
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	flex-direction: column;
+	-webkit-box-pack: center;
+	justify-content: center;
+	width: 60%;
+	height: 100%;
+	padding: 4rem;
+}
+
+.popup__text h1 {
+	font-size: 2rem;
+	font-weight: 600;
+	margin-bottom: 2rem;
+	text-transform: uppercase;
+	color: #0A0A0A;
+}
+
+.popup__text p {
+	font-size: .875rem;
+	color: #686868;
+	line-height: 1.5;
+}
+
+.popup:target {
+	visibility: visible;
+	opacity: 1;
+}
+
+.popup:target .popup-inner {
+	bottom: 0;
+	right: 0;
+	-webkit-transform: rotate(0);
+	transform: rotate(0);
+}
+
+.popup__close {
+	position: absolute;
+	right: -1rem;
+	top: -1rem;
+	width: 3rem;
+	height: 3rem;
+	font-size: .875rem;
+	font-weight: 300;
+	border-radius: 100%;
+	background-color: #0A0A0A;
+	z-index: 4;
+	color: #fff;
+	line-height: 3rem;
+	text-align: center;
+	cursor: pointer;
+	text-decoration: none;
+}
+</style>
+
+
+
+
+		<link rel="manifest"
+			href="https://www.abonnement.infopro-digital.com/images/favicon/manifest.json" />
+		<link rel="mask-icon"
+			href="https://www.abonnement.infopro-digital.com/images/favicon/safari-pinned-tab.svg" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&amp;display=swap"
+			rel="stylesheet" />
+
+
+
+
+		<h:outputStylesheet library="css" name="commun.css" />
+
+
+		<h:body clss="bodyV3">
+			<br />
+			<br />
+			<br />
+
+
+
+
+
+
+
+
+
+			<header class="contentHeader">
+				<div class="contentLogo">
+					<!--                                             <img class="imgLogoSite" src="../../medias/page/5e8af8a3ac75d.png" alt="5e8af8a3ac75d.png" /> -->
+					<!--                                                                 <img src="../../medias/page/5dc0602d042e3.png" alt="5dc0602d042e3.png" class="imgLogoSiteSmall" /> -->
+					<h:graphicImage library="images" name="5e8af8a3ac75d.png"
+						class="imgLogoSite" />
+				</div>
+				<ul class="timeLineList">
+					<li class="inProgress">
+						<div class="etape">
+							<span class="posTxt">1</span>
+						</div> <span class="libelleEtape">Choix de l’offre</span>
+					</li>
+					<li class="toFill">
+						<div class="etape mqEtape2">
+							<span class="posTxt">2</span>
+						</div> <span class="libelleEtape">Je m’abonne</span>
+					</li>
+					<li class="toFill">
+						<div class="etape">
+							<span class="posTxt">3</span>
+						</div> <span class="libelleEtape">Confirmation</span>
+					</li>
+				</ul>
+			</header>
+
+			<div id="flash-messages"></div>
+
+
+
+
+
+
+
+
+			<div class="contentSite choixOffrePage choixOffrePage--reduit"
+				data-number-offer-displayed="3">
+
+
+
+
+
+				<div class="choixOffre "
+					style="display: flex; flex-direction: row; flex-wrap: wrap;">
+
+					<p:repeat  varStatus="r" var="abon" value="#{ChartView.abs}">
+						<div class="blocType1-3 blocTypeOffre hasHover bestOffer">
+
+							<div class="blocTypeOffre--titleOffre" style="height: 64px;">
+								#{abon.type}</div>
+
+							<div class="blocTypeOffre--zoneImg jqZoneImg heightEqui"
+								style="display: none;">
+								<img src="../../images/1243a5c.png" alt="Numérique" />
+							</div>
+
+							<a class="ancreBtn"
+								href="https://www.abonnement.infopro-digital.com/lsa/inscription/7/2255">
+								&gt;&gt; Je m'abonne </a>
+
+							<div class="blocTypeOffre--details" style="height: 80px;">
+								Tous les contenus et services Abonnés sur ordinateur, mobile et
+								tablette <b>*Réservée aux nouveaux abonnés</b>
+							</div>
+
+							<div class="jqEnSavoirPlusCont">
+								<div class="blocTypeOffre--description jqOffreDescription"
+									style="display: none;">
+									<div class="anchorCTAPos" id="anchorCTAmain1"></div>
+
+									<b>Formule 3 mois</b><br />
+									<ul>
+										<li class="blocTypeOffre__checkList">L'hebdomadaire et
+											ses hors-séries en version digitale la veille de leur
+											parution</li>
+										<li class="blocTypeOffre__checkList">Les contenus et
+											services du site</li>
+										<li class="blocTypeOffre__checkList">La newsletter
+											quotidienne abonnés et les alertes Flashs</li>
+										<li class="blocTypeOffre__checkList">12 newsletters
+											thématiques</li>
+										<li class="blocTypeOffre__checkList">20 ans d'archives
+											sur la distribution et la grande consommation</li>
+									</ul>
+								</div>
+								<div class="blocTypeOffre--prix" style="height: 120px;">
+									#{abon.pointsfidelite} <sup class="ttcExpos">PTS</sup>
+								</div>
+
+								<div class="blocTypeOffre--duree">3 mois</div>
+							
+
+
+								<a class="btnTypeA1"  id="demo"   onclick="myFunction()" href="#popup#{r.index}"  >   
+<!-- 								 <p:ajax event="keyup"  listener="#{listenerView.handleKeyEvent(abon.type)}" /> -->
+								&gt;&gt; Je m'abonne   </a>
+								
+							
+
+
+
+
+								
+<!-- 								<a class="button" href="#popup">Open Modal</a>  -->
+										<div class="popup" id="popup#{r.index}">
+								
+											<div class="popup-inner"   id="popup#{r.index}"  >
+												<div class="popup__photo">
+													<img
+														src="../resources/images/logo.png"
+														alt=""/>
+												</div>
+												<div class="popup__text">
+													<h1>	#{abon.type}</h1>
+													
+													
+													
+													<p>Lorem ipsum dolor sit amet, consectetur adipiscing
+														elit. Integer ex velit, viverra non vulputate vitae,
+														blandit vitae nisl. Nullam fermentum orci et erat viverra
+														bibendum. Aliquam sed varius nibh, vitae mattis purus.
+														Mauris elementum sapien non ullamcorper vulputate. Orci
+														varius natoque penatibus et magnis dis parturient montes,
+														nascetur ridiculus mus. Sed eget felis sit amet eros
+														viverra pulvinar.</p>
+														
+														<h2 style="color:red;">   #{abon.pointsfidelite}   pts  </h2> 
+												
+												<h:form>
+												
+														<p:growl autoUpdate="true" style="position:static" />
+												
+												
+											<c:if test="#{abon.type eq 'NORMAL'}">
+												
+																	<h:commandLink class="btnTypeA1"  id="btn" disabled="true"
+										action="#{AbonnementFront.affecterUserAbonnement(abon.type)}"
+										>  &gt;&gt; Je confirme </h:commandLink>
+										</c:if>
+										
+										
+											<c:if test="#{abon.type ne 'NORMAL'}">
+												
+																	<h:commandLink class="btnTypeA1"  id="btn" 
+										action="#{AbonnementFront.affecterUserAbonnement(abon.type)}"
+										>  &gt;&gt; Je confirme </h:commandLink>
+										</c:if>
+													<h:message for="btn" />
+										
+										
+										</h:form>
+												</div>
+										
+												
+										
+										
+												
+												<a class="popup__close" href="#" style="color: #ffffff"  >X</a>
+											</div>
+										</div>
+								
+
+
+							
+
+
+
+
+
+
+
+								<a class="link deploieDescrip jqDeploieDescrip">En savoir
+									plus</a>
+							</div>
+						</div>
+
+
+					</p:repeat>
+
+
+				</div>
+
+
+				<div class="autresFormules">
+
+
+					<div class="choixOffre" style="display: flex;">
+
+						<p:repeat var="abonautre" value="#{ChartView.abonnementsautres}">
+
+
+							<div class="blocType1-3 blocTypeOffre hasHover">
+
+								<div class="blocTypeOffre--titleOffre" style="height: 36px;">
+									#{abonautre.type}
+									<!-- Champs de type sous-titre à créer ultérieurement danns le BO :
+            <div class="detail">(print + digital)</div>
+        !-->
+								</div>
+
+								<div class="blocTypeOffre--zoneImg jqZoneImg heightEqui">
+									<h:graphicImage library="images" name="livraison.png"
+										class="imgLogoSite" alt="Choix du mode de paiement" />
+								</div>
+
+								<a class="ancreBtn"
+									href="https://www.abonnement.infopro-digital.com/lsa/inscription/7/116">
+									&gt;&gt; JE M'ABONNE </a>
+
+								<div class="blocTypeOffre--details" style="height: 80px;">
+									Tous les contenus et services Abonnés sur ordinateur, mobile et
+									tablette + L'hebdomadaire et ses hors-séries + <b>Un tarif
+										spécial réservé aux étudiants</b>
+								</div>
+
+								<div class="jqEnSavoirPlusCont">
+									<div class="blocTypeOffre--description jqOffreDescription">
+										<div class="anchorCTAPos" id="anchorCTAother1"></div>
+
+										<p>
+											<b>Formule 12 mois</b>
+										</p>
+										<ul>
+											<li class="blocTypeOffre__checkList">L'hebdomadaire et
+												ses hors-séries en version digitale la veille de leur
+												parution</li>
+											<li class="blocTypeOffre__checkList">Les contenus et
+												services du site</li>
+											<li class="blocTypeOffre__checkList">La newsletter
+												quotidienne abonnés et les alertes Flashs</li>
+											<li class="blocTypeOffre__checkList">12 newsletters
+												thématiques</li>
+											<li class="blocTypeOffre__checkList">20 ans d'archives
+												sur la distribution et la grande consommation</li>
+										</ul>
+										<p class="blocTypeOffre__descrTitle">
+											<br />Et en plus :
+										</p>
+										<ul>
+											<li class="blocTypeOffre__checkList">L'hebdomadaire et
+												ses hors-séries en version papier livrés chez vous ou au
+												bureau<br />- 46 n° par an + 8 hors séries
+											</li>
+										</ul>
+									</div>
+									<div class="blocTypeOffre--prix" style="height: 64px;">
+										#{abonautre.pointsfidelite} <sup class="ttcExpos">PTS</sup>
+									</div>
+
+									<div class="blocTypeOffre--duree">12 mois</div>
+
+									<a class="btnTypeA1"
+										href="https://www.abonnement.infopro-digital.com/lsa/inscription/7/116">
+										&gt;&gt; JE M'ABONNE </a> <a href="#anchorCTAother1"
+										class="link deploieDescrip jqDeploieDescrip">En savoir
+										plus</a>
+								</div>
+							</div>
+
+
+
+
+
+
+
+						</p:repeat>
+
+					</div>
+					<div class="choixOffre" style="display: flex;"></div>
+					<div class="zoneDeploie jqZoneDeploie">
+						<div class="bgIconMore">
+							<i class="icon-arrow-circle-top"></i>
+						</div>
+						<p class="zoneDeploie--txt jqZoneDeploieTxt">Voir les autres
+							formules</p>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+
+			<footer class="footerContainer">
+				<div class="reassuranceBloc clearFix">
+					<div class="blocType1-3 first">
+						<div class="iconImgPos">
+							<h:graphicImage library="images" name="livraison.png"
+								class="imgLogoSite" alt="Choix du mode de paiement" />
+						</div>
+						<div class="reassuranceBloc--title">Livraison offerte en
+							France métropolitaine</div>
+						<div class="reassuranceBloc--descript">Pas de frais de
+							livraison</div>
+					</div>
+					<div class="blocType1-3 ">
+						<div class="iconImgPos">
+							<h:graphicImage library="images" name="paiement.png"
+								class="imgLogoSite" alt="Choix du mode de paiement" />
+						</div>
+						<div class="reassuranceBloc--title">Paiement 100% sécurisé</div>
+						<div class="reassuranceBloc--descript">Vous pouvez régler
+							votre abonnement en toute sécurité par carte bancaire grâce à la
+							solution sécurisée Monetico.</div>
+					</div>
+					<div class="blocType1-3 ">
+						<div class="iconImgPos">
+							<h:graphicImage library="images" name="paiement.png"
+								class="imgLogoSite" alt="Choix du mode de paiement" />
+						</div>
+						<div class="reassuranceBloc--title">Choix du mode de
+							paiement</div>
+						<div class="reassuranceBloc--descript">Paiement par carte ou
+							à réception de facture par chèque ou par virement</div>
+					</div>
+				</div>
+				<!-- footer générique IPD -->
+			</footer>
+
+
+
+
+
+
+
+			<h:outputScript library="js" name="2ed61d2.js" />
+			<h:outputScript library="js" name="6ebc08a.js" />
+			<h:outputScript library="js" name="d7d5857.js" />
+
+
+
+		
+
+<script>
+function myFunction() {
+//   document.getElementById("demo").innerHTML = "Hello World";
+  
+	var x  = document.getElementById("popup-inner");
+    //var x = document.getElementById("btt-calculer");
+	x.classList.toggle("show");
+	
+	
+	var x  = document.getElementById('formId:btt-calculer');
+	  x.style.display = "none";
+  
+}
+</script>
+		</h:body>
+
+
+	</ui:define>
+</ui:composition>

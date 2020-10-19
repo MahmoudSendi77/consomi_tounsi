@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/adminTemplate.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+
+	<ui:define name="products">
+
+		<style>
+.ui-selectonemenu .ui-selectonemenu-trigger .ui-icon {
+	margin-top: 9px;
+	margin-right: 0;
+	margin-left: -25px;
+}
+
+.form-control:disabled, .form-control[readonly] {
+	background-color: #ffffff;
+	opacity: 1;
+}
+
+.ui-widget-content {
+	border: 1px solid #d3d8dd;
+	background: #fff;
+	color: #4f4f4f;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default {
+	border: 1px solid #a8a8a8;
+	background: #c4c4c4
+		url(/javax.faces.resource/images/ui-bg_highlight-hard_80_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #e9ecef
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	font-weight: bold;
+	color: #4f4f4f;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-widget-header {
+	border: 1px solid #b6d5ea;
+	background: #ffffff
+		url(/javax.faces.resource/images/ui-bg_highlight-soft_100_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #ffffff00
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	color: #fff;
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-selectonemenu .ui-selectonemenu-trigger {
+	border-right: 0;
+	border-top: 0;
+	border-bottom: 0;
+	cursor: pointer;
+	width: 0;
+	height: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 0 3px;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight,
+	.ui-widget-header .ui-state-highlight {
+	border: 1px solid #fbfbfb;
+	background: #fd2439;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.ui-shadow {
+	-webkit-box-shadow: 0 5px 10px rgba(255, 255, 255, 0.8);
+	box-shadow: 0 5px 10px rgba(255, 255, 255, 0.8);
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-list-item {
+	border: 0 none;
+	margin: 3px -8px;
+	padding: 3px 7px;
+	text-align: left;
+	white-space: nowrap;
+	font-family: auto;
+	overflow: auto;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-items-wrapper {
+	overflow-anchor: none;
+	overflow-x: hidden;
+	overflow-y: inherit;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button
+	{
+	font-family: auto;
+	font-size: 1em;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-filter {
+	padding-right: 15px;
+	padding: 4px;
+	width: 100%;
+	box-sizing: border-box;
+	border-radius: .25rem;
+}
+
+/* .ui-selectonemenu-panel{ */
+
+/* } */
+.ui-selectonemenu-panel .ui-selectonemenu-filter-container .ui-icon {
+	position: absolute;
+	top: 18px;
+	right: 14px;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-filter-container {
+	position: relative;
+	margin: 0;
+	padding: .4em;
+	display: inline-block;
+	width: 100%;
+}
+
+.ui-widget-header {
+	color: #ff0c0c;
+}
+</style>
+
+		<br />
+
+
+
+		<div class="card card-info">
+			<h:form id="f1">
+				<div class="card-header">
+					<h3 class="card-title">Update Promos</h3>
+					<div class="card-tools"></div>
+				</div>
+			</h:form>
+
+			<h:panelGroup id="productShow" class="card-body">
+				<p:graphicImage library="uploads"
+					name="promos/image/#{promoUpdateController.promos.image.image}" 
+					style="width : 800 ; height : 500" />
+				<h:form enctype="multipart/form-data" prependId="false"
+					id="myfform12354">
+					<p:messages id="messages" showDetail="true" closable="true"
+						autoUpdate="true">
+
+					</p:messages>
+					<br />
+
+					<p:fileUpload
+						fileUploadListener="#{promoUpdateController.handlePromosFile}"
+						multiple="true" id="aisleUploader" required="true"
+						sizeLimit="9999999" />
+
+				</h:form>
+
+
+				<br />
+
+				<h:form>
+
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> name :&#160;&#160;
+								&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span>
+						</div>
+						<h:inputText pt:placeholder="Promos name" type="text"
+							class="form-control" value="#{promoUpdateController.promos.name}" />
+						<!-- 							<div class="input-group-append"> -->
+						<!-- 								<span class="input-group-text">DT</span> -->
+						<!-- 							</div> -->
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> Description
+								:&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span>
+						</div>
+						<h:inputText pt:placeholder="Promos description" type="text"
+							class="form-control"
+							value="#{promoUpdateController.promos.discription}" />
+
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> Status :</span>
+						</div>
+						<h:inputText pt:placeholder="Promos status" type="text"
+							class="form-control" value="#{promoUpdateController.promos.status}" />
+
+					</div>
+
+
+					<!-- Date dd/mm/yyyy -->
+
+					<label>Begin Date :</label>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fa fa-calendar"
+								style="width: 10%"></i> </span>
+						</div>
+						<p:inputMask id="date" value="#{promoUpdateController.date1}"
+							pt:placeholder="dd/mm/yyyy" mask="99/99/2099" style="width: 90%" />
+					</div>
+					<!-- /.input group -->
+
+
+					<!-- Date dd/mm/yyyy -->
+
+					<label>End Date :</label>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fa fa-calendar"
+								style="width: 10%"></i> </span>
+						</div>
+						<p:inputMask id="date3" value="#{promoUpdateController.date2}"
+							mask="99/99/2099" style="width: 90%" pt:placeholder="dd/mm/yyyy" />
+					</div>
+					<!-- /.input group -->
+
+
+
+
+
+
+					<br />
+					<br />
+					<center>
+
+						<h:commandButton value="Add Aisle"
+							action="#{promoUpdateController.addThePromos}"></h:commandButton>
+
+					</center>
+				</h:form>
+
+
+			</h:panelGroup>
+			<!-- /.card-body -->
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+	</ui:define>
+
+</ui:composition>

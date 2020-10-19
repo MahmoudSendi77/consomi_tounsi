@@ -1,0 +1,60 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="menu">
+		<ui:insert name="productCard" />
+		<ui:insert name="productSideBar" />
+		<h:panelGroup>
+			<div class="shopping-cart section col-lg-10  ">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<!-- Shopping Summery -->
+							<table class="table shopping-summery">
+								<thead>
+									<tr class="main-hading">
+										<th>PRODUCT</th>
+										<th>Notification Message</th>
+										<th class="text-center">Date</th>
+										<th class="text-center"><i class="ti-trash remove-icon"></i></th>
+									</tr>
+								</thead>
+								<tbody>
+									<p:repeat value="#{productNotifController.listNotification}"
+										size="10" var="notif">
+										<tr>
+											<td class="image" data-title="No"><h:graphicImage
+													src="https://via.placeholder.com/100x100" alt="#" /></td>
+											<td class="product-des" data-title="Description">
+												<p class="product-name">
+													<a href="#">Title Notification</a>
+												</p>
+												<p class="product-des">#{notif.message}.</p>
+											</td>
+											<td class="price" data-title="Price"><span>#{notif.date}
+											</span></td>
+											<h:form>
+												<td class="action" data-title="Remove"><h:commandLink
+														action="#{notif.deleteNotification(notif.id)}" href="#">
+														<i class="ti-trash remove-icon"></i>
+													</h:commandLink></td>
+											</h:form>
+										</tr>
+									</p:repeat>
+								</tbody>
+							</table>
+							<!--/ End Shopping Summery -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

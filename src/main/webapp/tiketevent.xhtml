@@ -1,0 +1,796 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+
+	<ui:define name="menu">
+
+		<ui:insert name="productCard" />
+		<ui:insert name="productSideBar" />
+		
+			<f:view transient="true">
+<body>
+
+		<h:outputStylesheet library="assetscss" name="scarletf066.css" />
+		<h:outputStylesheet library="assetscss" name="style.css" />
+		<h:outputStylesheet library="assetscss" name="hover-dropdown-menu.css" />
+
+		<h:outputStylesheet library="js" name="jquery.countTo.js" />
+		<h:outputStylesheet library="js" name="easypiechart.min.js" />
+
+
+
+
+<style>
+@import
+	url("https://fonts.googleapis.com/css?family=Raleway:300,400,600&amp;subset=latin-ext")
+	;
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	font-family: 'Raleway', sans-serif;
+	font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+	html, body {
+		font-size: 12px;
+	}
+}
+
+.container {
+/* 	background-color: #9191E9; */
+/* 	display: -webkit-box; */
+/* 	display: flex; */
+/* 	-webkit-box-align: center; */
+/* 	align-items: center; */
+/* 	-webkit-box-pack: center; */
+/* 	justify-content: center; */
+/* 	width: 100vw; */
+/* 	height: 100vh; */
+}
+
+
+
+.popup {
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	justify-content: center;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+	z-index: 2;
+	visibility: hidden;
+	opacity: 0;
+	overflow: hiden;
+	-webkit-transition: .64s ease-in-out;
+	transition: .64s ease-in-out;
+}
+
+.popup-inner {
+	position: relative;
+	bottom: -100vw;
+	right: -100vh;
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	max-width: 800px;
+	max-height: 600px;
+	width: 60%;
+	height: 80%;
+	background-color: #fff;
+	-webkit-transform: rotate(32deg);
+	transform: rotate(32deg);
+	-webkit-transition: .64s ease-in-out;
+	transition: .64s ease-in-out;
+}
+
+
+
+
+
+
+
+
+.popup:target {
+	visibility: visible;
+	opacity: 1;
+}
+
+.popup:target .popup-inner {
+	bottom: 0;
+	right: 0;
+	-webkit-transform: rotate(0);
+	transform: rotate(0);
+}
+
+.popup__close {
+	position: absolute;
+	right: -1rem;
+	top: -1rem;
+	width: 3rem;
+	height: 3rem;
+	font-size: .875rem;
+	font-weight: 300;
+	border-radius: 100%;
+	background-color: #0A0A0A;
+	z-index: 4;
+	color: #fff;
+	line-height: 3rem;
+	text-align: center;
+	cursor: pointer;
+	text-decoration: none;
+}
+</style>
+<style >
+
+
+
+
+
+.cardWrap {
+  width: 27em;
+  margin: 3em auto;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.card {
+  background: linear-gradient(to bottom, #e84c3d 0%, #e84c3d 26%, #ecedef 26%, #ecedef 100%);
+  height: 11em;
+  float: left;
+  position: relative;
+  padding: 1em;
+  margin-top: 100px;
+}
+
+.cardLeft {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  width: 16em;
+}
+
+.cardRight {
+  width: 6.5em;
+  border-left: 0.18em dashed #fff;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.cardRight:before, .cardRight:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0.9em;
+  height: 0.9em;
+  background: #fff;
+  border-radius: 50%;
+  left: -0.5em;
+}
+.cardRight:before {
+  top: -0.4em;
+}
+.cardRight:after {
+  bottom: -0.4em;
+}
+
+h1 {
+  font-size: 1.1em;
+  margin-top: 0;
+}
+h1 span {
+  font-weight: normal;
+}
+
+.title,
+.namee,
+.seat,
+.time {
+  text-transform: uppercase;
+  font-weight: normal;
+}
+.title h2,
+.namee h2,
+.seat h2,
+.time h2 {
+  font-size: 0.9em;
+  color: #525252;
+  margin: 0;
+}
+.title span,
+.namee span,
+.seat span,
+.time span {
+  font-size: 0.7em;
+  color: #a2aeae;
+}
+
+
+
+.namee,
+.seat {
+  margin: 0.7em 0 0 0;
+}
+
+.time {
+  margin: 0.7em 0 0 1em;
+}
+
+.seat,
+.time {
+  float: left;
+}
+
+.eye {
+  position: relative;
+  width: 2em;
+  height: 1.5em;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 1em/0.6em;
+  z-index: 1;
+}
+.eye:before, .eye:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+}
+.eye:before {
+  width: 1em;
+  height: 1em;
+  background: #e84c3d;
+  z-index: 2;
+  left: 8px;
+  top: 4px;
+}
+.eye:after {
+  width: 0.5em;
+  height: 0.5em;
+  background: #fff;
+  z-index: 3;
+  left: 12px;
+  top: 8px;
+}
+
+.number {
+  text-align: center;
+  text-transform: uppercase;
+}
+.number h3 {
+  color: #e84c3d;
+  margin: 0.9em 0 0 0;
+  font-size: 2.5em;
+}
+.number span {
+  display: block;
+  color: #a2aeae;
+}
+
+.barcode {
+  height: 2em;
+  width: 0;
+
+  box-shadow: 1px 0 0 1px #343434, 5px 0 0 1px #343434, 10px 0 0 1px #343434, 11px 0 0 1px #343434, 15px 0 0 1px #343434, 18px 0 0 1px #343434, 22px 0 0 1px #343434, 23px 0 0 1px #343434, 26px 0 0 1px #343434, 30px 0 0 1px #343434, 35px 0 0 1px #343434, 37px 0 0 1px #343434, 41px 0 0 1px #343434, 44px 0 0 1px #343434, 47px 0 0 1px #343434, 51px 0 0 1px #343434, 56px 0 0 1px #343434, 59px 0 0 1px #343434, 64px 0 0 1px #343434, 68px 0 0 1px #343434, 72px 0 0 1px #343434, 74px 0 0 1px #343434, 77px 0 0 1px #343434, 81px 0 0 1px #343434;
+}
+
+
+
+
+
+</style>
+
+
+
+<style>
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,900,700,500,300,100);
+
+
+::selection {
+  background: #f31544;
+  color: #FFF;
+}
+
+::moz-selection {
+  background: #f31544;
+  color: #FFF;
+}
+
+
+#invoiceholder {
+  width: 100%;
+  hieght: 100%;
+  padding-top: 50px;
+}
+
+#headerimage {
+  z-index: -1;
+  position: relative;
+  top: -50px;
+  height: 257px;
+  background-image: url('https://i.imgur.com/D82J13F.jpg');
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, .15), inset 0 -2px 4px rgba(0, 0, 0, .15);
+  -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, .15), inset 0 -2px 4px rgba(0, 0, 0, .15);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, .15), inset 0 -2px 4px rgba(0, 0, 0, .15);
+  overflow: hidden;
+  background-attachment: fixed;
+  background-size: cover
+}
+
+#invoice {
+  position: relative;
+  top: -290px;
+  margin: 0 auto;
+  width: 700px;
+  background: #FFF;
+}
+
+[id*='invoice-'] {
+  border-bottom: 1px solid #EEE;
+  padding: 30px;
+}
+
+#invoice-top {
+  min-height: 120px;
+}
+
+#invoice-mid {
+  min-height: 120px;
+}
+
+#invoice-bot {
+  min-height: 250px;
+}
+
+.logo {
+  float: left;
+  height: 60px;
+  width: 60px;
+  background: url(https://i.imgur.com/ZFrafHH.png) no-repeat;
+  background-size: 60px 60px;
+}
+
+.clientlogo {
+  float: left;
+  height: 60px;
+  width: 60px;
+  background: url(https://i.imgur.com/6dktRSW.jpg) no-repeat;
+  background-size: 60px 60px;
+  border-radius: 50px;
+}
+
+.info {
+  display: block;
+  float: left;
+  margin-left: 20px;
+}
+
+.title {
+  float: right;
+}
+
+.title p {
+  text-align: right;
+}
+
+#project {
+  margin-left: 52%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 5px 0 5px 15px;
+  border: 1px solid #EEE
+}
+
+.tabletitle {
+  padding: 5px;
+  background: #EEE;
+}
+
+.service {
+  border: 1px solid #EEE;
+}
+
+
+
+.itemtext {
+  font-size: .9em;
+}
+
+#legalcopy {
+  margin-top: 30px;
+}
+
+
+
+.effect2 {
+  position: relative;
+}
+
+.effect2:before,
+.effect2:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width: 300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+
+.effect2:after {
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
+.legal {
+  width: 70%;
+}
+
+
+
+</style>
+
+
+
+
+
+
+
+
+
+
+		<style>
+.fund-imagee {
+	width: 430px; ! important;
+	height: 511px;
+	!
+	important;
+}
+</style>
+
+		<style type="text/css">
+@media print {
+	
+		.hidden {
+  display:none;
+}
+
+	
+	.test * {
+		visibility: visible;
+	}
+	.div2 {
+		position: absolute;
+		top: 40px;
+		left: 30px;
+	}
+
+</style>
+
+		<h:panelGroup class="page-section light-bg "   style="padding: 0px 0;">
+
+
+			<div class="form-box-tounsi top-margin-20"
+				style="padding: 10px !important;    max-height: 58%;">
+
+				<div class="row">
+
+
+
+
+
+
+					<div class="col-6 col-sm-3 hidden">
+
+						<h:graphicImage id="image" value="#{Stockdataevent.eventimage}"
+							class="fund-imagee test"></h:graphicImage>
+					</div>
+
+					<div class="col-sm  " style="background-color: #D3D3D3;">
+
+						<h3>
+
+							#{Stockdataevent.titre_event} <span class="title-highlight">By
+								Consomi Tounsi <br />
+							</span>
+						</h3>
+						<p p:align="justify" class="hidden">#{Stockdataevent.description}</p>
+					
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<div class="col-sm col-md-offset-3 form-box-tounsi printMe">
+
+						<h:form class="form-group">
+
+
+<div id="invoiceholder">
+
+  <div id="headerimage"> Consomi Tounsi Events</div>
+  
+  <div id="invoice" class="effect2">
+    
+    
+    <div id="invoice-bot">
+      <span style="font-size: 20px; font-weight: 100; color: #DF0101; ">Consomi Tounsi Events</span>
+      <div id="table">
+        <table>
+          <tr class="tabletitle">
+            <td class="item"><h4>Event</h4></td>
+            <td class="Hours"><h4>Quantité</h4></td>
+            <td class="Rate"><h4>Prix</h4></td>
+            <td class="subtotal"><h4>Sous-total</h4></td>
+          </tr>
+          
+          <tr class="service">
+            <td class="tableitem"><p class="itemtext">VPS Cool</p></td>
+            <td class="tableitem"><p class="itemtext"><p:spinner id="minMax" value="#{eventControllerImpl.number}"
+								min="1" max="100" class="hidden">
+								<p:ajax
+									listener="#{eventControllerImpl.updateTiket(Stockdataevent.price)}"
+									update="hh"></p:ajax>
+							</p:spinner></p></td>
+            <td class="tableitem"><p class="itemtext">#{Stockdataevent.price}</p></td>
+            <td class="tableitem"><p class="itemtext">
+							<h:outputText id="hh" value="#{eventControllerImpl.total}" /></p></td>
+          </tr>
+          
+          <tr class="service">
+            <td class="tableitem"><p class="itemtext">free invite</p></td>
+            <td class="tableitem"><p class="itemtext">1</p></td>
+            <td class="tableitem"><p class="itemtext">free</p></td>
+            <td class="tableitem"><p class="itemtext">free</p></td>
+          </tr>
+          
+            
+          <tr class="tabletitle">
+            <td></td>
+            <td></td>
+            <td class="Rate"><h4>Total</h4></td>
+            <td class="payment"><h4>- -</h4></td>
+          </tr>
+                  
+                    
+        </table>
+        <div style="position: absolute; right: 100px; background-color: #DF0101;" >  <a  id="demo"   onclick="myFunction()" href="#popup"  >   
+
+								Je Participe   </a>
+                    </div>
+      </div> 
+      
+    <h:form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_s-xclick"/>
+      <input type="hidden" name="hosted_button_id" value="QRZ7QTM9XRPJ6"/>
+      <input type="image" src="http://michaeltruong.ca/images/paypal.png" p:border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
+    </h:form>
+
+      
+      <div id="legalcopy">
+        <p class="legal"><strong>Merci de votre achat!</strong>  Merci d'avoir choisit Consomi Tounsi, nous en remercions !
+        </p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							
+
+
+
+
+
+
+
+								
+</h:form>
+
+
+
+
+		<div class="popup" id="popup">
+								
+											<div class="popup-inner"   id="popup"  >
+												
+										
+	
+	
+	
+	
+<div class="cardWrap">
+  <div class="card cardLeft">
+
+    <div class="title">
+      <h2>#{Stockdataevent.titre_event} </h2>
+      <span>#{Stockdataevent.location} </span>
+    </div>
+    <div class="namee">
+      <h2>Vladimir Kudinov</h2>
+      <span>name</span>
+    </div>
+    <div class="seat">
+      <h2 >price:  #{eventControllerImpl.total}</h2>
+     
+    </div>
+    <div class="time">
+      <h2>Time: #{Stockdataevent.time}</h2>
+  
+    </div>
+    
+  </div>
+  <div class="card cardRight">
+    <div class="eye"></div>
+    <div class="number">
+      <h3>156</h3>
+      <span>seat</span>
+    </div>
+    <div class="barcode"></div>
+  </div>
+
+</div>
+  <div class="ticket-ripp"><button onclick="window.print()">Print this page</button></div>
+
+	
+	
+	
+	
+						
+										
+												<a class="popup__close" href="http://localhost:8081/tiketevent.jsf" style="color: #ffffff"  >X</a>
+											
+											</div>
+											
+										</div>
+
+	</div>	
+						
+
+
+
+
+
+
+
+
+
+					</div>
+
+				</div>
+			
+
+
+
+
+
+			
+
+
+
+
+		</h:panelGroup>
+
+
+
+		<script type="text/javascript"
+			src="https://maps.google.com/maps/api/js?sensor=false"></script>
+
+
+		<p:gmap center="36.765953,10.212814" zoom="7" type="HYBRID"
+			style="width:100%;height:400px" model="#{markersView.simpleModel}" class="hidden" />
+
+
+
+		<script>
+			document.getElementById("doPrint").addEventListener(
+					"click",
+					function() {
+						var printContents = document
+								.getElementById("popup").innerHTML;
+						var originalContents = document.body.innerHTML;
+						document.body.innerHTML = printContents;
+						window.print();
+						document.body.innerHTML = originalContents;
+					});
+		</script>
+
+
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Print Tiket";
+  
+	var x  = document.getElementById("popup-inner");
+  //  var x = document.getElementById("btt-calculer");
+	x.classList.toggle("show");
+	
+	
+	var x  = document.getElementById('formId:btt-calculer');
+	  x.style.display = "none";
+ 
+}
+</script>
+
+
+
+</body>
+</f:view>
+	</ui:define>
+
+
+
+</ui:composition>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,164 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:d="http://primefaces.org/ui">
+
+
+<f:view transient="true">
+
+
+
+<h:head>
+
+
+	<h:outputStylesheet
+		href="https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css"
+		rel="stylesheet" />
+
+
+	<h:link rel="stylesheet"
+		href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+	<!-- hetha lezm nhabtou nbadlou fe css mta3ou-->
+	<h:link rel="stylesheet" href="/resources/demos/style.css" />
+	<link rel="stylesheet"
+		href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<!-- 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<!-- 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+
+
+
+
+
+	<h:outputStylesheet library="css" name="csstemplatelogin.css" />
+
+<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+
+
+</h:head>
+
+
+
+
+
+
+
+
+
+<h:body     >
+
+<!-- <d:chart type="metergauge" model="#{ChartView.meterGaugeModel1}" style="width:400px;height:250px" /> -->
+ 
+
+
+	<div class="container" id="container">
+		<div class="form-container sign-up-container">
+			<h:form action="#">
+				<h1>Sign Up</h1>
+
+
+
+
+				<h:inputText type="text" p:placeholder="UserName" id="UserName"
+					value="#{SigninJsf.username}" required="true"
+					requiredMessage="Username required" />
+
+				<h:inputText type="email" p:placeholder="Email" id="Email"
+					value="#{SigninJsf.email}" required="true"
+					requiredMessage="Email required" />
+
+				<h:inputSecret type="password" p:placeholder="Password"
+					value="#{SigninJsf.password}" id="Password" required="true"
+					requiredMessage="Password required" />
+
+				<h:inputText styleClass="datepicker"  value="#{SigninJsf.date}"
+					p:placeholder="Date naissance" required="true"
+					requiredMessage="Date naissance required">
+					<f:convertDateTime pattern="MM/dd/yyyy" type="date" />
+				</h:inputText>
+
+				<div class="sel sel--black-panther">
+					<h:selectOneMenu name="select-profession" id="select-profession"
+						value="#{SigninJsf.gender}">
+						<f:selectItem itemValue="Gender" itemLabel="Gender :" />
+						<f:selectItem itemValue="Homme" itemLabel="Homme" />
+						<f:selectItem itemValue="Femme" itemLabel="Femme" />
+					</h:selectOneMenu>
+				</div>
+
+				<h:commandButton id="btn" value="Sign up "
+					styleClass="btn btn-large" classe="btn"
+					action="#{SigninJsf.registerUser()}" />
+
+<h:message for="btn" />
+
+				<!--                 <button>Sign Up</button> -->
+			</h:form>
+		</div>
+		<div class="form-container sign-in-container">
+			<h:form action="#">
+
+				<h1>Sign In</h1>
+
+				<div class="sommeclasseabc">
+					<d:growl autoUpdate="true" style="position:static" />
+					<span>or use your account</span>
+					<h:inputText id="username" p:placeholder="Username Or Email"
+						value="#{SigninJsf.username}" required="true"
+						requiredMessage="Username Or Email required" />
+					<!--                 <h:inputText id="password" placeholder="Password" required="true" value="#{SigninJsf.password}" requiredMessage="Password required!" type="password" /> -->
+					<h:inputSecret value="#{SigninJsf.password}" maxlength="10"
+						size="15" p:placeholder="password" required="true"
+						requiredMessage="Password is required" type="password"></h:inputSecret>
+
+					<h:commandButton id="btn" value="Sign in "
+						styleClass="btn btn-large" classe="btn"
+						action="#{SigninJsf.signin()}" />
+					<h:message for="btn" />
+				</div>
+			</h:form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<!--                     <h1>Welcome Back</h1> -->
+					<!--                     <p>To keep connected with us please login with your personal info</p> -->
+					<button class="ghost" id="signIn">Sign In</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<!--                     <h1>Hello,Friend</h1> -->
+					<!--                     <p>Enter your personal details and start journey with us</p> -->
+					<button class="ghost" id="signUp">Sign Up</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--     <script src="main.js"></script> -->
+	<script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+	<h:outputScript library="js" name="jstemplate.js" />
+
+	<script type="text/javascript">
+		$(".datepicker").datepicker({
+			inline : true,
+			showWeek : true,
+			firstDay : 1
+		});
+	</script>
+
+
+
+	<script>
+		$(document).on("ready", function() {
+			$('#login-page').css({
+				'height' : window.innerHeight + 'px'
+			});
+		});
+	</script>
+
+
+
+</h:body>
+</f:view>
+</html>

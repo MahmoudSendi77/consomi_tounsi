@@ -1,0 +1,118 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+
+	<ui:define name="menu">
+		<ui:insert name="productCard" />
+		<ui:insert name="productSideBar" />
+
+
+
+<h:panelGroup>
+		<h:panelGroup>
+			<br />
+			<br />
+			<br />
+			<center >
+<div class="col-lg-4 col-4 padding-left">
+
+<a-scene allowfullscreen="yes" allowvr="yes" embedded="true" style="height: 500px;
+  width: 700px">
+<h:graphicImage  id="panorama" library="uploads"
+									name="/aisle/image/#{aisleController.imageVR}" >
+</h:graphicImage>
+<a-sky src="#panorama" rotation="0 -90 0" style="height: 300px;
+  width: 600px" ></a-sky>
+</a-scene>
+</div>
+</center>
+			<br />
+			<br />
+			
+		</h:panelGroup>
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<!-- Start Most Popular -->
+
+		<div class="cown-down ">
+			<div class="section-inner ">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-6 col-10 padding-right">
+							<div class="image">
+							
+								<h:graphicImage library="uploads"
+									name="/aisle/image/#{aisleController.imageVR}" />
+									
+							</div>
+						</div>
+						<div class="col-lg-6 col-10 padding-left">
+							<div class="content ">
+								<div class="heading-block ">
+									<p class="small-title">Promos</p>
+									<h3 class="title">Promos Product + Category</h3>
+									<p class="text">Our Promos Categegory</p>
+									<h1 class="price">
+										$1200 <s>$1890</s>
+									</h1>
+									<div class="coming-time">
+										<div class="clearfix" data-countdown="2021/02/30">
+											<div class="cdown">
+												<span class="days"><strong>306</strong> Days.</span>
+											</div>
+											<div class="cdown">
+												<span class="hour"><strong> 23</strong> Hours.</span>
+											</div>
+											<div class="cdown">
+												<span class="minutes"><strong>17</strong> MINUTES.</span>
+											</div>
+											<div class="cdown">
+												<span class="second"><strong> 02</strong> SECONDS.</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<div>
+	<h:panelGroup>
+			<br />
+			<br />
+			<h:form>
+			<h:outputText value="#{aisleController.aisleDetails.type}" >#{aisleDetails.type}6666666#{aisleController.test}</h:outputText>
+			</h:form>
+			<br />
+			<br />
+			<br />		
+<center>
+<br />
+			<h:outputText value="#{aisleController.aisleDetails.type}" ></h:outputText>
+			<br />
+			<br />
+			<h:outputText value="#{aisleController.aisleDetails.id}" ></h:outputText>
+			<br />
+				
+			</center>
+			</h:panelGroup>
+</div>
+		</h:panelGroup>
+		<br />
+		<br />
+	</ui:define>
+
+</ui:composition>

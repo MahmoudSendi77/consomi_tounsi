@@ -1,0 +1,884 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ct="http://www.chartistjsf.org/charts"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+
+
+
+
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="menu">
+
+
+
+
+
+		<!-- 		<link -->
+		<!-- 			href="../bredfr/%2b%2btheme%2b%2bbredfr/assets/styles/main.min.css" -->
+		<!-- 			rel="stylesheet" /> -->
+
+		<h:outputStylesheet library="css" name="main.min.css" />
+
+
+
+
+
+
+
+			<style>
+			
+			
+.container1 {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 220px;
+	width: 320px;
+	text-align: center;
+}
+
+#title {
+	position: absolute;
+	top: 90px;
+	left: -208px;
+	height: 40px;
+	width: 500px;
+	border-radius: 40px;
+	line-height: 40px;
+	background: #8d9296;
+}
+
+#share {
+	position: absolute;
+	top: 80px;
+	left: 284px;
+	height: 60px;
+	width: 60px;
+	border-radius: 40px;
+	line-height: 60px;
+	font-size: 20px;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	background: black;
+}
+
+#copy, #twitter, #android {
+	position: absolute;
+	top: 95px;
+	left: 400px;
+	height: 0px;
+	width: 0px;
+	border-radius: 40px;
+	line-height: 60px;
+	font-size: 0px;
+	transition: 0.5s all cubic-bezier(.87, -.41, .19, 1.44);
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	background: black;
+}
+
+#c1, #c2, #c3 {
+	position: absolute;
+	top: 105px;
+	left: 325px;
+	height: 10px;
+	width: 0px;
+	transition: 0.5s all cubic-bezier(.87, -.41, .19, 1.44);
+	background: #8d9296;
+}
+
+#c1 {
+	transform: rotate(45deg)
+}
+
+#c1 {
+	transform: rotate(45deg)
+}
+
+#c3 {
+	transform: rotate(-45deg)
+}
+
+#message {
+	position: absolute;
+	top: 220px;
+	left: 80px;
+	height: 20px;
+	width: 160px;
+	line-height: 20px;
+	font-size: 16px;
+	color: var(- -secondcolor);
+	opacity: 0;
+	transition: 1s all
+}
+
+#txt {
+	opacity: 0;
+	cursor: default;
+}
+
+#insta, #twit {
+	position: absolute;
+	bottom: 0;
+	font-size: 25px;
+	margin: 10px;
+	cursor: pointer;
+	color: #000;
+}
+
+#twit {
+	right: 0;
+}
+
+
+
+@media (min-width: 992px)
+.col-lg-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 17%;
+}
+
+
+.dico_title_1 {
+    color: #e41129;
+    font-size: 2.25em;
+    font-weight: bold;
+    display: block;
+    line-height: 1.5em;
+}
+
+
+.dictionary .dico_main_title .dico_title_1 {
+    color: #e41129;
+    font-size: 2.25em;
+    font-weight: bold;
+    display: block;
+    line-height: 1.5em;
+}
+
+
+.dictionary .dico_main_title {
+    color: #303030;
+    margin-bottom: 0em;
+    margin-top: 28px;
+}
+
+
+
+.dico_main_title .dico_title_1:first-letter {
+    display: block;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 3em;
+    line-height: 1em;
+    color: #B8B8B8;
+    line-height: 50px;
+    text-transform: uppercase;
+    margin-top: 8px;
+}
+
+
+.dictionary .dico_main_title .dico_title_1:first-letter {
+    display: block;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 3em;
+    line-height: 1em;
+    color: #B8B8B8;
+    line-height: 50px;
+    text-transform: uppercase;
+    margin-top: 8px;
+}
+
+
+
+
+
+.ct-label {
+    fill: rgb(0, 0, 0);
+    /* color: rgb(247, 0, 0); */
+    font-size: 2.75rem;
+    line-height: 16;
+}
+
+</style>
+
+
+
+
+
+
+
+<style>
+
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Cabin:400);
+
+.webdesigntuts-workshop {
+/* 	background: #151515; */
+/* 	height: 100%; */
+/* 	position: absolute; */
+	text-align: center;
+/* 	width: 100%; */
+}
+
+.webdesigntuts-workshop:before,
+.webdesigntuts-workshop:after {
+	content: '';
+	display: block;	
+	height: 1px;
+	left: 50%;
+	margin: 0 0 0 -400px;
+	position: absolute;
+	width: 800px;
+}
+
+.webdesigntuts-workshop:before {
+	background: #444;
+	background: linear-gradient(left, #151515, #444, #151515);
+	top: 192px;
+}
+
+.webdesigntuts-workshop:after {
+	background: #000;
+	background: linear-gradient(left, #151515, #000, #151515);	
+	top: 191px;
+}
+
+.webdesigntuts-workshop form {
+	background: #111;
+	background: linear-gradient(#1b1b1b, #111);
+	border: 1px solid #000;
+	border-radius: 5px;
+	box-shadow: inset 0 0 0 1px #272727;
+	display: inline-block;
+	font-size: 0px;
+	margin: 150px auto 0;
+	padding: 20px;
+	position: relative;
+	z-index: 1;
+}
+
+.webdesigntuts-workshop input {
+	background: #222;	
+	background: linear-gradient(#333, #222);	
+	border: 1px solid #444;
+	border-radius: 5px 0 0 5px;
+	box-shadow: 0 2px 0 #000;
+	color: #888;
+	display: block;
+	float: left;
+	font-family: 'Cabin', helvetica, arial, sans-serif;
+	font-size: 13px;
+	font-weight: 400;
+	height: 40px;
+	margin: 0;
+	padding: 0 10px;
+	text-shadow: 0 -1px 0 #000;
+	width: 200px;
+}
+
+.ie .webdesigntuts-workshop input {
+	line-height: 40px;
+}
+
+.webdesigntuts-workshop input::-webkit-input-placeholder {
+   color: #888;
+}
+
+.webdesigntuts-workshop input:-moz-placeholder {
+   color: #888;
+}
+
+.webdesigntuts-workshop input:focus {
+	animation: glow 800ms ease-out infinite alternate;
+	background: #222922;
+	background: linear-gradient(#333933, #222922);
+	border-color: #ffffff;
+	box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 2px 0 #000;
+	color: #efe;
+	outline: none;
+}
+
+.webdesigntuts-workshop input:focus::-webkit-input-placeholder { 
+	color: #efe;
+}
+
+.webdesigntuts-workshop input:focus:-moz-placeholder {
+	color: #efe;
+}
+
+.webdesigntuts-workshop button {
+	background: #222;
+	background: linear-gradient(#333, #222);
+	box-sizing: border-box;
+	border: 1px solid #444;
+	border-left-color: #000;
+	border-radius: 0 5px 5px 0;
+	box-shadow: 0 2px 0 #000;
+	color: #fff;
+	display: block;
+	float: left;
+	font-family: 'Cabin', helvetica, arial, sans-serif;
+	font-size: 13px;
+	font-weight: 400;
+	height: 40px;
+	line-height: 40px;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	text-shadow: 0 -1px 0 #000;
+	width: 80px;
+}	
+
+.webdesigntuts-workshop button:hover,
+.webdesigntuts-workshop button:focus {
+	background: #292929;
+	background: linear-gradient(#393939, #292929);
+	color: #df0101;
+	outline: none;
+}
+
+.webdesigntuts-workshop button:active {
+	background: #292929;
+	background: linear-gradient(#393939, #292929);
+	box-shadow: 0 1px 0 #000, inset 1px 0 1px #222;
+	top: 1px;
+}
+
+@keyframes glow {
+    0% {
+		border-color: #df0101;
+		box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 2px 0 #000;
+    }	
+    
+    100% {
+		border-color: #dffffff;
+		box-shadow: 0 0 20px rgba(0,255,0,.6), inset 0 0 10px rgba(0,255,0,.4), 0 2px 0 #000;
+    }
+}
+
+
+
+
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+			<div id="mainFastAccess" class="fast-access fast-access--cover">
+			<a class="btn-regular btn-regular--small btn-contrast"
+				title="Ouvrir un compte" href="/login/editprofile.jsf">
+				<div class="fast-access__icon fast-access__icon--client"> </div>
+				Mon compte
+			</a> <a class="btn-regular btn-regular--small" title="Contact"
+				href="/login/convertirpoints.jsf">
+				<div class="fast-access__icon fast-access__icon--phone"> </div>
+				Mes points
+			</a> <a class="btn-regular btn-regular--small" title="Simulateurs"
+				href="/login/convertirpoints.jsf">
+				<div class="fast-access__icon fast-access__icon--simulator"> </div>
+				Simulateurs
+			</a> <a class="btn-regular btn-regular--small btn-contrast desktop-only"
+				title="Urgence" href="/login/parrainagetemp.jsf">
+				<div class="fast-access__icon fast-access__icon--emergency"> </div>
+				Parrainage
+			</a>
+		</div>
+
+
+
+
+
+
+
+
+
+
+		<article id="content" data-panel="content">
+		<div class="mosaic-grid-row">
+			<div
+				class="mosaic-grid-cell mosaic-width-full mosaic-position-leftmost">
+				<div
+					class="movable removable mosaic-tile mosaic-plone.app.standardtiles.html-tile">
+					<div class="mosaic-tile-content">
+
+
+						<section class="section--bgpic bg-color-grey-3"
+							style="background-image:url('../resources/images/ban-parrainage.jpg');"
+							data-mce-style="background-image: url('../medias/images/bannieres/ban-parrainage.jpg');">
+							
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="cover cover--regular cover--no-img">
+										<div class="cover__content">
+											<h1 class="cover__title">Offre de Parrainage Consomi  <span style="color: red;">  Tounsi </span>   </h1>
+											<div class="cover__baseline">Faites découvrir la
+												Consomi Tounsi... et parrainez vos proches !</div>
+										</div>
+									</div>
+									<!-- /.cover -->
+								</div>
+								
+								
+								
+							</div>
+							<!-- /.row -->
+						</div>
+						<!-- /.container --></section>
+
+
+
+
+
+
+
+
+
+
+
+<section class="webdesigntuts-workshop">
+	<h:form >		    
+		      <p:inputText id="counter" value="#{AbonnementFront.text}">
+            <p:ajax event="keyup" update="users" listener="#{AbonnementFront.handleKeyEvent}" />
+        </p:inputText>
+   
+    
+    	<button>Search</button>
+
+  		<p:repeat var="user" value="#{AbonnementFront.users}" id="users">
+		     <h:outputText value="" >   #{user.username} </h:outputText>
+	</p:repeat>
+	</h:form>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						<!-- /.cover -->
+						<section class="section"><!-- SECTION -->
+
+
+
+
+
+
+
+
+
+						<div class="container">
+							<div class="row">
+								<!-- LIGNE -->
+
+
+
+								<!-- Heading quote -->
+								<div class="col-md-12 main-center">
+									<!-- COLONNE -->
+									<div class="heading-quote-oneLbasse">
+										<!-- TUILE -->
+										<span
+											class="heading-quote-oneLbasse__high text-center semi-bold">Recevez
+											40€</span> <span class="heading-quote-oneLbasse__low text-center"> Parrainez
+											une personne de votre entourage, le meilleur accueil lui sera
+											réservé ! </span>
+									</div>
+									
+								</div>
+							</div>
+							<br />
+							<hr class="main-center" style="width: 50%;"
+								data-mce-style="width: 50%;" />
+							<br />
+			
+							<div class="row">
+								<!-- LIGNE -->
+								<div class="col-md-6 col-sm-12">
+									<!-- COLONNE -->
+									<h2 class="base-title text-center">
+										Le parrainage <span class="title-highlight">une
+											démarche simple</span>
+									</h2>
+									<div class="desktop-margin-left">
+										<p class="p-number">
+											Votre filleul indique votre nom en tant que parrain lors de
+											l’ouverture de son compte<sup>(5)</sup> en agence.
+										</p>
+										<p class="p-number--2">
+											Le mois suivant, vous recevez 40€<sup>(2)</sup> sur votre
+											compte Consomi Tounsi, ainsi qu’un courrier de remerciement.
+										</p>
+										
+										
+
+
+
+				
+										
+										
+										
+									</div>
+								</div>
+								<div
+									class="col-md-5 col-sm-12 mobile-padding-top main-padding-bottom">
+									<div
+										class="main-card--simple main-card--simple--shadow bg-color-grey-2">
+										<h2 class="base-title text-center nobmargin">
+											Pour vos<span class="title-highlight"> amis</span>
+										</h2>
+										<hr class="main-center nobmargin" style="width: 50%;"
+											data-mce-style="width: 50%;" />
+										<br />
+										<div class="text-center notmargin">
+											<span class="main-margin-bottom">Chaque ami présenté
+												peut profiter de l’offre de bienvenue.</span><br /> <br /> <span
+												class="important color-light-blue text-center"><strong>Vous
+													recevez 40€</strong></span><br /> pour chaque ami qui choisit  Consomi Tounsi<sup>(3)</sup>.
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							
+							
+											<div class="row">
+								<!-- LIGNE -->
+								<!-- actualite -->
+								<div class="col-md-12">
+									<!-- COLONNE -->
+									
+									
+									
+									
+									
+												
+									<br/>
+								
+								
+								
+										<h3 style="text-align: center;color: black;;">  Liste des amies parrains   </h3>
+				<hr>
+				</hr>
+				
+				
+<div style="width: 50%; margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: auto;">
+   <ct:chart id="pieChart" type="pie" model="#{UserPieChartBean.pieChartModel}" >
+      <p:ajax event="itemSelect" listener="#{UserPieChartBean.pieItemSelect}" update="pieChartMessage" />
+   </ct:chart>
+   <p:message id="pieChartMessage" for="pieChart" showDetail="true" />
+ </div>
+								
+								
+	
+							<hr>
+				</hr>		
+									
+									
+									
+								</div>
+							</div>
+							
+							
+							
+							<div class="row main-padding-top">
+								<div class="col-md-12 bg-color-grey-2 main-padding">
+								<div class="Container1">
+
+						<div id="title">
+							<h5 style="color: white; margin: 6px;">#{Profile.getrandomparrainage()}</h5>
+						</div>
+
+						<div class="connector" id="c1"></div>
+						<div class="connector" id="c2"></div>
+						<div class="connector" id="c3"></div>
+
+						<div id="copy" align="center"
+							>
+							<i class="fa fa-copy" style="color: white; margin: 19px;"></i>
+						</div>
+						<div id="twitter" align="center"
+							>
+							<i class="fa fa-twitter" style="color: white; margin: 19px;"></i>
+						</div>
+						<div id="android" align="center"
+							>
+							<i class="fa fa-share-alt" style="color: white; margin: 19px;"></i>
+						</div>
+
+						<div id="share" align="center">
+							<i class="fa fa-share-square" style="color: white; margin: 19px;"></i>
+						</div>
+
+						<div id="message" align="center"></div>
+
+						<input id="txt"></input>
+
+
+
+</div>
+
+
+</div>
+</div>
+							
+							
+							
+							
+							
+							
+							
+							
+							<div class="row main-padding-top">
+								<div class="col-md-12 bg-color-grey-2 main-padding">
+									<small> <sup>(2)</sup> Montant versé sur votre compte
+										de dépôt. <br /> <sup>(3)</sup> Le parrain et le filleul
+										doivent être des personnes physiques majeures. Offre valable
+										pour toute première ouverture d’un compte à  Consomi Tounsi par un
+										filleul et sous réserve d’acceptation par la banque. Montant
+										crédité sur votre compte de dépôt. Offre limitée à 5
+										parrainages par an. <br /> <sup>(5)</sup> Ouverture d’un
+										Livret Bambino, d’un Livret Jeune, d’un Livret A, d’un Compte
+										sur Livret avec un versement permanent de 10 €/mois minimum.
+										Montant crédité sur le compte d’épargne.
+									</small>
+								</div>
+							</div>
+						</div>
+						</section>
+
+						<!-- EDIT -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		</article>
+
+
+
+
+
+
+
+	<script type="text/javascript">
+			
+	
+
+			let share = document.getElementById("share");
+			let copy = document.getElementById("copy");
+			let twitter = document.getElementById("twitter");
+			let android = document.getElementById("android");
+
+			let c1 = document.getElementById("c1");
+			let c2 = document.getElementById("c2");
+			let c3 = document.getElementById("c3");
+
+			let message = document.getElementById("message");
+
+			let exp = false;
+
+	
+			share.addEventListener(
+				"click",
+				function(e) {
+					e.stopPropagation();
+					if (exp) {
+						contract();
+					} else {
+						expand();
+					}
+				},
+				false
+			);
+
+			
+			document.addEventListener(
+				"click",
+				function() {
+					contract();
+				},
+				false
+			);
+
+			function expand() {
+				copy.style.top = "5px";
+				copy.style.left = "400px";
+				copy.style.height = "60px";
+				copy.style.width = "60px";
+				copy.style.fontSize = "20px";
+
+				twitter.style.top = "80px";
+				twitter.style.left = "400px";
+				twitter.style.height = "60px";
+				twitter.style.width = "60px";
+				twitter.style.fontSize = "20px";
+
+				android.style.top = "155px";
+				android.style.left = "400px";
+				android.style.height = "60px";
+				android.style.width = "60px";
+				android.style.fontSize = "20px";
+
+				c1.style.width = "90px";
+				c1.style.top = "150px";
+				c2.style.width = "80px";
+				c3.style.width = "90px";
+				c3.style.top = "60px";
+
+				exp = true;
+			}
+
+			function contract() {
+				copy.style.top = "95px";
+				copy.style.left = "185px";
+				copy.style.height = "0px";
+				copy.style.width = "0px";
+				copy.style.fontSize = "0px";
+
+				twitter.style.top = "95px";
+				twitter.style.left = "185px";
+				twitter.style.height = "0px";
+				twitter.style.width = "0px";
+				twitter.style.fontSize = "0px";
+
+				android.style.top = "95px";
+				android.style.left = "185px";
+				android.style.height = "0px";
+				android.style.width = "0px";
+				android.style.fontSize = "0px";
+
+				c1.style.width = "0px";
+				c1.style.top = "105px";
+				c2.style.width = "0px";
+				c3.style.width = "0px";
+				c3.style.top = "105px";
+
+				exp = false;
+			}
+
+			
+			copy.addEventListener(
+				"click",
+				function(e) {
+					e.stopPropagation();
+					copie();
+				},
+				false
+			);
+
+			
+			twitter.addEventListener(
+				"click",
+				function(e) {
+					e.stopPropagation();
+					window.open(
+						"http://twitter.com/share?text='#{Profile.getrandomparrainage()}'via&amp;url=http://localhost:8081/login/parrainagetemp.jsf;hashtags=HappyNewYear",
+						"",
+						"left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0"
+					);
+				},
+				false
+			);
+
+			
+			android.addEventListener(
+				"click",
+				function(e) {
+					e.stopPropagation();
+					if (!navigator.share) {
+					
+						setMessage("Sorry, that only works on Chrome on Android... 😞");
+					} else {
+						navigator.share({
+							title: "Happy 2019! 🎉",
+							text: "Happy 2019! 🎉",
+							url: "https://codepen.io/nitnelav/pen/yGzxNv?editors=0011"
+						});
+					}
+				},
+				false
+			);
+
+			
+			function setMessage(txt) {
+				message.style.opacity = "1";
+				message.innerHTML = txt;
+				setTimeout(function() {
+					message.style.opacity = "0";
+					message.innerHTML = "";
+				}, 3000);
+			}
+
+			//stop prop on some links
+			let links = document.getElementsByClassName("somelinks");
+			for (var i = 0; i &lt; links.length; i++) {
+				links[i].addEventListener(
+					"click",
+					function(e) {
+						e.stopPropagation();
+					},
+					false
+				);
+			}
+
+			function copie() {
+			
+				title.textContent = '#{Profile.getrandomparrainage()}' ;
+				let snipRange = document.createRange();
+				snipRange.selectNodeContents(title);
+				let selection = window.getSelection();
+				selection.removeAllRanges();
+				selection.addRange(snipRange);
+				let result = false;
+				try {
+					result = document.execCommand("copy");
+					setMessage("copiiied! 🤗");
+				} catch (err) {
+					// Copy command is not available
+					console.error(err);
+					setMessage("something went wrong :(");
+				}
+				selection.removeAllRanges();
+				return result;
+			}
+
+		
+			</script>
+
+
+
+
+
+
+
+	</ui:define>
+</ui:composition>

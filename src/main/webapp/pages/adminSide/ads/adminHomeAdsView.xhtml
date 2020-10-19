@@ -1,0 +1,470 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/adminTemplate.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="products">
+
+		<style>
+.ui-widget-header {
+	border: 1px solid #a8a8a8;
+	background: #c4c4c4
+		url(/javax.faces.resource/images/ui-bg_highlight-soft_100_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #f3f3f3
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	color: #007bff;
+	font-weight: lighter;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+	align-items: center;
+	place-items: center;
+}
+</style>
+		<ui:insert name="adsCard" />
+		<ui:insert name="adsSideBar" />
+		<h:panelGroup>
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">List Of ads</h3>
+				</div>
+				<!-- /.card-header -->
+				<div class="card-body">
+
+					<table id="example1" class="table table-bordered table-striped">
+						<thead>
+							<tr role="row">
+
+								<th>id</th>
+								<th>type</th>
+								<th>File</th>
+
+
+								<th>name</th>
+								<th>description</th>
+								<th>cost</th>
+
+
+								<th>initialTargetedViews</th>
+								<th>finalTargetedViews</th>
+
+								<th>beginDate</th>
+								<th>endDate</th>
+
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<p:repeat id="homeAdssList" value="#{adsController.listAds}"
+								var="ads">
+								<tr role="row" onmouseover="">
+									<td>#{empty ads.id ? '-' : ads.id}</td>
+									<td>#{ads.type}</td>
+
+									<td><p:imageSwitch effect="shuffle">
+											<ui:repeat value="#{ads.file}" var="image">
+												<h:graphicImage library="uploads"
+													name="ads/image/#{image.image}"
+													style=" display : block ; width : 180px ; height : 120px" />
+											</ui:repeat>
+										</p:imageSwitch></td>
+
+
+
+									<td>#{ads.name}</td>
+									<td>#{ads.description}</td>
+									<td>#{ads.cost}</td>
+
+									<td>#{empty ads.initialTargetedViews ? '-' :
+										ads.initialTargetedViews}</td>
+									<td>#{empty ads.finalTargetedViews ? '-' :
+										ads.finalTargetedViews}</td>
+									<td>#{ads.beginDate}</td>
+									<td>#{ads.endDate}</td>
+
+									<td class="project-actions text-right">
+										<center>
+											<h:form>
+												<p:commandLink update=":formPro:display"
+													oncomplete="PF('carDialog').show()"
+													class="btn btn-primary btn-sm">
+													<i class="fa fa-folder"> </i> View  <f:setPropertyActionListener
+														value="#{ads}" target="#{adsController.selectedAds}" />
+												</p:commandLink>
+
+												<p:commandLink action="#{navigateTo.updateAds()}"
+													class="btn btn-info btn-sm">
+													<i class="fa fa-pencil"> </i> toEdit  <f:setPropertyActionListener
+														value="#{ads}" target="#{adsController.selectedAds}" />
+												</p:commandLink>
+
+												<p:commandLink update=":formPro:display2"
+													oncomplete="PF('carDialogdelete').show()"
+													class="btn btn-danger btn-sm">
+													<i class="fa fa-trash"> </i> delete  <f:setPropertyActionListener
+														value="#{ads}" target="#{adsController.selectedAds}" />
+												</p:commandLink>
+
+
+
+												<div style="display: none">
+													<a
+														href="https://twitter.com/intent/tweet?url=myUrl&amp;text=myTitle"
+														target="_blank"><img
+														src="../resources/uploads/userProfileImage/profile.png" />
+													</a> <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+														class="twitter-share-button" data-show-count="false">Tweet</a>
+													<script async="true"
+														src="https://platform.twitter.com/widgets.js"
+														charset="utf-8"></script>
+												</div>
+
+
+
+
+
+												<div class="btn-o" data-scribe="component:button"
+													style="width: 76px;">
+													<a
+														href="https://twitter.com/intent/tweet?hashtags=SocialMedia&amp;original_referer=https%3A%2F%2Fwww.thesocialmediahat.com%2Fblog%2Fhow-to-attach-images-to-tweet-buttons%2F&amp;ref_src=twsrc%5Etfw&amp;related=socialmediahats&amp;text=%22How%20To%20Attach%20Images%20To%20Tweet%20Buttons.%22%20-%20pic.twitter.com%2FpYFGV6LWpT&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fwww.thesocialmediahat.com%2Farticle%2Fhow-attach-images-tweet-buttons&amp;via=mike_allton"
+														class="btn btn-info" id="b"><i></i><span class="label" id="l">Tweet</span></a>
+												</div>
+
+
+
+
+
+											</h:form>
+										</center>
+									</td>
+
+
+								</tr>
+							</p:repeat>
+
+						</tbody>
+						<tfoot>
+							<tr>
+								<th rowspan="1" colspan="1">id</th>
+								<th rowspan="1" colspan="1">type</th>
+								<th rowspan="1" colspan="1">file</th>
+								<th rowspan="1" colspan="1">name</th>
+								<th rowspan="1" colspan="1">description</th>
+								<th rowspan="1" colspan="1">cost</th>
+								<th rowspan="1" colspan="1">initialTargetedViews</th>
+								<th rowspan="1" colspan="1">finalTargetedViews</th>
+								<th rowspan="1" colspan="1">beginDate</th>
+								<th rowspan="1" colspan="1">endDate</th>
+
+								<th rowspan="1" colspan="1">Action</th>
+							</tr>
+						</tfoot>
+					</table>
+					<h:form id="formPro">
+
+						<p:dialog header="Catalogue Page Detail" widgetVar="carDialog"
+							resizable="false" draggable="false" showEffect="fade"
+							hideEffect="fade" modal="true">
+
+							<p:outputPanel id="display">
+								<h:panelGrid columns="2" cellpadding="5"
+									rendered="#{not empty adsController.selectedAds}">
+									<f:facet name="header">
+										<p:repeat var="image"
+											value="#{adsController.selectedAds.file}">
+											<p:graphicImage library="uploads"
+												name="ads/#{image.type}/#{image.image}" />
+										</p:repeat>
+									</f:facet>
+
+									<f:facet name="header">
+										<p:repeat var="image"
+											value="#{adsController.selectedAds.file}">
+											<p:graphicImage library="uploads"
+												name="ads/image/#{image.image}" />
+										</p:repeat>
+									</f:facet>
+
+									<h:outputText value="Id" />
+									<h:outputText value="#{adsController.selectedAds.id}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Name:" />
+									<h:outputText value="#{adsController.selectedAds.name}"
+										style="font-weight:bold" />
+
+									<h:outputText value="description:" />
+									<h:outputText value="#{adsController.selectedAds.description}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Cost:" />
+									<h:outputText value="#{adsController.selectedAds.cost}"
+										style="font-weight:bold" />
+									<h:outputText value="Target Product:" />
+									<h:outputText
+										value="#{ empty adsController.selectedAds.produit ? '-' : adsController.ads.produit.name}"
+										style="font-weight:bold" />
+
+
+									<div id="twitter" align="center">
+										<i class="fa fa-twitter" style="color: white; margin: 19px;"></i>
+									</div>
+
+									<script type="text/javascript">
+			
+	
+
+			
+			let twitter = document.getElementById("twitter");
+			
+			let c1 = document.getElementById("c1");
+			let c2 = document.getElementById("c2");
+			let c3 = document.getElementById("c3");
+
+			let message = document.getElementById("message");
+
+			let exp = false;
+
+	
+			share.addEventListener(
+				"click",
+				function(e) {
+					e.stopPropagation();
+					if (exp) {
+						contract();
+					} else {
+						expand();
+					}
+				},
+				false
+			);
+
+			
+			document.addEventListener(
+				"click",
+				function() {
+					contract();
+				},
+				false
+			);
+
+			function expand() {
+				copy.style.top = "5px";
+				copy.style.left = "400px";
+				copy.style.height = "60px";
+				copy.style.width = "60px";
+				copy.style.fontSize = "20px";
+
+				twitter.style.top = "80px";
+				twitter.style.left = "400px";
+				twitter.style.height = "60px";
+				twitter.style.width = "60px";
+				twitter.style.fontSize = "20px";
+
+				android.style.top = "155px";
+				android.style.left = "400px";
+				android.style.height = "60px";
+				android.style.width = "60px";
+				android.style.fontSize = "20px";
+
+				c1.style.width = "90px";
+				c1.style.top = "150px";
+				c2.style.width = "80px";
+				c3.style.width = "90px";
+				c3.style.top = "60px";
+
+				exp = true;
+			}
+
+			function contract() {
+				copy.style.top = "95px";
+				copy.style.left = "185px";
+				copy.style.height = "0px";
+				copy.style.width = "0px";
+				copy.style.fontSize = "0px";
+
+				twitter.style.top = "95px";
+				twitter.style.left = "185px";
+				twitter.style.height = "0px";
+				twitter.style.width = "0px";
+				twitter.style.fontSize = "0px";
+
+				android.style.top = "95px";
+				android.style.left = "185px";
+				android.style.height = "0px";
+				android.style.width = "0px";
+				android.style.fontSize = "0px";
+
+				c1.style.width = "0px";
+				c1.style.top = "105px";
+				c2.style.width = "0px";
+				c3.style.width = "0px";
+				c3.style.top = "105px";
+
+				exp = false;
+			}
+
+			
+			copy.addEventListener(
+				"click",
+				function(e) {
+					e.stopPropagation();
+					copie();
+				},
+				false
+			);
+
+			
+			twitter.addEventListener(
+				"click",
+				function(e) {
+					e.stopPropagation();
+					window.open(
+						"http://twitter.com/share?text='#{adsController.selectedAds.name}'via&amp;url=http://localhost:8081/login/parrainagetemp.jsf;hashtags=HappyNewYear",
+						"",
+						"left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0"
+					);
+				},
+				false
+			);
+
+			
+			android.addEventListener(
+				"click",
+				function(e) {
+					e.stopPropagation();
+					if (!navigator.share) {
+					
+						setMessage("Sorry, that only works on Chrome on Android... 😞");
+					} else {
+						navigator.share({
+							title: "Happy 2019! 🎉",
+							text: "Happy 2019! 🎉",
+							url: "https://codepen.io/nitnelav/pen/yGzxNv?editors=0011"
+						});
+					}
+				},
+				false
+			);
+
+			
+			function setMessage(txt) {
+				message.style.opacity = "1";
+				message.innerHTML = txt;
+				setTimeout(function() {
+					message.style.opacity = "0";
+					message.innerHTML = "";
+				}, 3000);
+			}
+
+			//stop prop on some links
+			let links = document.getElementsByClassName("somelinks");
+			for (var i = 0; i &lt; links.length; i++) {
+				links[i].addEventListener(
+					"click",
+					function(e) {
+						e.stopPropagation();
+					},
+					false
+				);
+			}
+
+			function copie() {
+			
+				title.textContent = '#{Profile.getrandomparrainage()}' ;
+				let snipRange = document.createRange();
+				snipRange.selectNodeContents(title);
+				let selection = window.getSelection();
+				selection.removeAllRanges();
+				selection.addRange(snipRange);
+				let result = false;
+				try {
+					result = document.execCommand("copy");
+					setMessage("copiiied! 🤗");
+				} catch (err) {
+					// Copy command is not available
+					console.error(err);
+					setMessage("something went wrong :(");
+				}
+				selection.removeAllRanges();
+				return result;
+			}
+
+		
+			</script>
+
+
+									<br />
+								</h:panelGrid>
+							</p:outputPanel>
+						</p:dialog>
+
+
+
+
+						<p:dialog header="Delete ads" widgetVar="carDialogdelete"
+							resizable="false" draggable="false" showEffect="fade"
+							hideEffect="fade" modal="true">
+
+							<p:outputPanel id="display2">
+								<h:panelGrid columns="2" cellpadding="5"
+									rendered="#{not empty adsController.selectedAds}">
+									<f:facet name="header">
+										<p:repeat var="image"
+											value="#{adsController.selectedAds.file}">
+											<p:graphicImage library="uploads"
+												name="ads/image/#{image.image}" />
+										</p:repeat>
+									</f:facet>
+
+									<h:outputText value="Id" />
+									<h:outputText value="#{adsController.selectedAds.id}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Name:" />
+									<h:outputText value="#{adsController.selectedAds.name}"
+										style="font-weight:bold" />
+
+									<h:outputText value="description:" />
+									<h:outputText value="#{adsController.selectedAds.description}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Cost:" />
+									<h:outputText value="#{adsController.selectedAds.cost}"
+										style="font-weight:bold" />
+									<h:outputText value="Target Product:" />
+									<h:outputText
+										value="#{ empty adsController.selectedAds.produit ? '-' : adsController.selectedAds.produit.name}"
+										style="font-weight:bold" />
+
+
+									<br />
+									<h:commandLink style="width:100%"
+										action="#{adsController.deleteAds(selectedAds.id)}"
+										class="btn btn-danger btn-sm" href="#">
+										<i class="fa fa-trash"> </i> Delete
+																		</h:commandLink>
+								</h:panelGrid>
+							</p:outputPanel>
+						</p:dialog>
+
+
+					</h:form>
+				</div>
+				<!-- /.card-body -->
+			</div>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,272 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:param name="pageName" value="1" />
+	<ui:define name="homeproduct">
+	<ui:include src="/template/extra/promosSliser.xhtml" />
+		<ui:insert name="productCard" />
+		<ui:insert name="productSideBar" />
+<style>
+/* .single-product { */
+/* 	margin-top: 50px; */
+/* 	width: 250px; */
+/* 	height: 350px; */
+/* } */
+
+
+.ui-paginator .ui-paginator-page, .ui-paginator .ui-paginator-pages,
+	.ui-paginator .ui-paginator-next, .ui-paginator .ui-paginator-last,
+	.ui-paginator .ui-paginator-first, .ui-paginator .ui-paginator-prev,
+	.ui-paginator .ui-paginator-current {
+	display: inline-block;
+	padding: 7px 16px;
+	zoom: 1.1;
+	margin-left: 1px;
+	margin-right: 1px;
+	text-decoration: none;
+	outline: 0;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default {
+	border: 0px solid #ffffff;
+	background: #c4c4c4
+		url(/javax.faces.resource/images/ui-bg_highlight-hard_80_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #fff8f8
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	font-weight: bold;
+	color: #4f4f4f;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+
+.shop .range .ui-slider-handle.ui-state-default.ui-corner-all {
+    width: 14px;
+    height: 14px;
+    line-height: 10px;
+    background: #f00;
+    border: none;
+    border-radius: 100%;
+    top: -1px;
+}
+
+
+.ui-widget-header {
+    border: 0px solid #ffffff;
+    background: #f6f7fb url(images/ui-bg_gloss-wave_55_5c9ccc_500x100.png) 50% 50% repeat-x;
+    color: #000000;
+    font-weight: inherit;
+}
+
+td, th {
+    padding: 0;
+    width: 29%;
+}
+</style>
+		<h:panelGroup>
+			<div class="product-area section">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+
+							<div class="product-info">
+<!-- 								<div class="nav-main"> -->
+<!-- 									Tab Nav -->
+<!-- 									<ul class="nav nav-tabs" role="tablist"> -->
+<!-- 										<p:repeat value="#{productController.listProductCategory}" -->
+<!-- 											var="category"> -->
+
+<!-- 											<li class="nav-item"><a class="nav-link " href="#"> -->
+<!-- 													#{category.categoryName} <i class="fa fa-angle-right" -->
+<!-- 													aria-hidden="true"></i> -->
+<!-- 											</a></li> -->
+<!-- 										</p:repeat> -->
+
+
+<!-- 									</ul> -->
+
+<!-- 									/ End Tab Nav -->
+<!-- 								</div> -->
+								
+											<div class="row">
+
+
+												<div class="col-lg-12 col-md-12 col-12">
+
+													<!-- 	<h:dataTable value="#{employeController.employes}" var="employe" -->
+													<!-- 					border="1"> -->
+													<p:dataGrid value="#{productController.listProduct}"
+														var="product"
+														paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+														
+														paginator="true" rows="6" style="margin-bottom:20px"
+														rowsPerPageTemplate="4,8,12,24">
+														<div class="col-lg-12 col-md-12 col-12">
+															<div class="single-product">
+																<p:repeat value="#{product.picture}" size="1"
+																	var="image">
+																	<div class="product-img" style="">
+																		<h:form>
+																			<h:commandLink
+																				action="#{productController.navigateToProductDetails(product.reference)}"
+																				actionListener="#{productController.setProduct(product)}">
+																				<h:graphicImage library="uploads"
+																					name="product/image/#{image.image}"
+																					class="default-img" />
+																				<h:graphicImage library="uploads"
+																					name="product/image/#{image.image}"
+																					class="hover-img" />
+																				<span class="new" style="background: green;">Available</span>
+																			</h:commandLink>
+
+																			<div class="button-head">
+																				<div class="product-action">
+																					<h:commandLink title="Quick View" href="#">
+																						<i class=" ti-eye"></i>
+																						<span>Quick Shop</span>
+																					</h:commandLink>
+																					<h:commandLink title="Wishlist"
+																						action="#{productController.goToProductHome()}">
+																						<i class=" ti-heart "></i>
+																						<span>Add to Wishlist</span>
+																					</h:commandLink>
+																					<h:commandLink title="Statistic"
+																						action="#{productController.navigateToProductDetails(product.reference)}">
+																						<i class="ti-bar-chart-alt"></i>
+																						<span>See Statistic</span>
+																					</h:commandLink>
+																				</div>
+																				<div class="product-action-2">
+																					<h:commandLink title="Add to cart"
+																						action="#{productController.goToLogin()}">Add to
+																cart</h:commandLink>
+																				</div>
+																			</div>
+																		</h:form>
+																	</div>
+																</p:repeat>
+
+																<div class="product-content">
+																	<h3>
+																		<h:outputText value="#{product.name}" />
+
+																	</h3>
+																	<div class="product-price">
+																		<span> #{product.price} DT</span>
+
+																	</div>
+																</div>
+															</div>
+														</div>
+													</p:dataGrid>
+
+												</div>
+
+
+
+
+											</div>
+											<!--/ End Single Tab -->
+
+									</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:panelGroup>
+
+		<h:panelGroup class="cown-down">
+			<!-- Start Most Popular -->
+			<div class="product-area most-popular section">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="section-title">
+								<h2>Top Sells Products</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<div class="owl-carousel popular-slider">
+								<p:repeat value="#{productController.listToSellProduct}"
+									var="product">
+
+									<div class="single-product">
+										<p:repeat value="#{product.picture}" size="1" var="image">
+											<div class="product-img" style="">
+												<h:form>
+													<h:commandLink
+														action="#{productController.navigateToProductDetails(product.reference)}"
+														actionListener="#{productController.setProduct(product)}">
+														<h:graphicImage library="uploads"
+															name="product/image/#{image.image}" class="default-img" />
+														<h:graphicImage library="uploads"
+															name="product/image/#{image.image}" class="hover-img" />
+														<span class="new" style="background: green;">Available</span>
+													</h:commandLink>
+												</h:form>
+												<h:form>
+													<div class="button-head">
+														<div class="product-action">
+															<h:commandLink title="Quick View" href="#">
+																<i class=" ti-eye"></i>
+																<span>Quick Shop</span>
+															</h:commandLink>
+															<h:commandLink title="Wishlist"
+																action="#{productController.goToProductHome()}">
+																<i class=" ti-heart "></i>
+																<span>Add to Wishlist</span>
+															</h:commandLink>
+															<h:commandLink title="Statistic"
+																action="#{productController.navigateToProductDetails(product.reference)}">
+																<i class="ti-bar-chart-alt"></i>
+																<span>See Statistic</span>
+															</h:commandLink>
+														</div>
+														<div class="product-action-2">
+															<h:commandLink title="Add to cart"
+																action="#{productController.goToLogin()}">Add to
+																cart</h:commandLink>
+														</div>
+													</div>
+												</h:form>
+											</div>
+										</p:repeat>
+
+										<div class="product-content">
+											<h3>
+												<h:outputText value="#{product.name}" />
+
+											</h3>
+											<div class="product-price">
+												<span> #{product.price} DT</span>
+
+											</div>
+										</div>
+									</div>
+
+								</p:repeat>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Most Popular Area -->
+
+
+		</h:panelGroup>
+
+	</ui:define>
+</ui:composition>

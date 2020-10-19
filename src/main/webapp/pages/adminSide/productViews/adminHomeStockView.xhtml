@@ -1,0 +1,115 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui" template="/template/adminTemplate.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="products">
+		<ui:insert name="productCard" />
+		<ui:insert name="productSideBar" />
+		<h:panelGroup >
+			<div class="card">
+            <div class="card-header">
+              <h3 class="card-title">DataTable with default features</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+               <thead>
+														<tr role="row">
+														<th>images</th>
+															<th >id</th>
+
+															<th >bar
+																Code</th>
+
+															<th >name</th>
+															<th >description</th>
+															<th >price</th>
+															<th >tva</th>
+																<th >color</th>
+																<th >size</th>
+																<th >Category</th>
+																<th >SubCategory</th>
+																
+																<th >Brand</th>
+																<th >date</th>
+															
+															<th>Action</th>
+														</tr>
+													</thead>
+													<tbody>
+
+														<p:repeat id="homeProdList"
+															value="#{productController.listProduct}" var="product">
+															<tr role="row" onmouseover="">
+																<td>
+																
+																<p:imageSwitch effect="shuffle">
+																		<ui:repeat value="#{product.picture}" var="image">
+																			<p:graphicImage library="images"
+																				name="uploads/product/barCode/#{image.image}"
+																				height="80" width="80"
+																				style="width : 80 ; height : 80" />
+																		</ui:repeat>
+																	</p:imageSwitch></td>
+																<td>#{product.id}</td>
+																<td>#{product.reference}</td>
+																<td>#{product.name}</td>
+																<td>#{product.name}</td>
+																<td>#{product.price}</td>
+																<td>#{product.tva}</td>
+																<td>#{product.color}</td>
+																<td>#{product.size}</td>
+																<td>#{product.category.categoryName}</td>
+																<td>#{product.category.categoryName}</td>
+																<td>#{product.brand.name}</td>
+																<td>22/5/2020-30/3/2021</td>
+
+
+																<td class="project-actions text-right">
+																	<center>
+																		<a class="btn btn-primary btn-sm" href="#"> <i
+																			class="fas fa-folder"> </i> View
+																		</a> <a class="btn btn-info btn-sm" href="#"> <i
+																			class="fas fa-pencil-alt"> </i> Edit
+																		</a> <a class="btn btn-danger btn-sm" href="#"> <i
+																			class="fas fa-trash"> </i> Delete
+																		</a>
+																	</center>
+																</td>
+
+
+															</tr>
+														</p:repeat>
+
+													</tbody>
+													<tfoot>
+														<tr>
+															<th rowspan="1" colspan="1">images</th>
+															<th rowspan="1" colspan="1">id</th>
+															<th rowspan="1" colspan="1">bar code</th>
+															<th rowspan="1" colspan="1">name</th>
+															<th rowspan="1" colspan="1">description</th>
+															<th rowspan="1" colspan="1">price</th>
+															<th rowspan="1" colspan="1">tva</th>
+															<th rowspan="1" colspan="1">color</th>
+															<th rowspan="1" colspan="1">size</th>
+															<th rowspan="1" colspan="1">Category</th>
+															<th rowspan="1" colspan="1">SubCategory</th>
+															<th rowspan="1" colspan="1">Brand</th>
+															<th rowspan="1" colspan="1">Date</th>
+															<th rowspan="1" colspan="1">Action</th>
+														</tr>
+													</tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

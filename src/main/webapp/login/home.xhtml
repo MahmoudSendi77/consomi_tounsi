@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:d="http://primefaces.org/ui">
+
+
+
+
+   <head>
+      <title>JSF Tutorial!</title>
+   </head>
+   
+   <body>
+      <h2>f:param example</h2>
+      <hr />
+      
+      <h:form>
+         <h:outputFormat value = "Hello {0}!.">
+            <f:param value = "World" />
+         </h:outputFormat>
+         <br/>
+         
+         <h:commandButton id = "submit" 
+            value = "Show Message" action = "#{UserDataa.showResult}">
+            <f:param name = "username" value = "JSF 2.0 User" />
+         </h:commandButton>
+      </h:form>
+   
+   </body>
+</html>

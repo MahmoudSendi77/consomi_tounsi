@@ -1,0 +1,33 @@
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:d="http://primefaces.org/ui">
+
+
+<h:head>
+
+
+</h:head>
+
+<h:body>
+<h:form>
+
+ <d:growl id="growl" showDetail="true" />
+<h3>Ajax Slider</h3>
+    <h:panelGrid columns="1" style="margin-bottom: 10px">
+        <d:inputText id="txt5" value="#{sliderView.number7}" />
+        <d:slider for="txt5">
+            <d:ajax event="slideEnd" listener="#{sliderView.onSlideEnd}" update="growl" />
+        </d:slider>
+    </h:panelGrid>
+
+
+</h:form>
+
+
+</h:body>
+</html>

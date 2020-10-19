@@ -1,0 +1,1058 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/adminTemplate.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="products">
+		<h:head>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		</h:head>
+		<style>
+.ui-selectonemenu .ui-selectonemenu-trigger .ui-icon {
+	margin-top: 9px;
+	margin-right: 0;
+	margin-left: -25px;
+}
+
+.form-control:disabled, .form-control[readonly] {
+	background-color: #ffffff;
+	opacity: 1;
+}
+
+.ui-widget-content {
+	border: 1px solid #d3d8dd;
+	background: #fff;
+	color: #4f4f4f;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default {
+	border: 1px solid #a8a8a8;
+	background: #c4c4c4
+		url(/javax.faces.resource/images/ui-bg_highlight-hard_80_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #e9ecef
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	font-weight: bold;
+	color: #4f4f4f;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-widget-header {
+	border: 1px solid #b6d5ea;
+	background: #ffffff
+		url(/javax.faces.resource/images/ui-bg_highlight-soft_100_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #ffffff00
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	color: #fff;
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-selectonemenu .ui-selectonemenu-trigger {
+	border-right: 0;
+	border-top: 0;
+	border-bottom: 0;
+	cursor: pointer;
+	width: 0;
+	height: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 0 3px;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight,
+	.ui-widget-header .ui-state-highlight {
+	border: 1px solid #fbfbfb;
+	background: #fd2439;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.ui-shadow {
+	-webkit-box-shadow: 0 5px 10px rgba(255, 255, 255, 0.8);
+	box-shadow: 0 5px 10px rgba(255, 255, 255, 0.8);
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-list-item {
+	border: 0 none;
+	margin: 3px -8px;
+	padding: 3px 7px;
+	text-align: left;
+	white-space: nowrap;
+	font-family: auto;
+	overflow: auto;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-items-wrapper {
+	overflow-anchor: none;
+	overflow-x: hidden;
+	overflow-y: inherit;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button
+	{
+	font-family: auto;
+	font-size: 1em;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-filter {
+	padding-right: 15px;
+	padding: 4px;
+	width: 100%;
+	box-sizing: border-box;
+	border-radius: .25rem;
+}
+
+/* .ui-selectonemenu-panel{ */
+
+/* } */
+.ui-selectonemenu-panel .ui-selectonemenu-filter-container .ui-icon {
+	position: absolute;
+	top: 18px;
+	right: 14px;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-filter-container {
+	position: relative;
+	margin: 0;
+	padding: .4em;
+	display: inline-block;
+	width: 100%;
+}
+
+.ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield
+	{
+	background: #fff;
+	-moz-box-shadow: inset 0 2px 2px #8f8f8f;
+	-webkit-box-shadow: inset 0 0px 0px #8f8f8f;
+	box-shadow: inset 0 0px 0px #8f8f8f;
+	/* color: #313131; */
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default {
+	border: 1px solid #a8a8a8;
+	background: #c4c4c4
+		url(/javax.faces.resource/images/ui-bg_highlight-hard_80_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #ffffff
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	font-weight: normal;
+	color: #4f4f4f;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-inputfield.ui-state-focus, .ui-widget-content .ui-inputfield.ui-state-focus,
+	.ui-widget-header .ui-inputfield.ui-state-focus {
+	-moz-box-shadow: 0 0 0px #85b2cb, inset 0 0px 0px #8f8f8f;
+	-webkit-box-shadow: 0 0 5px #85b2cb, inset 0 0px 0px #8f8f8f;
+	box-shadow: 0 0 0px #85b2cb, inset 0 0px 0px #8f8f8f
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active
+	{
+	border: 1px solid #fd2439;
+	background: #fd2439
+		url(/javax.faces.resource/images/ui-bg_inset-hard_65_85b2cb_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #fd2439 linear-gradient(top, rgba(255, 255, 255, 0),
+		rgba(255, 255, 255, 0.4));
+	background: #fd2439
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0)), to(rgba(255, 255, 255, 0.4)));
+	background: #f4f6f9 -moz-linear-gradient(top, rgba(255, 255, 255, 0),
+		rgba(255, 255, 255, 0.4));
+	font-weight: bold;
+	color: #1c4257;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.card-secondary:not (.card-outline ) .card-header {
+	background-color: #dc3545;
+}
+
+.card-info:not (.card-outline ) .card-header {
+	background-color: #28a745;
+}
+</style>
+
+
+		<h:panelGroup>
+			<br />
+
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0 text-dark">Manage Products :</h1>
+						</div>
+						<!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active">Manage Product</li>
+							</ol>
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+
+
+			<br />
+
+			<h:panelGroup class="content">
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="card card-primary">
+							<h:form id="f1">
+								<div class="card-header">
+									<h3 class="card-title">Add Product</h3>
+
+									<div class="card-tools">
+
+										<h:commandLink type="button" class="btn btn-tool"
+											action="#{adminProductController.collapse(1)}">
+											<p:ajax event="click" update="productShow f1"></p:ajax>
+											<i class="#{adminProductController.productButtonStyle}"></i>
+										</h:commandLink>
+
+									</div>
+
+								</div>
+							</h:form>
+							<h:panelGroup id="productShow" class="card-body"
+								style="display: #{adminProductController.productStyle}">
+
+
+								<center>
+
+									<h:panelGroup>
+
+
+										<div class="card-body">
+											<h:form>
+												<div class="row">
+													<div class="col-md-6">
+														<h:commandButton value="Mannuel barCode"
+															style="width:100%"
+															action="#{adminProductController.setForm(1)}"
+															class="btn btn-success" />
+
+													</div>
+													<div class="col-md-6">
+														<h:commandButton value="barCode Image" style="width:100%"
+															action="#{adminProductController.setForm(2)}"
+															class="btn btn-danger " />
+
+													</div>
+												</div>
+												<br />
+											</h:form>
+											<h:form enctype="multipart/form-data" id="myfform1">
+												<h:panelGroup id="panelBarCodeImage" class=""
+													style="display: #{adminProductController.showBarCodePanelImage};">
+													<p:messages id="messages" class="swalDefaultSuccess"
+														showDetail="true" closable="true" autoUpdate="true">
+													</p:messages>
+													<br />
+													
+														<p:growl id="growl" class="swalDefaultSuccess" showDetail="true" sticky="true" />
+
+														
+													
+													<p:fileUpload
+														fileUploadListener="#{adminProductController.handleBarCode}"
+														multiple="false" update=" @form " />
+
+
+													<div class="input-group mb-3">
+														<div class="input-group-prepend">
+															<span class="input-group-text"> product barCode :</span>
+														</div>
+														<h:inputText id="llo" pt:placeholder="product barCod"
+															type="text" class="form-control toastrDefaultError"
+															disabled="true"
+															value="#{adminProductController.productBarCode}">
+
+														</h:inputText>
+														<p:message for="llo" class="toastrDefaultError"></p:message>
+														<br />
+													</div>
+												</h:panelGroup>
+											</h:form>
+
+
+											<h:form enctype="multipart/form-data" id="jasser1">
+												<div>
+
+													<h:panelGroup id="panelBarCode"
+														style="display: #{adminProductController.showBarCodePanel};">
+														<div class="input-group mb-3">
+															<div class="input-group-prepend">
+																<span class="input-group-text"> barCode :</span>
+															</div>
+															<h:inputText pt:placeholder="product barCod" type="text"
+																class="form-control" value="#{adminProductController.productBarCode}">
+																<p:ajax event="blur" update="fff" 
+																	listener="#{adminProductController.verifyBarCodeValue}"></p:ajax>
+															</h:inputText>
+														</div>
+													</h:panelGroup>
+													<h:panelGroup id="fff"
+														style="display: #{adminProductController.showForm2};">
+
+
+														<div class="input-group mb-3">
+															<div class="input-group-prepend">
+																<span class="input-group-text"> name
+																	&#160;&#160;&#160;:&#160;&#160;&#160;</span>
+															</div>
+															<h:inputText pt:placeholder="product name" type="text"
+																class="form-control"
+																value="#{adminProductController.product.name}" />
+														</div>
+
+														<div class="input-group mb-3">
+															<div class="input-group-prepend">
+																<span class="input-group-text"> price
+																	&nbsp;&nbsp;&nbsp;:&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span>
+															</div>
+															<h:inputText pt:placeholder="product price" type="text"
+																value="#{adminProductController.product.price}"
+																class="form-control" />
+															<div class="input-group-append">
+																<span class="input-group-text">DT</span>
+															</div>
+														</div>
+														
+														<div class="input-group mb-3">
+															<div class="input-group-prepend">
+																<span class="input-group-text"> quantity
+																	&nbsp;:&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span>
+															</div>
+															<h:inputText pt:placeholder="product quantity" type="text"
+																value="#{adminProductController.quantity}"
+																class="form-control" required="true" requiredMessage="please add product quantity" >
+																
+																</h:inputText>
+															
+														</div>
+
+														<h:panelGroup id="paneColor"
+															style="display: #{adminProductController.showColor};">
+															<div class="input-group mb-3">
+																<div class="input-group-prepend">
+																	<span class="input-group-text"> color
+																		&nbsp;&nbsp;&nbsp;:&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span>
+																</div>
+																<h:inputText pt:placeholder="product color" type="text"
+																	class="form-control"
+																	value="#{adminProductController.product.color}">
+																	<p:ajax event="keyup" update="paneColor" />
+																</h:inputText>
+																<div class="input-group-append">
+																	<span class="input-group-text"> <i
+																		class="fa fa-square"
+																		style="color: #{adminProductController.product.color}">
+																	</i>
+																	</span>
+																</div>
+															</div>
+														</h:panelGroup>
+
+														<h:panelGroup id="paneSize"
+															style="display: #{adminProductController.showSize};">
+															<label>Select Size</label>
+															<div class="input-group mb-3">
+																<p:selectOneMenu class="select2bs4 " effect="fold"
+																	editable="true" filter="true"
+																	filterMatchMode="contains"
+																	style="width: 100%; padding-right: 0em;"
+																	onchange="submit();"
+																	value="#{adminProductController.sizeSelect}">
+
+																	<f:selectItem itemLabel="select Size"
+																		itemValue="#{null}" noSelectionOption="false"
+																		itemDisabled="true" />
+																	<f:selectItems value="#{adminProductController.sizes}" />
+																</p:selectOneMenu>
+															</div>
+														</h:panelGroup>
+
+
+														<div class="input-group mb-3">
+															<div class="input-group-prepend">
+																<span class="input-group-text"> weight
+																	:&#160;&#160;&#160;&#160;</span>
+															</div>
+															<h:inputText pt:placeholder="product weight" type="text"
+																class="form-control"
+																value="#{adminProductController.product.weight}" required="true" requiredMessage="please add product quantity"/>
+															<div class="input-group-append">
+																<span class="input-group-text">&#160; g&#160;</span>
+															</div>
+														</div>
+														<div class="input-group mb-3">
+															<div class="input-group-prepend">
+																<span class="input-group-text"> TVA
+																	:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span>
+															</div>
+															<h:inputText pt:placeholder="product TVA" type="text"
+																class="form-control"
+																value="#{adminProductController.product.tva}" />
+															<div class="input-group-append">
+																<span class="input-group-text">&#160;%</span>
+															</div>
+														</div>
+
+
+														<label>Select Brand</label>
+														<div class="input-group mb-3">
+
+															<p:selectOneMenu class="select2bs4 " effect="fold"
+																editable="true" filter="true" filterMatchMode="contains"
+																style="width: 100%; padding-right: 0em;"
+																onchange="submit();"
+																value="#{adminProductController.brandSelect}">
+
+																<f:selectItem itemLabel="select Brand" itemValue=""
+																	noSelectionOption="false" itemDisabled="true" />
+																<f:selectItems value="#{adminProductController.brands}" />
+															</p:selectOneMenu>
+
+														</div>
+
+
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label>Select Category</label>
+																	<p:selectOneMenu class="select2bs4 " effect="fold"
+																		editable="true" filter="true"
+																		filterMatchMode="contains"
+																		style="width: 100%; padding-right: 0em;"
+																		onchange="submit();"
+																		value="#{adminProductController.categorySelect}">
+																		<p:ajax event="change"
+																			listener="#{adminProductController.onCategoryyChange}"
+																			update="subCategory" />
+																		<f:selectItem itemLabel="select Category" itemValue=""
+																			noSelectionOption="false" itemDisabled="true" />
+																		<f:selectItems
+																			value="#{adminProductController.categories}" />
+																	</p:selectOneMenu>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label>Select SubCategory</label>
+																	<p:selectOneMenu id="subCategory" class="select2bs4"
+																		effect="fold" editable="true" filter="true"
+																		filterMatchMode="contains"
+																		style="width: 100%; padding-right: 0em;"
+																		value="#{adminProductController.subCategorySelect}">
+																		<p:ajax event="change"
+																			listener="#{adminProductController.onSubCategoryChange}"
+																			update="subCategory" />
+																		<f:selectItem itemLabel="Select SubCategory"
+																			itemValue="" noSelectionOption="flase"
+																			itemDisabled="true" />
+																		<f:selectItems
+																			value="#{adminProductController.subCategories}">
+																			<p:autoComplete />
+																		</f:selectItems>
+
+																	</p:selectOneMenu>
+																</div>
+															</div>
+														</div>
+
+
+														<h:panelGroup id="paneDate" class=""
+															style="display: #{adminProductController.showDate};">
+
+															<!-- Date dd/mm/yyyy -->
+
+															<label>Fabrication Date :</label>
+															<div class="input-group mb-3">
+																<div class="input-group-prepend">
+																	<span class="input-group-text"><i
+																		class="fa fa-calendar" style="width: 10%"></i> </span>
+																</div>
+																<p:inputMask id="date"
+																	value="#{adminProductController.date1}"
+																	pt:placeholder="dd/mm/yyyy" mask="99/99/2999"
+																	style="width: 90%" />
+															</div>
+															<!-- /.input group -->
+
+
+															<!-- Date dd/mm/yyyy -->
+
+															<label>Fabrication Date :</label>
+															<div class="input-group mb-3">
+																<div class="input-group-prepend">
+																	<span class="input-group-text"><i
+																		class="fa fa-calendar" style="width: 10%"></i> </span>
+																</div>
+																<p:inputMask id="date1"
+																	value="#{adminProductController.date2}"
+																	mask="99/99/2099" style="width: 90%"
+																	pt:placeholder="dd/mm/yyyy" />
+															</div>
+															<!-- /.input group -->
+
+
+
+														</h:panelGroup>
+
+
+
+
+														<p:messages id="messages2" for="uplaodImage"
+															showDetail="true" closable="true" autoUpdate="true">
+
+														</p:messages>
+														<br />
+														<p:fileUpload id="uplaodImage"
+															fileUploadListener="#{adminProductController.handleFileUpload}"
+															multiple="true" fileLimit="10000000" update="" />
+
+
+
+														<!-- /.card-body -->
+														<br />
+														<br />
+														<center>
+															<h:commandButton class="btn btn-info" value="Add Product"
+																action="#{adminProductController.addTheProduct()}"></h:commandButton>
+														</center>
+														<br />
+													</h:panelGroup>
+												</div>
+
+											</h:form>
+
+										</div>
+
+									</h:panelGroup>
+								</center>
+
+
+
+
+
+
+
+								<!-- /.card-body -->
+							</h:panelGroup>
+						</div>
+						<!-- /.card -->
+					</div>
+					<div class="col-md-6">
+						<div class="card card-secondary">
+							<h:form id="f2">
+								<div class="card-header">
+									<h3 class="card-title">Add Brand</h3>
+
+									<div class="card-tools">
+										<h:commandLink type="button" class="btn btn-tool"
+											action="#{adminProductController.collapse(2)}">
+											<p:ajax event="click" update="brandShow f2"></p:ajax>
+											<i class="#{adminProductController.brandButtonStyle}"></i>
+										</h:commandLink>
+									</div>
+
+								</div>
+							</h:form>
+							<h:panelGroup class="card-body" id="brandShow"
+								style="display: #{adminProductController.brandStyle}">
+
+
+
+
+								<center>
+
+									<h:panelGroup>
+										<div class="card-body">
+
+											<h:form enctype="multipart/form-data" id="form445">
+												<p:messages id="messagesBrand" showDetail="true"
+													closable="true" autoUpdate="true">
+
+												</p:messages>
+												<br />
+
+												<p:fileUpload
+													fileUploadListener="#{adminProductController.handleBand}"
+													multiple="true" id="brandUploader" sizeLimit="10000"
+													required="true" update="messagesBrand"
+													invalidSizeMessage="size kbir" />
+
+											</h:form>
+
+											<div class="input-group mb-3">
+												<h:graphicImage>
+												</h:graphicImage>
+											</div>
+											<br />
+
+											<h:form>
+
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text"> name : </span>
+													</div>
+													<h:inputText pt:placeholder="Brand Name" type="text"
+														class="form-control"
+														value="#{adminProductController.brand.name}" />
+													
+												</div>
+
+
+
+
+												<!-- /.card-body -->
+												<br />
+												<br />
+												<center>
+
+													<h:commandButton class="btn btn-danger" value="Add Brand"
+														action="#{adminProductController.addTheBrand()}"></h:commandButton>
+
+												</center>
+											</h:form>
+										</div>
+									</h:panelGroup>
+
+
+
+
+								</center>
+
+
+
+							</h:panelGroup>
+							<!-- /.card-body -->
+						</div>
+						<!-- /.card -->
+						<div class="card card-info">
+							<h:form id="f3">
+								<div class="card-header">
+									<h3 class="card-title">Add Catagory</h3>
+
+									<div class="card-tools">
+										<h:commandLink type="button" class="btn btn-tool"
+											action="#{adminProductController.collapse(3)}">
+											<p:ajax event="click" update="showCategory f3"></p:ajax>
+											<i class=" #{adminProductController.categoryButtonStyle}"></i>
+										</h:commandLink>
+									</div>
+
+								</div>
+							</h:form>
+							<h:panelGroup class="card-tools" id="showCategory"
+								style="display: #{adminProductController.categoryStyle}">
+
+
+
+
+
+								<center>
+
+
+
+									<h:panelGroup>
+										<div class="card-body">
+											<h:form enctype="multipart/form-data" id="myfform22">
+												<p:messages id="messages" showDetail="true" closable="true"
+													autoUpdate="true">
+
+												</p:messages>
+												<br />
+
+												<p:fileUpload
+													fileUploadListener="#{adminProductController.handleCategory}"
+													multiple="true" id="categoryUploader" required="true" />
+
+											</h:form>
+
+											<div class="input-group mb-3">
+												<h:graphicImage id="jasser33">
+												</h:graphicImage>
+											</div>
+											<br />
+
+											<h:form>
+
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text"> name : </span>
+													</div>
+													<h:inputText pt:placeholder="product price" type="text"
+														class="form-control"
+														value="#{adminProductController.category.categoryName}" />
+													<!-- 							<div class="input-group-append"> -->
+													<!-- 								<span class="input-group-text">DT</span> -->
+													<!-- 							</div> -->
+												</div>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text"> description :</span>
+													</div>
+													<h:inputText pt:placeholder="product price" type="text"
+														class="form-control"
+														value="#{adminProductController.category.categoryDescription}" />
+
+												</div>
+
+
+
+
+
+												<!-- /.card-body -->
+												<br />
+												<br />
+												<center>
+
+													<h:commandButton class="btn btn-success"
+														value="Add Category"
+														action="#{adminProductController.addTheCategory()}"></h:commandButton>
+
+												</center>
+											</h:form>
+										</div>
+									</h:panelGroup>
+
+
+
+								</center>
+
+
+
+
+
+							</h:panelGroup>
+							<!-- /.card-body -->
+						</div>
+						<div class="card card-info">
+							<h:form id="f4">
+								<div class="card-header">
+									<h3 class="card-title">Add SubCategory</h3>
+
+									<div class="card-tools">
+
+										<h:commandLink type="button" class="btn btn-tool"
+											action="#{adminProductController.collapse(4)}">
+											<p:ajax event="click" update="showSubCategory f4"></p:ajax>
+											<i class="#{adminProductController.subCategoryButtonStyle}">
+											</i>
+										</h:commandLink>
+
+									</div>
+
+
+								</div>
+							</h:form>
+							<h:panelGroup class="card-body" id="showSubCategory"
+								style="display: #{adminProductController.subCategoryStyle}">
+
+
+
+
+								<center>
+
+									<h:panelGroup>
+										<div class="card-body">
+											<h:form enctype="multipart/form-data" id="myfform33">
+												<p:messages id="messages" showDetail="true" closable="true"
+													autoUpdate="true">
+
+												</p:messages>
+												<br />
+
+												<p:fileUpload
+													fileUploadListener="#{adminProductController.handleSubCategory}"
+													multiple="true" required="true" />
+
+											</h:form>
+
+											<div class="input-group mb-3">
+												<h:graphicImage id="jasser">
+												</h:graphicImage>
+											</div>
+											<br />
+
+											<h:form>
+
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text"> name
+															:&#160;&#160;&#160;&#160;
+															&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span>
+													</div>
+													<h:inputText pt:placeholder="product price" type="text"
+														class="form-control"
+														value="#{adminProductController.subCategory.name}" />
+													<!-- 							<div class="input-group-append"> -->
+													<!-- 								<span class="input-group-text">DT</span> -->
+													<!-- 							</div> -->
+												</div>
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text"> description :</span>
+													</div>
+													<h:inputText pt:placeholder="product price" type="text"
+														class="form-control"
+														value="#{adminProductController.subCategory.description}" />
+													<div class="input-group-append">
+														<span class="input-group-text">&#160; g&#160;</span>
+													</div>
+												</div>
+
+
+												<div class="row">
+													<div class="col-md-12">
+														<div class="form-group">
+
+															<label>Select Category</label>
+															<p:selectOneMenu class="select2bs4 " effect="fold"
+																editable="true" filter="true" filterMatchMode="contains"
+																style="width: 100%; padding-right: 0em;"
+																onchange="submit();"
+																value="#{adminProductController.categorySelect}">
+																<p:ajax event="change"
+																	listener="#{adminProductController.onCategoryyChange}"
+																	update="" />
+																<f:selectItem itemLabel="select Category" itemValue=""
+																	noSelectionOption="false" itemDisabled="true" />
+																<f:selectItems
+																	value="#{adminProductController.categories}" />
+															</p:selectOneMenu>
+
+														</div>
+													</div>
+												</div>
+
+
+
+
+
+
+												<!-- /.card-body -->
+												<br />
+												<br />
+												<center>
+
+													<h:commandButton class="btn btn-success "
+														value="Add Subctegory"
+														action="#{adminProductController.addTheSubctegory()}"></h:commandButton>
+
+												</center>
+											</h:form>
+										</div>
+									</h:panelGroup>
+
+								</center>
+
+							</h:panelGroup>
+							<!-- /.card-body -->
+						</div>
+						<!-- /.card -->
+					</div>
+
+				</div>
+
+			</h:panelGroup>
+
+		</h:panelGroup>
+
+		<script type="text/javascript">
+  $(function() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+
+    
+    
+    $('.swalDefaultSuccess').click(function() {
+      Toast.fire({
+        type: 'success',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.swalDefaultInfo').click(function() {
+      Toast.fire({
+        type: 'info',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.swalDefaultError').click(function() {
+      Toast.fire({
+        type: 'error',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.swalDefaultWarning').click(function() {
+      Toast.fire({
+        type: 'warning',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.swalDefaultQuestion').click(function() {
+      Toast.fire({
+        type: 'question',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+
+    $('.toastrDefaultSuccess').click(function() {
+      toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+    $('.toastrDefaultInfo').click(function() {
+      toastr.info('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+    $('.toastrDefaultError').click(function() {
+      toastr.error('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+    $('.toastrDefaultWarning').click(function() {
+      toastr.warning('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+
+    $('.toastsDefaultDefault').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultTopLeft').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        position: 'topLeft',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultBottomRight').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        position: 'bottomRight',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultBottomLeft').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        position: 'bottomLeft',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultAutohide').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        autohide: true,
+        delay: 750,
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultNotFixed').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        fixed: false,
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultFull').click(function() {
+      $(document).Toasts('create', {
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        icon: 'fas fa-envelope fa-lg',
+      })
+    });
+    $('.toastsDefaultFullImage').click(function() {
+      $(document).Toasts('create', {
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        image: '../../dist/img/user3-128x128.jpg',
+        imageAlt: 'User Picture',
+      })
+    });
+    $('.toastsDefaultSuccess').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success', 
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultInfo').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-info', 
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultWarning').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-warning', 
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultDanger').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-danger', 
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultMaroon').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-maroon', 
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+  });
+
+</script>
+
+	</ui:define>
+</ui:composition>

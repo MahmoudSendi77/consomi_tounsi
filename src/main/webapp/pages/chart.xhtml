@@ -1,0 +1,41 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ct="http://www.chartistjsf.org/charts">
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Prime Faces</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+     
+            <div style="width: 60%; height: 60%; margin-left: auto; margin-right: auto; margin-top: 200px; margin-bottom: auto;">
+                <ct:chart id="lineChart" type="line" model="#{ChartBackBean.lineModel}">
+                    <p:ajax event="itemSelect" listener="#{ChartBackBean.itemSelect}" update="lineChartMessage"  />
+                </ct:chart>
+            </div>
+            <p:message id="lineChartMessage" for="lineChart" showDetail="true" /> 
+            
+            
+            <div>
+    <ct:chart id="barChart" type="bar" model="#{BarChartDataBean.barChartModel}" style="width: 60%; height: 60%; margin-left: auto; margin-right: auto; margin-top: 200px; margin-bottom: auto;">
+      <p:ajax event="itemSelect" listener="#{BarChartDataBeans.barItemSelect}" update="barChartMessage"  />
+    </ct:chart>
+      <p:message id="barChartMessage" for="barChart" showDetail="true" />
+</div>
+
+<div style="width: 60%; height: 60%; margin-left: auto; margin-right: auto; margin-top: 200px; margin-bottom: auto;">
+   <ct:chart id="pieChart" type="pie" model="#{PieChartBean.pieChartModel}" >
+      <p:ajax event="itemSelect" listener="#{PieChartBean.pieItemSelect}" update="pieChartMessage" />
+   </ct:chart>
+   <p:message id="pieChartMessage" for="pieChart" showDetail="true" />
+ </div>
+
+        </h:body>
+    </f:view>
+</html>

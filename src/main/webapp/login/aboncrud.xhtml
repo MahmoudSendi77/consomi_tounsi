@@ -1,0 +1,1024 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+
+	
+	
+	template="/template/adminTemplate.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="users">
+		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<f:view transient="true">
+
+
+<style>
+.avatar-wrapper {
+	position: relative;
+	height: 200px;
+	width: 200px;
+		margin: 50px auto; 
+/* 	border-radius: 50%; */
+	overflow: hidden;
+	box-shadow: 1px 1px 15px -5px black;
+	transition: all 0.3s ease;
+}
+
+.avatar-wrapper:hover {
+	transform: scale(1.05);
+	cursor: pointer;
+}
+
+.avatar-wrapper:hover .profile-pic {
+	opacity: 0.5;
+}
+
+.avatar-wrapper .profile-pic {
+	height: 100%;
+	width: 100%;
+	transition: all 0.3s ease;
+}
+
+.avatar-wrapper .profile-pic:after {
+	
+	font-family: FontAwesome;
+	content: "\f2b5";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	font-size: 190px;
+	background: #ecf0f1;
+	color: #34495e;
+	text-align: center;
+}
+
+.avatar-wrapper .upload-button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.avatar-wrapper .upload-button .fa-arrow-circle-up {
+	position: absolute;
+	font-size: 200px;
+	top: 0px;
+	left: 5px;
+	text-align: center;
+	opacity: 0;
+	transition: all 0.3s ease;
+	color: #34495e;
+}
+
+.avatar-wrapper .upload-button:hover .fa-arrow-circle-up {
+	opacity: 0.9;
+}
+</style>
+
+
+
+
+
+
+
+		<style>
+body {
+	background-color: #323232;
+}
+
+.dropdown {
+	color: #282828;
+	font-family: arial;
+	font-size: 14px;
+	right: 0px;
+	position: absolute;
+}
+
+.mega-titre {
+	display: none;
+}
+
+.boutons {
+	background-color: #FFF;
+	box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.40);
+	padding: 5px;
+}
+
+.bloc {
+	display: flex;
+	line-height: 50px;
+}
+
+.bloc:hover, .bloc:active, .active {
+	background-color: rgba(40, 40, 40, 0.10);
+	cursor: pointer;
+}
+
+.titre {
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 35px;
+	margin: 0 15px;
+}
+
+.picto {
+	fill: rgba(40, 40, 40, 0.25);
+	height: 50px;
+	width: 50px;
+}
+
+.label-sans-picto .label {
+	margin: 0 15px;
+}
+
+.label-avec-pictos .label {
+	margin: 0 15px 0 5px;
+}
+
+.separation {
+	background-color: rgba(40, 40, 40, 0.25);
+	height: 1px;
+	margin: 5px;
+}
+
+.champs-texte {
+	border: 1px solid rgba(40, 40, 40, 0.25);
+	height: 38px;
+	margin: 10px 15px;
+	min-width: 200px;
+	padding: 0 15px;
+	width: calc(100% - 62px);
+}
+
+.filtre-applique {
+	background-color: rgba(40, 40, 40, 0.10);
+	display: flex;
+	margin: 10px 15px;
+}
+
+.filtre-applique .label {
+	line-height: 50px;
+	margin: 0 15px;
+}
+
+.filtre-applique .picto {
+	height: 30px;
+	margin: 10px 15px;
+	position: absolute;
+	right: 15px;
+	width: 30px;
+}
+
+.filtre-applique .picto:hover {
+	fill: rgba(40, 40, 40, 1);
+	cursor: pointer;
+}
+
+.bouton-supprimer {
+	background-color: rgba(206, 73, 82, 0.2);
+	display: flex;
+	margin: 5px;
+}
+
+.bouton-supprimer .label {
+	color: #CE4952;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 50px;
+	margin: 0 15px;
+}
+
+.bouton-supprimer .picto {
+	fill: #CE4952;
+	height: 30px;
+	margin: 10px 15px;
+	position: absolute;
+	right: 0;
+	width: 30px;
+}
+
+.bouton-supprimer:hover {
+	background-color: rgba(206, 73, 82, 0.4);
+	cursor: pointer;
+}
+
+.groupe-filtre {
+	display: flex;
+	margin: 5px 0;
+}
+
+.filtre-picto {
+	text-align: center;
+	width: 80px;
+	opacity: 0.25;
+}
+
+.filtre-picto .picto {
+	border: 1px solid #282828;
+	fill: #282828;
+	height: 40px;
+	width: 40px;
+}
+
+.filtre-picto .label {
+	font-size: 12px;
+	line-height: 14px;
+	margin: 10px 0 15px 0;
+}
+
+.filtre-picto:hover {
+	cursor: pointer;
+	opacity: 1;
+}
+
+.filtre-picto:hover .picto {
+	border: 1px solid rgba(40, 40, 40, 0.1);
+	background-color: rgba(40, 40, 40, 0.1);
+}
+
+@media ( max-width : 640px) {
+	.dropdown {
+		bottom: 0;
+		font-size: 18px;
+		left: 0;
+		position: absolute;
+		overflow: auto-flow;
+		top: auto;
+		width: 100%;
+	}
+	.mega-titre {
+		color: #FFFFFF;
+		display: block;
+		font-size: 36px;
+		font-weight: bold;
+		line-height: 70px;
+		margin-left: 20px;
+	}
+	.boutons {
+		box-shadow: none;
+	}
+	.bloc {
+		line-height: 60px;
+	}
+	.titre {
+		font-size: 21px;
+		line-height: 45px;
+	}
+	.picto {
+		height: 60px;
+		width: 60px;
+	}
+	.champs-texte {
+		font-size: 18px;
+		height: 48px;
+		padding: 0 20px;
+		width: calc(100% - 72px);
+	}
+	.filtre-applique {
+		margin: 10px 15px;
+	}
+	.filtre-applique .label {
+		font-size: 18px;
+		line-height: 60px;
+		margin: 0 20px;
+	}
+	.filtre-applique .picto {
+		height: 30px;
+		margin: 15px 20px;
+		position: absolute;
+		right: 15px;
+		width: 30px;
+	}
+	.bouton-supprimer .label {
+		font-size: 20px;
+		line-height: 60px;
+		margin: 0 20px;
+	}
+	.bouton-supprimer .picto {
+		margin: 15px 20px;
+	}
+	.filtre-picto {
+		width: 90px;
+	}
+	.filtre-picto .picto {
+		height: 50px;
+		width: 50px;
+	}
+	.filtre-picto .label {
+		font-size: 14px;
+		line-height: 16px;
+	}
+	.pt-3-half {
+		padding-top: 1.4rem;
+	}
+}
+</style>
+
+		<style>
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,
+	.table>tbody>tr>td, .table>tfoot>tr>td {
+	padding: 8px;
+	line-height: 1.428571429;
+	vertical-align: middle;
+	border-top: 1px solid #ddd;
+	text-align: center;
+}
+
+.fund-imagee {
+	width: 75px; ! important;
+	height: 75px;
+	!
+	important;
+}
+
+.select2-container {
+	box-sizing: border-box;
+	display: inline-block;
+	margin: 0;
+	position: relative;
+	vertical-align: middle;
+	width: 257px;
+}
+</style>
+
+
+
+
+		<style>
+details {
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	padding: .5em .5em 0;
+}
+
+summary {
+	font-weight: bold;
+	margin: -.5em -.5em 0;
+	padding: .5em;
+}
+
+details[open] {
+	padding: .5em;
+}
+
+details[open] summary {
+	border-bottom: 1px solid #aaa;
+	margin-bottom: .5em;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default {
+	border: 1px solid #d3d3d3 /*{borderColorDefault}*/;
+	background: #ffffff;
+	/*{bgColorDefault}; 50%/*{bgDefaultXPos}*/ 50%
+	/*{bgDefaultYPos}*/ repeat-x /*{bgDefaultRepeat}*/; */:;
+	font-weight: normal /*{fwDefault}*/;
+	color: #555555 /*{fcDefault}*/;
+}
+</style>
+
+
+
+
+
+
+
+
+
+			<details class="card" style="max-width: 80%; left: 1%; top: 10px;"   >
+			<summary style="    background-color: #65af76;">Update abonnement
+			</summary>
+
+
+
+	<form method="post" action="/uploadabonupdate" enctype="multipart/form-data" >
+
+
+
+
+<table>
+
+
+
+				<tr>
+
+					<td style="text-align: center;"> 
+					
+				
+					
+					
+				
+					
+								<div class="avatar-wrapper"   >
+
+
+									<img class="profile-pic" src=""  style="" />
+									<div class="upload-button">
+										<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+									</div>
+									<input class="file-upload" type="file" accept="image/*"
+										name="file" id="image-file" />
+
+
+
+								</div>
+	
+			
+			
+			
+			
+			
+			
+			
+			
+					
+					
+					</td>
+
+					
+				</tr>
+
+
+
+
+				<tr>
+					<td style="text-align: center;">
+					<input type="submit" value="Upload"
+								class="btn btn-danger" style="width: 50%;" />
+					
+					
+							
+							</td>
+				</tr>
+</table>
+
+
+
+
+</form>
+
+
+
+<h:form>
+			<table>
+			
+			
+			
+			
+			
+			
+				<tr>
+
+					<td><b:inputText  placeholder="Type"
+							required="true" label="Username"  name="typeabon"   value="#{Aboncrud.type}">
+							<f:facet name="prepend">
+								<b:icon name="user" />
+							</f:facet>
+						</b:inputText></td>
+
+					<td><b:message for="username" /></td>
+				</tr>
+
+
+
+
+
+
+
+
+
+				<tr>
+
+					<td><b:inputText value="#{Aboncrud.validite}" label="Validite"   name="validite" type="number"
+							id="cash" required="true">
+							<f:facet name="prepend">
+								<h:outputText value="Validite en mois " />
+
+							</f:facet>
+							<f:facet name="append">
+
+								<h:outputText value="mois" />
+							</f:facet>
+						</b:inputText></td>
+
+
+					<td><b:message for="cash" /></td>
+				</tr>
+
+
+
+
+
+
+				<tr>
+
+					<td><b:inputText id="remise" value="#{Aboncrud.remise}" name="remise" type="number"
+							label="Remise" required="true">
+							<f:facet name="prepend">
+								<h:outputText value=" Remise " />
+
+							</f:facet>
+							<f:facet name="append">
+
+								<h:outputText value="%" />
+							</f:facet>
+						</b:inputText></td>
+
+
+					<td><b:message for="remise" /></td>
+				</tr>
+
+
+
+
+
+
+
+
+				<tr>
+
+					<td><b:inputText id="points" value="#{Aboncrud.points}" name="points" type="number"
+							label="Points" required="true">
+							<f:facet name="prepend">
+								<h:outputText value=" POINTS " />
+
+							</f:facet>
+							<f:facet name="append">
+
+								<h:outputText value="PTS" />
+							</f:facet>
+						</b:inputText></td>
+
+
+					<td><b:message for="points" /></td>
+				</tr>
+
+
+
+
+
+
+
+
+
+							<tr>
+								<td ><b:commandButton value="submit" update="ajout"
+										look="success" onclick="ajax:Aboncrud.updateaabon()"
+										
+										
+										
+										/></td>
+							</tr>
+
+
+
+
+
+
+			</table>
+
+
+
+
+ 
+</h:form>
+
+
+
+
+
+
+
+
+
+
+
+			</details>
+
+			<br />
+			<br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<form method="post" action="/uploadabon" enctype="multipart/form-data" >
+			<details class="card" style="max-width: 80%; left: 1%; top: 10px;"   >
+			<summary style="    background-color: #dc3545;"> Ajout Stuf
+			</summary>
+
+
+
+
+
+
+
+
+
+			<table>
+			
+			
+			
+				<tr>
+
+					<td style="text-align: center;"> 
+					
+				
+					
+					
+					
+					
+								<div class="avatar-wrapper"   >
+
+
+									<img class="profile-pic" src=""  style="" />
+									<div class="upload-button">
+										<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+									</div>
+									<input class="file-upload" type="file" accept="image/*"
+										name="file" id="image-file" />
+
+
+
+								</div>
+			
+					
+					
+					</td>
+
+					
+				</tr>
+			
+			
+			
+				<tr>
+
+					<td><b:inputText  placeholder="Type"
+							required="true" label="Username"  name="typeabon"   >
+							<f:facet name="prepend">
+								<b:icon name="user" />
+							</f:facet>
+						</b:inputText></td>
+
+					<td><b:message for="username" /></td>
+				</tr>
+
+
+
+
+
+
+
+
+
+				<tr>
+
+					<td><b:inputText label="Validite"   name="validite" type="number"
+							id="cash" required="true">
+							<f:facet name="prepend">
+								<h:outputText value="Validite en mois " />
+
+							</f:facet>
+							<f:facet name="append">
+
+								<h:outputText value="mois" />
+							</f:facet>
+						</b:inputText></td>
+
+
+					<td><b:message for="cash" /></td>
+				</tr>
+
+
+
+
+
+
+				<tr>
+
+					<td><b:inputText id="remise"  name="remise" type="number"
+							label="Remise" required="true">
+							<f:facet name="prepend">
+								<h:outputText value=" Remise " />
+
+							</f:facet>
+							<f:facet name="append">
+
+								<h:outputText value="%" />
+							</f:facet>
+						</b:inputText></td>
+
+
+					<td><b:message for="remise" /></td>
+				</tr>
+
+
+
+
+
+
+
+
+				<tr>
+
+					<td><b:inputText id="points"  name="points" type="number"
+							label="Points" required="true">
+							<f:facet name="prepend">
+								<h:outputText value=" POINTS " />
+
+							</f:facet>
+							<f:facet name="append">
+
+								<h:outputText value="PTS" />
+							</f:facet>
+						</b:inputText></td>
+
+
+					<td><b:message for="points" /></td>
+				</tr>
+
+
+
+
+
+<tr>
+
+					<td>
+  <input type="color" id="favcolor" name="couleur" value="#ff0000"/>
+  </td>
+
+
+				
+				</tr>
+
+
+
+
+				<tr>
+					<td style="text-align: center;">
+					<input type="submit" value="Upload"
+								class="btn btn-danger" style="width: 50%;" />
+					
+					
+							
+							</td>
+				</tr>
+
+
+
+
+
+			</table>
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+			</details>
+
+			<br />
+			<br />
+
+
+		</form>
+
+
+
+
+
+		<h:form id="ajout">
+			<div class="card" style="max-width: 80%; left: 1%; top: 10px;">
+
+				<div class="card-body" style="max-width: 100%">
+					<div id="table" class="table-editable">
+						<span class="table-add float-right mb-3 mr-2"> <b:iconAwesome
+								name="cog" spin="true" size="2x" /></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						<div></div>
+
+
+
+
+
+
+
+
+						<b:dataTable value="#{Aboncrud.abons}" class="editableCarTable"
+							var="abons" onorder="console.log('order');"
+							onpage="console.log('page');" onsearch="console.log('search');"
+							onselect="ajax:Aboncrud.onSelect(abons.id,typeOfSelection, indexes);"
+							ondeselect="ajax:CarPool.onDeselect(typeOfSelection, indexes);"
+							select="true" selectionMode="multiple" caption="User Table"
+							id="datatableuser">
+
+
+
+
+							<b:dataTableColumn value="#{abons.type}">
+   
+</b:dataTableColumn>
+
+
+
+		<b:dataTableColumn label="Image">
+ 
+ 
+ 
+
+	
+		<img
+									src="../resources/uploads/userProfileImage/#{abons.image}"
+									class="fund-imagee" />
+
+ 
+ 
+									
+							</b:dataTableColumn>
+
+
+
+
+
+
+							<b:dataTableColumn label="Delete">
+								<b:commandButton value="Delete" iconAwesome="trash"
+									style="background-color: #dc3545;" update="ajout"
+									onclick="ajax:Aboncrud.deleteuser(abons)">
+
+								</b:commandButton>
+
+
+
+
+
+
+
+							</b:dataTableColumn>
+
+
+
+
+
+
+
+							<b:dataTableColumn label="Update">
+								<b:commandButton value="Update" iconAwesome="trash"
+									style="background-color: #65af76;" 
+									action="#{Aboncrud.update(abons)}"
+									
+									
+									>
+
+								</b:commandButton>
+
+
+
+
+
+
+
+							</b:dataTableColumn>
+
+
+
+
+
+						</b:dataTable>
+
+
+
+
+
+
+
+
+
+
+					</div>
+				</div>
+			</div>
+
+
+
+
+		</h:form>
+
+
+
+
+<script>
+
+$(document).ready(function() {
+	
+    var readURL = function(input) {
+        if (input.files &amp;&amp; input.files[0]) {
+        	
+        	
+ 
+        	
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.profile-pic').attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+        
+        
+        
+       
+        
+        
+        
+        
+    }
+   
+    $(".file-upload").on('change', function(){
+        readURL(this);
+      
+    });
+    
+    $(".upload-button").on('click', function() {
+       $(".file-upload").click();
+    });
+    
+    
+  
+ 
+    
+
+    
+    
+    
+    
+});
+
+
+
+
+
+
+
+
+
+</script>
+
+</f:view>
+	</ui:define>
+</ui:composition>

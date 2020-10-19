@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:define name="checkout">
+
+
+
+
+
+		<!-- Header -->
+
+
+		<!-- Breadcrumbs -->
+		<div class="breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="bread-inner">
+							<ul class="bread-list">
+								<li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
+								<li class="active"><a href="blog-single.html">Checkout</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Breadcrumbs -->
+
+		<!-- Start Checkout -->
+		<div class="shop checkout section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-12">
+						<div class="checkout-form">
+							<h2>Make Your Checkout Here</h2>
+							<p>Please register in order to checkout more quickly</p>
+							<!-- Form -->
+							<h:form class="form">
+								<div class="container">
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-12">
+											<div class="form-group">
+												<label>First Name<span>*</span></label>
+												<h:inputText name="name" placeholder="FIRST NAME"
+													required="required" type="text placeholder" />
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-12">
+											<div class="form-group">
+												<label>Last Name<span>*</span></label>
+												<h:inputText name="name" placeholder="lAST NAME"
+													required="required" type="text placeholder" />
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-12">
+											<div class="form-group">
+												<label>Email Address<span>*</span></label>
+												<h:inputText name="email" placeholder="EMAIL"
+													required="required" type="text placeholder" />
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-12">
+											<div class="form-group">
+												<label>Phone Number<span>*</span></label>
+												<h:inputText name="number" placeholder="PHONE NUMBER"
+													required="required" type="text placeholder" />
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-12">
+											<div class="single-widget">
+												<h2>Payments</h2>
+												<div class="content"></div>
+											</div>
+											<p:selectOneRadio id="type1"
+												value="#{commandControllerimpl.type}" layout="grid"
+												columns="1">
+												<f:selectItems value="#{commandControllerimpl.type1}"
+													var="c" itemLabel="#{type}" itemValue="#{type}" />
+											</p:selectOneRadio>
+										</div>
+
+										
+										<div class="col-lg-6 col-md-6 col-12">
+											
+										</div>
+										<div class="single-widget get-button">
+											<div class="content">
+												<div class="button">
+													<h:commandButton id="btn" value="proceed to checkout"
+														action="#{commandControllerimpl.placeOreder()}"
+														class="btn" />
+												</div>
+											</div>
+										</div>
+
+
+
+									</div>
+								</div>
+							</h:form>
+							<!--/ End Form -->
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-12">
+						<div class="order-details">
+							<!-- Order Widget -->
+							<div class="single-widget">
+								<h2>CART TOTALS</h2>
+								<div class="content">
+									<ul>
+										<li>Sub Total<span>
+										<h:outputText id="montantttc" value="#{cartControllerimpl.calcultc()}" />
+										</span></li>
+										<li>(+) Shipping<span>$10.00</span></li>
+										<li class="last">Total<span>
+										<h:outputText id="montantShipp" value="#{cartControllerimpl.calcultc()}" />
+										</span></li>
+									</ul>
+								</div>
+							</div>
+							<!--/ End Order Widget -->
+
+							<!-- Payment Method Widget -->
+							<div class="single-widget payement">
+								<div class="content"></div>
+							</div>
+							<!--/ End Payment Method Widget -->
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/ End Checkout -->
+
+
+
+
+
+	</ui:define>
+</ui:composition>

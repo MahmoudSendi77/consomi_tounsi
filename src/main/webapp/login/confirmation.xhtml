@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="menu">
+	
+		<f:view transient="true">
+	<style>
+	
+	
+	@import 'https://fonts.googleapis.com/css?family=Lalezar';
+	
+	#welcome-slide{
+   animation: backAn 10s  infinite;
+   background: url('../resources/images/welcomepage1.jpg');
+   background-color:#cdc8c4; 
+   padding:0; 
+   margin:0; 
+   width:100vw; 
+   height:100vh;
+}
+
+#welcome-slide #grizzly{
+   mix-blend-mode: lighten; 
+   position: absolute; 
+   bottom:0; 
+   width:100%; 
+   height:auto;
+   z-index:2;
+}
+
+#welcome-slide #claim{
+   position:absolute; 
+   bottom:60px; 
+   left: calc(50% - 100px );
+   margin:auto; 
+   z-index: 3; 
+   color:#ccc7c3;
+}
+
+#welcome-slide #claim h1{
+   font-size: 1.2em; 
+   text-transform: uppercase;
+   margin: 0;
+   padding:0; 
+   font-weight: 400;
+   line-height: 0em; 
+   text-align: center;
+}
+
+#welcome-slide #claim h2{
+   font-size: 1.9em; 
+   text-transform: uppercase;
+   margin: 0;
+   padding:0; 
+   text-align: center;
+}
+
+@keyframes backAn {
+   0%   { background-position:0% 100%; }
+   50%   { background-position:100% 100%; }
+   100%   { background-position:0% 100%; }
+}
+	
+	
+	
+	
+	
+	</style>
+	
+	
+	
+	<style>
+	
+	
+	.cover {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+.blur-in {
+    -webkit-animation: blur 2s forwards;
+    -moz-animation: blur 2s forwards;
+    -o-animation: blur 2s forwards;
+    animation: blur 2s forwards;
+}
+
+.blur-out {
+    -webkit-animation: blur-out 2s forwards;
+    -moz-animation: blur-out 2s forwards;
+    -o-animation: blur-out 2s forwards;
+    animation: blur-out 2s forwards;
+}
+
+@-webkit-keyframes blur {
+    0% {
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -o-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+    }
+
+    100% {
+        -webkit-filter: blur(4px);
+        -moz-filter: blur(4px);
+        -o-filter: blur(4px);
+        -ms-filter: blur(4px);
+        filter: blur(4px);
+    }
+}
+
+@-moz-keyframes blur {
+    0% {
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -o-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+    }
+
+    100% {
+        -webkit-filter: blur(4px);
+        -moz-filter: blur(4px);
+        -o-filter: blur(4px);
+        -ms-filter: blur(4px);
+        filter: blur(4px);
+    }
+}
+
+@-o-keyframes blur {
+    0% {
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -o-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+    }
+
+    100% {
+        -webkit-filter: blur(4px);
+        -moz-filter: blur(4px);
+        -o-filter: blur(4px);
+        -ms-filter: blur(4px);
+        filter: blur(4px);
+    }
+}
+
+@keyframes blur {
+    0% {
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -o-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+    }
+
+    100% {
+        -webkit-filter: blur(4px);
+        -moz-filter: blur(4px);
+        -o-filter: blur(4px);
+        -ms-filter: blur(4px);
+        filter: blur(4px);
+    }
+}
+
+@-webkit-keyframes blur-out {
+    0% {
+        -webkit-filter: blur(4px);
+        -moz-filter: blur(4px);
+        -o-filter: blur(4px);
+        -ms-filter: blur(4px);
+        filter: blur(4px);
+    }
+
+    100% {
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -o-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+    }
+}
+
+@-moz-keyframes blur-out {
+    0% {
+        -webkit-filter: blur(4px);
+        -moz-filter: blur(4px);
+        -o-filter: blur(4px);
+        -ms-filter: blur(4px);
+        filter: blur(4px);
+    }
+
+    100% {
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -o-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+    }
+}
+
+@-o-keyframes blur-out {
+    0% {
+        -webkit-filter: blur(4px);
+        -moz-filter: blur(4px);
+        -o-filter: blur(4px);
+        -ms-filter: blur(4px);
+        filter: blur(4px);
+    }
+
+    100% {
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -o-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+    }
+}
+
+@keyframes blur-out {
+    0% {
+        -webkit-filter: blur(4px);
+        -moz-filter: blur(4px);
+        -o-filter: blur(4px);
+        -ms-filter: blur(4px);
+        filter: blur(4px);
+    }
+
+    100% {
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -o-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+    }
+}
+
+.content {
+    width: 650px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+span {
+    color: dimgray;
+}
+
+.pop-up {
+/*     position: fixed; */
+    margin: 5% auto;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  width:35%;
+}
+
+.box {
+    background-color: #fff;
+    color:white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    position: relative;
+    -webkit-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1);
+}
+
+.button {
+    margin 0 auto;
+  background-color: none;
+    margin-bottom: 33px;
+}
+
+.button:hover {
+    background-color: grey;
+    -webkit-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.1);
+}
+
+.close-button {
+text-decoration: none;
+    transition: all 0.5s ease;
+    position: absolute;
+    background-color: black;
+    padding: 2.5px 7px;
+    left: 0;
+    margin-left: -10px;
+    margin-top: -9px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    color: white;
+    -webkit-box-shadow: -4px -2px 6px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: -4px -2px 6px 0px rgba(0,0,0,0.1);
+    box-shadow: -3px 1px 6px 0px rgba(0,0,0,0.1);
+}
+
+.close-button:hover {
+    background-color: none;
+    color: #fff;
+}
+
+.popupsub {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #fff;
+    background-color: #df0101;
+}
+
+p {
+    padding: 20px 65px 10px 65px;
+    color: black;
+}
+
+h1 {
+    color: dimgray;
+font-family: Arial, Helvetica, sans-serif;
+}
+	
+	
+	
+	</style>
+
+	
+	<div id='welcome-slide' >
+  
+
+
+		
+		<div class="row pop-up">
+  <div class="box small-6 large-centered">
+    <a href="#" class="close-button">&#10006;</a>
+    <h3 class="popupsub">Welcome</h3>
+    
+    
+     
+
+    <!-- table for welcome message, username/password, and login buttons -->
+    <table >
+        <!-- table row for the welcome message and pic -->
+        <tr >
+            <td style="text-align:center; border-radius:5px 5px 0 0;">
+                <img style="border-radius:50%; margin-top: 40px;"  src="../resources/images/defaultpic.png" alt="avatar" width="115" height="115" />
+                <p style="color:#556A6F; font-size:24px; font-weight: 600;"> #{Profile.usernameconfirmation} , Welcome to Consommi Tounsi !</p>
+                <p style="text-align:center; margin:0; padding:0;  padding-left:135.5px; padding-right:135.5px; color:#979CAD; font-size: 16px; font-family:Helvetica, sans-serif; font-weight:100;">We are excited to have you with us. Here's some information to help you get started</p>
+            </td>
+    </tr>
+    </table>
+    
+    
+    <p>Integer non odio id ante rutrum dictum. Nam ac dapibus felis, at pharetra sapien. </p>
+    
+    
+    <h:form>
+    
+    <h:commandButton value="Se Connecter"
+												style="border: 1px solid;border-color: #ccc #ccc #bbb;border-radius: 3px;background: #df0101;color: rgba(255, 242, 242, 0.8);line-height: 1;width: 44%;"
+												id="btt-calculer" action="#{Profile.gologin()}" 
+												class="btn btn-primaire ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" />  
+												
+    </h:form>
+    
+
+    
+    <br />
+    <br />
+  </div>
+</div>
+		
+
+
+
+
+   </div>
+
+	
+
+		
+		
+	
+		<script>
+		
+		$(function() {
+			  $('.pop-up').hide();
+			  $('.pop-up').fadeIn(1000);
+			  
+			      $('.close-button').click(function (e) { 
+
+			      $('.pop-up').fadeOut(700);
+			      $('#overlay').removeClass('blur-in');
+			      $('#overlay').addClass('blur-out');
+			      e.stopPropagation();
+			        
+			    });
+			 });
+		
+		</script>
+	
+		
+		
+		
+		</f:view>
+		
+	</ui:define>
+</ui:composition>

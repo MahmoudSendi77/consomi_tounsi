@@ -1,0 +1,140 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:define name="menu">
+
+		<style>
+.ui-spinner-input {
+	vertical-align: middle;
+	text-align: center;
+	padding-right: 20px;
+}
+</style>
+<h:form id="manag_cart">
+									
+		<!-- Shopping Cart -->
+		<div class="shopping-cart section">
+			<div class="container">
+			
+				<div class="row">
+					<div class="col-12">
+						<!-- Shopping Summery -->
+						<table class="table shopping-summery">
+							<thead>
+								<tr class="main-hading">
+									<th>PRODUCT</th>
+									<th class="text-center">UNIT PRICE</th>
+									<th class="text-center">QUANTITY</th>
+									<th class="text-center">TOTAL</th>
+									<th class="text-center"><i class="ti-trash remove-icon"></i></th>
+								</tr>
+							</thead>
+						
+							<tbody>
+								<p:repeat value="#{cartControllerimpl.afficheProductInCart}" var="produit">
+										<tr>
+											<td class="product-des">
+												<p class="product-name">
+													<a href="#"> 
+													<h:outputText value="#{produit.name}" />
+													</a>
+												</p>
+												
+											</td>
+											<td class="price">
+											<span>
+											<h:outputText value="#{produit.price}" />
+											</span>
+											</td>
+
+
+											<td class="qty">
+											
+												<div class="input-group">
+													
+													<p:spinner id="minMax" value="#{cartControllerimpl.number}"
+														min="1" max="100" >
+												<p:ajax  listener="#{cartControllerimpl.updateCantidad(produit.price,produit.id)}" update="hh" ></p:ajax>
+													</p:spinner>
+													
+												
+												</div> 
+											</td>
+
+
+
+											<td class="total-amount">
+											<h:outputText id="hh" value="#{cartControllerimpl.total}" />
+											</td>
+
+											<td class="action" >
+											
+													
+													
+													<h:commandButton action="#{cartControllerimpl.removeProductFromCart(produit.id)}" class="ti-trash remove-icon"/>
+													
+												
+												</td>
+										</tr>
+									
+								</p:repeat>
+							</tbody>
+						
+						</table>
+						<!--/ End Shopping Summery -->
+					</div>
+				</div>
+	
+	
+	
+		<div class="row"> -->
+					<div class="col-12">
+							<div class="total-amount">
+								<div class="row">
+									<div class="col-lg-8 col-md-5 col-12"></div>
+									<div class="col-lg-4 col-md-7 col-12">
+										<div class="right">
+											<ul>
+												<li>Montant HT<span>
+												<h:outputText id="karim" value="#{cartControllerimpl.calcul()}" />
+												</span></li>
+												<li>Montant TVA<span>
+												
+															</span></li>
+															
+												<li class="last">You Pay<span>
+												
+												</span></li>
+											</ul>
+											
+												<div class="button5">
+													<h:commandButton id="btn" value="checkout"
+														action="#{navigateControllerImpl.navigateToCartClientPage()}"
+														class="btn" />
+													<a href="#" class="btn">Continue shopping</a>
+												</div>
+										
+										</div>
+									</div>
+								</div>
+							</div>
+						
+						
+					</div>
+				</div>
+				
+				
+			</div>
+		</div>
+		<!--/ End Shopping Cart -->
+				
+			
+
+
+</h:form>
+
+	</ui:define>
+</ui:composition>

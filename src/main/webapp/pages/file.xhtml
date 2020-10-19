@@ -1,0 +1,525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui" template="/template/adminTemplate.xhtml">
+	<ui:define name="content">
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<style>
+body {
+	background-color: #323232;
+}
+
+.dropdown {
+	color: #282828;
+	font-family: arial;
+	font-size: 14px;
+	right: 0px;
+	position: absolute;
+
+	
+}
+
+.mega-titre {
+	display: none;
+}
+
+.boutons {
+	background-color: #FFF;
+	box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.40);
+	padding: 5px;
+}
+
+.bloc {
+	display: flex;
+	line-height: 50px;
+}
+
+.bloc:hover, .bloc:active, .active {
+	background-color: rgba(40, 40, 40, 0.10);
+	cursor: pointer;
+}
+
+.titre {
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 35px;
+	margin: 0 15px;
+}
+
+.picto {
+	fill: rgba(40, 40, 40, 0.25);
+	height: 50px;
+	width: 50px;
+}
+
+.label-sans-picto .label {
+	margin: 0 15px;
+}
+
+.label-avec-pictos .label {
+	margin: 0 15px 0 5px;
+}
+
+.separation {
+	background-color: rgba(40, 40, 40, 0.25);
+	height: 1px;
+	margin: 5px;
+}
+
+.champs-texte {
+	border: 1px solid rgba(40, 40, 40, 0.25);
+	height: 38px;
+	margin: 10px 15px;
+	min-width: 200px;
+	padding: 0 15px;
+	width: calc(100% - 62px);
+}
+
+.filtre-applique {
+	background-color: rgba(40, 40, 40, 0.10);
+	display: flex;
+	margin: 10px 15px;
+}
+
+.filtre-applique .label {
+	line-height: 50px;
+	margin: 0 15px;
+}
+
+.filtre-applique .picto {
+	height: 30px;
+	margin: 10px 15px;
+	position: absolute;
+	right: 15px;
+	width: 30px;
+}
+
+.filtre-applique .picto:hover {
+	fill: rgba(40, 40, 40, 1);
+	cursor: pointer;
+}
+
+.bouton-supprimer {
+	background-color: rgba(206, 73, 82, 0.2);
+	display: flex;
+	margin: 5px;
+}
+
+.bouton-supprimer .label {
+	color: #CE4952;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 50px;
+	margin: 0 15px;
+}
+
+.bouton-supprimer .picto {
+	fill: #CE4952;
+	height: 30px;
+	margin: 10px 15px;
+	position: absolute;
+	right: 0;
+	width: 30px;
+}
+
+.bouton-supprimer:hover {
+	background-color: rgba(206, 73, 82, 0.4);
+	cursor: pointer;
+}
+
+.groupe-filtre {
+	display: flex;
+	margin: 5px 0;
+}
+
+.filtre-picto {
+	text-align: center;
+	width: 80px;
+	opacity: 0.25;
+}
+
+.filtre-picto .picto {
+	border: 1px solid #282828;
+	fill: #282828;
+	height: 40px;
+	width: 40px;
+}
+
+.filtre-picto .label {
+	font-size: 12px;
+	line-height: 14px;
+	margin: 10px 0 15px 0;
+}
+
+.filtre-picto:hover {
+	cursor: pointer;
+	opacity: 1;
+}
+
+.filtre-picto:hover .picto {
+	border: 1px solid rgba(40, 40, 40, 0.1);
+	background-color: rgba(40, 40, 40, 0.1);
+}
+
+@media (max-width: 640px) {
+		
+	.dropdown {
+		bottom: 0;	
+		font-size: 18px;
+		left: 0;
+		position: absolute;
+		overflow: auto-flow;
+		top: auto;
+		width: 100%;		
+	}
+	
+	.mega-titre {
+		color: #FFFFFF;
+		display: block;
+		font-size: 36px;
+		font-weight: bold;
+		line-height: 70px;
+		margin-left: 20px;
+	}
+
+	.boutons {
+		box-shadow: none;
+	}
+
+	.bloc {
+		line-height: 60px;
+	}
+	
+	.titre {
+		font-size: 21px;
+		line-height: 45px;
+	}
+
+	.picto {
+		height: 60px;
+		width: 60px;
+	}
+
+	.champs-texte {
+		font-size: 18px;
+		height: 48px;
+		padding: 0 20px;
+		width: calc(100% - 72px);
+	}
+
+	.filtre-applique {
+		margin: 10px 15px;
+	}
+
+	.filtre-applique .label {
+		font-size: 18px;
+		line-height: 60px;
+		margin: 0 20px;
+	}
+
+	.filtre-applique .picto {
+		height: 30px;
+		margin: 15px 20px;
+		position: absolute;
+		right: 15px;
+		width: 30px;
+	}
+	
+	.bouton-supprimer .label {
+		font-size: 20px;
+		line-height: 60px;
+		margin: 0 20px;
+	}
+
+	.bouton-supprimer .picto {
+		margin: 15px 20px;
+	}
+
+	.filtre-picto {
+		width: 90px;
+	}
+
+	.filtre-picto .picto {
+		height: 50px;
+		width: 50px;
+	}
+
+	.filtre-picto .label {
+		font-size: 14px;
+		line-height: 16px;
+}
+.pt-3-half {
+padding-top: 1.4rem;
+}
+</style>
+
+<div class="dropdown">
+	<div class="mega-titre">Par Date</div>
+	<div class="boutons">
+		<div class="titre">Par date</div>
+		<div class="bloc label-sans-picto" >
+			<div class="label">date min</div>
+		</div>
+		<div class="bloc label-sans-picto" >
+			<div class="label">date max</div>
+		</div>
+		<div class="separation"></div>
+		
+		
+		<div class="titre">Filtrer par Prix</div>
+		<div class="groupe-filtre">
+			<div class="filtre-picto">
+				<svg class="picto" viewbox="0 0 40 40">
+					<path d="M22,12h-7c-0.6,0-1,0.4-1,1v14c0,0.5,0.4,1,1,1h10c0.5,0,1-0.5,1-1V16L22,12z M16,26v-1h8v1H16z M16,23h8v1h-8
+								V23z M16,22v-1h8v1H16z M21,16.5V13l1,1v2h2l1,1h-3.5C21.2,17,21,16.8,21,16.5z"/>
+				</svg>
+				<div class="label">BeeVirtua</div>
+			</div>
+			<div class="filtre-picto">
+				<svg class="picto" viewbox="0 0 40 40">
+					<path d="M27,14v1h-2v-1H15v1h-2v-1h-1v12h1v-1h2v1h10v-1h2v1h1V14H27z M15,24h-2v-2h2V24z M15,21h-2v-2h2V21z M15,18h-2
+	v-2h2V18z M22.2,20l-3.3,2.2c-0.2,0.1-0.4,0-0.4-0.2v-4c0-0.2,0.3-0.4,0.4-0.2L22.2,20z M27,24h-2v-2h2V24z M27,21h-2v-2h2V21z
+	 M27,18h-2v-2h2V18z"/>
+				</svg>
+				<div class="label">Vidéos</div>
+			</div>
+			<div class="filtre-picto">
+				<svg class="picto" viewbox="0 0 40 40">
+					<path d="M27,14H13c-0.6,0-1,0.5-1,1.1v9.8c0,0.6,0.4,1.1,1,1.1h14c0.5,0,1-0.5,1-1.1v-9.8C28,14.5,27.5,14,27,14z
+	 M16.5,15c0.9,0,1.5,0.7,1.5,1.5c0,0.9-0.6,1.5-1.5,1.5c-0.8,0-1.5-0.6-1.5-1.5C15,15.7,15.7,15,16.5,15z M27,25H13v-3l1.8-1.8
+	c0.1-0.1,0.3-0.1,0.4,0l2.6,2.6c0.1,0.1,0.3,0.1,0.4,0l4.6-4.6c0.1-0.1,0.3-0.1,0.4,0L27,22V25L27,25z"/>
+				</svg>
+				<div class="label">Images</div>
+			</div>
+		</div>
+		<div class="separation"></div>
+		<div class="titre">Filtrer par type</div>
+		<div class="filtre-applique">
+			<div class="label">Jackpot</div>
+			<svg class="picto" viewBox="0 0 30 30">
+				<path d="M16.4,15l3.3-3.3c0.4-0.4,0.4-1,0-1.4c-0.4-0.4-1-0.4-1.4,0L15,13.6l-3.3-3.3c-0.4-0.4-1-0.4-1.4,0
+	c-0.4,0.4-0.4,1,0,1.4l3.3,3.3l-3.3,3.3c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.4,0.3,0.7,0.3s0.5-0.1,0.7-0.3l3.3-3.3l3.3,3.3
+	c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4L16.4,15z"/>
+			</svg>
+		</div>
+		<div class="filtre-applique">
+			<div class="label">cash on delivery</div>
+			<svg class="picto" viewBox="0 0 30 30">
+				<path d="M16.4,15l3.3-3.3c0.4-0.4,0.4-1,0-1.4c-0.4-0.4-1-0.4-1.4,0L15,13.6l-3.3-3.3c-0.4-0.4-1-0.4-1.4,0
+	c-0.4,0.4-0.4,1,0,1.4l3.3,3.3l-3.3,3.3c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.4,0.3,0.7,0.3s0.5-0.1,0.7-0.3l3.3-3.3l3.3,3.3
+	c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4L16.4,15z"/>
+			</svg>
+		</div>
+		<div class="filtre-applique">
+			<div class="label">cash online</div>
+			<svg class="picto" viewBox="0 0 30 30">
+				<path d="M16.4,15l3.3-3.3c0.4-0.4,0.4-1,0-1.4c-0.4-0.4-1-0.4-1.4,0L15,13.6l-3.3-3.3c-0.4-0.4-1-0.4-1.4,0
+	c-0.4,0.4-0.4,1,0,1.4l3.3,3.3l-3.3,3.3c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.4,0.3,0.7,0.3s0.5-0.1,0.7-0.3l3.3-3.3l3.3,3.3
+	c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4L16.4,15z"/>
+			</svg>
+		</div>
+		<div class="separation"></div>
+		<div class="titre">Champs texte</div>
+		<form>
+			<h:inputText type="text" class="champs-texte" />
+		</form>
+		<div class="bouton-supprimer">
+			<div class="label">Retirer les filtres</div>
+			
+			<svg class="picto" viewBox="0 0 30 30">
+				<path d="M16.4,15l3.3-3.3c0.4-0.4,0.4-1,0-1.4c-0.4-0.4-1-0.4-1.4,0L15,13.6l-3.3-3.3c-0.4-0.4-1-0.4-1.4,0
+	c-0.4,0.4-0.4,1,0,1.4l3.3,3.3l-3.3,3.3c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.4,0.3,0.7,0.3s0.5-0.1,0.7-0.3l3.3-3.3l3.3,3.3 c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4L16.4,15z"/>
+			</svg>
+		</div>
+	</div>
+</div>
+
+<!-- Editable table -->
+<div class="card" style="max-width: 80%;left: 1%;top: 10px;">
+ 
+  <div class="card-body" style="max-width: 100%">
+    <div id="table" class="table-editable">
+      <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
+            class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <thead>
+          <tr>
+            <th class="text-center">Person Name</th>
+            <th class="text-center">Age</th>
+            <th class="text-center">Company Name</th>
+            <th class="text-center">Country</th>
+            <th class="text-center">City</th>
+            <th class="text-center">Sort</th>
+            <th class="text-center">Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+     
+          <!-- This is our clonable table line -->
+      
+          <!-- This is our clonable table line -->
+      
+          <!-- This is our clonable table line -->
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <tr class="hide">
+            <td class="pt-3-half" contenteditable="false">karim</td>
+            <td class="pt-3-half" contenteditable="true"> karim </td>
+            <td class="pt-3-half" contenteditable="true">Portica</td>
+            <td class="pt-3-half" contenteditable="true">United Kingdom</td>
+            <td class="pt-3-half" contenteditable="true">London</td>
+            <td class="pt-3-half">
+              <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
+                    aria-hidden="true"></i></a></span>
+              <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
+                    aria-hidden="true"></i></a></span>
+            </td>
+            <td>
+              <span class="table-remove"><button type="button"
+                  class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+            </td>
+          </tr>
+          
+          
+    
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Editable table -->
+
+
+
+
+
+<script>
+var myButtonClassList = document.getElementsByClassName("button").classList;
+
+function activate() {
+	myButtonClassList.addClass("active");
+}
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script>
+jQuery(document).ready(function($){
+
+const $tableID = $('#table');
+const $BTN = $('#export-btn');
+const $EXPORT = $('#export');
+
+const newTr = `
+<tr class="hide">
+ <td class="pt-3-half" contenteditable="true">Example</td>
+ <td class="pt-3-half" contenteditable="true">Example</td>
+ <td class="pt-3-half" contenteditable="true">Example</td>
+ <td class="pt-3-half" contenteditable="true">Example</td>
+ <td class="pt-3-half" contenteditable="true">Example</td>
+ <td class="pt-3-half">
+   <span class="table-up"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
+   <span class="table-down"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
+ </td>
+ <td>
+   <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Remove</button></span>
+ </td>
+</tr>`;
+
+$('.table-add').on('click', 'i', () => {
+
+  const $clone = $tableID.find('tbody tr').last().clone(true).removeClass('hide table-line');
+
+  if ($tableID.find('tbody tr').length === 0) {
+
+    $('tbody').append(newTr);
+  }
+
+  $tableID.find('table').append($clone);
+});
+
+$tableID.on('click', '.table-remove', function () {
+
+  $(this).parents('tr').detach();
+});
+
+$tableID.on('click', '.table-up', function () {
+
+  const $row = $(this).parents('tr');
+
+  if ($row.index() === 0) {
+    return;
+  }
+
+  $row.prev().before($row.get(0));
+});
+
+$tableID.on('click', '.table-down', function () {
+
+  const $row = $(this).parents('tr');
+  $row.next().after($row.get(0));
+});
+
+// A few jQuery helpers for exporting only
+jQuery.fn.pop = [].pop;
+jQuery.fn.shift = [].shift;
+
+$BTN.on('click', () => {
+
+  const $rows = $tableID.find('tr:not(:hidden)');
+  const headers = [];
+  const data = [];
+
+  // Get the headers (add special header logic here)
+  $($rows.shift()).find('th:not(:empty)').each(function () {
+
+    headers.push($(this).text().toLowerCase());
+  });
+
+  // Turn all existing rows into a loopable array
+  $rows.each(function () {
+    const $td = $(this).find('td');
+    const h = {};
+
+    // Use the headers from earlier to name our hash keys
+    headers.forEach((header, i) => {
+
+      h[header] = $td.eq(i).text();
+    });
+
+    data.push(h);
+  });
+
+  // Output the result
+  $EXPORT.text(JSON.stringify(data));
+});
+
+});
+</script>
+	</ui:define>
+</ui:composition>

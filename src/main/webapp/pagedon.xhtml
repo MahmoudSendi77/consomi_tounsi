@@ -1,0 +1,494 @@
+<!DOCTYPE html [
+       <!ENTITY nbsp "&#160;"> 
+]>
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	 xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+
+	<ui:define name="menu">
+
+		<ui:insert name="productCard" />
+		<ui:insert name="productSideBar" />
+		
+		<f:view transient="true">
+
+    
+		   <h:outputStylesheet library="assetscss" name="scarletf066.css"  />
+		     <h:outputStylesheet library="assetscss" name="style.css"  />
+		      <h:outputStylesheet library="assetscss" name="hover-dropdown-menu.css"  />
+		
+		  <h:outputStylesheet library="js" name="jquery.countTo.js"  />
+                     <h:outputStylesheet library="js" name="easypiechart.min.js"  />
+                     
+
+	<style>
+ 
+.pie-title-center {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+}
+
+.pie-value {
+  display: block;
+  position: absolute;
+  font-size: 14px;
+  height: 40px;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin-top: -20px;
+  line-height: 40px;
+}
+
+</style>
+    
+	
+			<style>
+details {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: .5em .5em 0;
+}
+
+summary {
+    font-weight: bold;
+    margin: -.5em -.5em 0;
+    padding: .5em;
+}
+
+details[open] {
+    padding: .5em;
+}
+
+details[open] summary {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: .5em;
+}
+
+</style>
+	
+
+		<!-- Product Style -->
+		<h:panelGroup class="page-section">
+		
+		   <div class="container">
+		<div class="row">
+		
+		
+
+  
+    <div class="col-md-9 col-sm-12 col-xs-12">
+    
+    
+    
+  
+    
+<div class="form-box-tounsi">
+                        <div class="container">
+                
+                            <div class="fund-image -opacity text-center">
+                                <div class="tags-fix-detail">
+                                    <div class="tags-fund-type animated fadeIn visible" p:data-animation="fadeIn"><i class="icon-organization"></i>#{Stockdata.jackpottype} </div>
+                                    <div class="tags-fund-right animated fadeIn visible" p:data-animation="fadeIn"><i class="fa fa-eye"></i>#{Stockdata.jackpotnbvue} </div>
+                                </div>
+
+                                <h:graphicImage value="../../resources/uploads/#{Stockdata.jackpotimage}" p:title=" #{Stockdata.jackpottitre}"></h:graphicImage>
+                                
+                                
+                                <div class="fund-organizer-fixed text-white text-left">fair un Don pour : #{Stockdata.jackpottitre} </div>
+                            </div>
+                            <div class="post-content top-pad-20 ql-snow ql-editor">
+                                <p>#{Stockdata.jackpotdescriptionjackpot} </p>
+                              
+
+               
+                                </div>
+                                
+                             
+                        
+                     
+                        
+                    </div>
+
+
+                        </div>
+
+                                      <div class="form-box-tounsi top-margin-20" style="padding: 10px!important ; ">
+                                                          <div class="container">
+                                                 
+                                                                                    Nous sommes déja <span class="text-color">#{jackpotControllerImpl.GeParticipantByJackpot(Stockdata.jackpotid)} participant(s)</span>, rejoignez-nous !
+                                                                   <details>     
+                                                     <div class="pull-right ">
+ <summary>Faire un don</summary>
+                                                                            </div>
+                                                                            
+                                                                            
+                                                                            
+                                                                   <h:form>             
+                                                               
+                                                                     
+                                                                     
+                                                                     <div class="form-box-tounsi top-margin-20" style="padding-bottom: 20px;">
+                        <div class="container">
+                            
+                           
+                                                        <div class="row">
+                                <div class="col-sm-6"><div class="form-group">    <h:outputLabel   class="control-label required" for="giver_last_name">Nom
+
+            <span class="required text-danger form-asterisk" title="Ce champ est requis">*</span>
+            
+            
+    <h:inputText label="Nom" id="firstName" size="50" value="#{jackpotControllerImpl.nom}" type="text" class="input-name form-control form-control" required="true" ><f:validateRequired /> </h:inputText>
+    
+    
+     <h:message for="firstName" style="color:red" />
+                               </h:outputLabel>
+    
+    
+    </div></div>
+    
+                              
+                               
+                                <div class="col-sm-6">
+                                <div class="form-group">   
+                                  <h:outputLabel class="control-label required" for="giver_first_name">Prénom
+
+           <span class="required text-danger form-asterisk" title="Ce champ est requis">*</span>
+    <h:inputText label="Prénom" id="Prénom"  size="50"  value="#{jackpotControllerImpl.descriptiondon}" class="input-name form-control form-control" required="true" >
+    
+    <f:validateRequired /> </h:inputText>
+    
+    
+     <h:message for="Prénom" style="color:red" />
+                               </h:outputLabel>
+    
+   
+    </div></div>
+                            </div>
+                            
+                            
+                            
+                           
+                            
+                            <div class="row">
+                                <div class="col-sm-12"><div class="form-group">    <h:outputLabel class="control-label required" for="giver_email">e-mail
+
+            <span class="required text-danger form-asterisk" title="Ce champ est requis">*</span>
+    <h:inputText label="e-mail" id="e-mail" size="60"  value="#{jackpotControllerImpl.mail}" class="input-name form-control form-control"  >
+    
+     <f:validateRequired /> </h:inputText>
+    
+    
+     <h:message for="e-mail" style="color:red" />
+                               </h:outputLabel>
+    
+    </div></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                        
+                                         
+                                        
+
+                                        
+                                        
+              <div class="form-group"> 
+              
+               <c:if test="#{Stockdata.jackpottype == 'Argent' }"> 
+              
+              
+              
+              <h:outputLabel class="control-label required" >Choisissez le montant de votre participation
+
+            <span class="required text-danger form-asterisk" title="Ce champ est requis">*</span>
+        <div class="input-group">
+        <h:inputText label="Choisissez le montant de votre participation" id="Choisissez" value="#{jackpotControllerImpl.montantdon}" class="form-control form-control" >
+        
+         <f:validateRequired /> </h:inputText>
+       
+        <div class="input-group-addon bg-color">DT</div>
+        
+      
+                               
+                               </div>
+                               
+                            
+     <h:message for="Choisissez" style="color:red" />
+                               </h:outputLabel>
+                               
+                               
+                                </c:if>
+    
+     <c:if test="#{Stockdata.jackpottype == 'Produit' }">
+
+<p:repeat var="product" value="#{jackpotControllerImpl.commandToJackpot()}">
+
+<h:outputText value="#{product.name}"> --</h:outputText>
+<h:outputText value="#{product.price}">Dt </h:outputText>
+</p:repeat>
+     </c:if>
+     
+</div>
+                                                                                    </div>
+                                                                                    
+                                    </div>
+                                    
+                                    
+                                    
+                                                                        <div class="row">
+                                        <div class="col-sm-12">
+                                            <fieldset class="panel-tip">
+                                                <legend> <div class="form-group"><div class="checkbox">               
+                                                                         <label><h:selectBooleanCheckbox value="#{jackpotControllerImpl.aider}"  > </h:selectBooleanCheckbox>Aider consomi tounsi à s'améliorer</label>
+    </div></div></legend>
+    
+    
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        Grace à votre soutien nous continuons à améliorer ConsomiTounsi.tn et soutenir les belles causes.
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 mt-5">
+                                                       <span class="required text-danger form-asterisk" title="Ce champ est requis">*</span>
+        <div class="input-group">
+       <h:inputText value="#{jackpotControllerImpl.montantconsomi}"  class="form-control form-control"  />
+        <div class="input-group-addon bg-color">DT</div>
+    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row tip-custom-input" style="display: none;">
+                                                    <div class="col-sm-6 top-margin-5">
+                                                        <div class="form-group">    
+
+</div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                                                        
+                                    <div class="row">
+                                        <div class="col-sm-12"><div class="form-group"><div class="checkbox">    <label><h:selectBooleanCheckbox value="#{jackpotControllerImpl.montreridentité}"  ></h:selectBooleanCheckbox> Montrer votre identité</label>
+    </div></div></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label required" >Sélectionnez votre mode de paiement</label>
+                                        <span class="required text-danger form-asterisk" title="Ce champ est requis">*</span>
+                                        <div class="input-group">
+                                            <input type="text"  class="invisible form-control" style="display:none" />
+                                            <div class="title">A partir de la Tunisie</div>
+                                          
+                                            <ul class="list-group">
+                                            
+                                                <li class="list-group-item select_pay_mode pay_mode"><input type="radio" name="giver[pay_mode]" value="edinar" />&nbsp;<img src="../../resources/uploads/cart_edinar.jpg" title="Carte E-dinar SMART"  alt="Carte E-dinar SMART" class="pay"/> Carte E-dinar SMART</li>
+                                                <li class="list-group-item select_pay_mode pay_mode tb-margin-5"><input type="radio" name="giver[pay_mode]" value="laposte" />&nbsp;<img src="../../resources/uploads/visa-electron.jpg" title="Carte DINARPOST Visa Electron" alt="Carte DINARPOST Visa Electron" class="pay"/> Carte DINARPOST Visa Electron</li>
+                                                <li class="list-group-item select_pay_mode pay_mode"><input type="radio" name="giver[pay_mode]" value="smttn" checked="checked"/>&nbsp;<img src="../../resources/uploads/smt.png" title="Carte bancaire" alt="Carte bancaire" class="pay"/> Carte bancaire</li>
+                                                
+                                            </ul>
+                                            
+                                           
+
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                 
+                            <div class="row">
+                                <div class="col-sm-12 text-center">
+                                    <div class="btn-box">
+                                        <div class="clearfix"></div>
+                                                                             
+                                                                 <h:commandButton  action="#{jackpotControllerImpl.addD(Stockdata.jackpotid)}"  value="Faire un don" class="btn btn-default fs20 white igive-btn" style="padding: 3px; background-color:red">
+                                                                                    
+                                              
+                                            </h:commandButton>
+                                                                            </div>
+                                </div>
+                            </div>
+                      
+                        </div>
+                    </div>
+                 
+                          </h:form>     
+                          
+                          
+                          
+                                                             
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+</details>
+                                </div>
+                            </div>
+
+
+
+                       
+                   
+					
+					 </div>
+					
+					
+					
+					
+	
+					
+					
+					
+						
+				
+                  <div class="sidebar col-md-3 col-sm-12 col-xs-12 pull-right hidden-xs">
+					
+					<div id="detailFund" class="form-box-tounsi pricing bottom-pad-0">
+        <div class="options" p:data-animation="fadeIn">
+        
+        
+    <div id="demo-pie-1" class="pie-title-center" data-size="140" data-percent="#{jackpotControllerImpl.pourcentageByJackpot(Stockdata.jackpotid)}" > <span class="pie-value"></span> </div>
+      
+ 
+      <br></br>
+
+
+
+
+        <div class="-price-box" style="padding-bottom: 0px;">
+        <div class="price" style="padding-bottom: 20px;">
+            #{jackpotControllerImpl.montant(Stockdata.jackpotid)} DT
+            <br></br>
+              <br></br>
+            <font style="color: #000000;" class="fs20">collect
+                                sur <b>  #{Stockdata.jackpotmaxValue}  DT</b>
+                            </font>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 center-row text-center">
+            <i class="icon-timelapse fa-2x text-color"></i>
+            <span class="text-color fa-2x">#{jackpotControllerImpl.daysBetween(Stockdata.jackpotid)} </span>
+            <h6>Jour(s) restant(s)</h6>
+        </div>
+        <div class="col-md-4 center-row text-center">
+            <i class="icon-users3 fa-2x text-color"></i>
+            <span class="text-color fa-2x">#{jackpotControllerImpl.GeParticipantByJackpot(Stockdata.jackpotid)}</span>
+            <h6>Participant(s)</h6>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+          
+               
+                 <div class="widget-title text-left pad-10">
+                <h5 class="title ">Top Donneur:</h5>
+                #{Stockdata.jackpottitre}
+        <hr/>
+        
+        
+        
+        <div class="row">
+     
+           	<div class="col-xs-4 col-sm-4 text-center fund-bottom-border lr-pad-10">
+        <strong class="text-color">
+        
+     
+        
+        <h:dataTable value="#{jackpotControllerImpl.namemontantbyuser(Stockdata.jackpotid)}" var="name" border="1" > 
+        
+                   
+                         
+                         <h:column><f:facet name="header"><h:outputText class="text-color" value="Nam:" /></f:facet>
+                          <h:outputText style="color:#D4AF37;"  value="#{name}" /></h:column>
+                          
+                         </h:dataTable>
+                          
+                          </strong><br></br>
+                          </div>
+                               <div class="col-xs-4 col-sm-4 text-center lr-pad-10">
+                         
+                          <strong class="text-color">
+                     
+                          <h:dataTable value="#{jackpotControllerImpl.summontantbyuser(Stockdata.jackpotid)}" var="name" border="1" > 
+        
+                       
+                              <h:column><f:facet name="header"><h:outputText class="text-color" value=" Montant:" /></f:facet>
+                              <h:outputText style="color:#D4AF37;" value="#{name}" /></h:column>
+                          </h:dataTable>
+                         
+                    </strong> <br></br>
+                    </div>
+                    
+                    
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                <a href="/association/north-african-policy-initiative-109142" class="btn-link" style="color: #DB6143">en savoir +</a>
+                    </div>
+                 
+         
+        
+           
+                <div class="btn-box">
+            <div class="clearfix"></div>
+            <h:form> 
+                            <p class="btn btn-default fs20 white igive-btn"><strong class="zoneDeploie--txt jqZoneDeploieTxt"><span style="color:red;">
+                            
+                            	 <h:column> <f:facet name="header"><h:outputText value="voir page jackpot" color="red"/></f:facet>
+<h:commandButton value="voir Liste Events" action = "#{jackpotControllerImpl.voirevent()}" />
+</h:column>	
+                        </span></strong></p>
+                            </h:form>
+                    </div>
+            <div class="fs16">Reste à collecter : <b>#{jackpotControllerImpl.restdonbyjackpot(Stockdata.jackpotid)}</b></div>
+   </div></div>
+					
+					
+					
+					
+		
+                    </div>   </div>	
+					
+			
+					
+					</div>
+					
+		
+		
+		</h:panelGroup >
+
+</f:view>
+</ui:define>
+
+
+
+</ui:composition>

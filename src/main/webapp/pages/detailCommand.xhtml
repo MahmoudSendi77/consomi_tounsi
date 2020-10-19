@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+	
+	template="/template/adminTemplate.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="content">
+	<f:view transient="true">
+		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<h:form>
+	<div style="top: 30px; right: 22px; margin-left: 28px;">
+	<b:commandButton value="return" action="#{commandControllerimpl.filtrePage()}" iconAwesome="fa-arrow-circle-left"
+									style="background-color: #eb9316 ;margin-top: 40px;"
+									>
+
+								</b:commandButton>
+	
+	</div>
+	
+			<div class="card" style="top: 60px; right: 22px; left: 27px; width: 1400px;">
+				<div class="card-header">Commande Numero : <strong> <h:outputText value="#{CarPool.commandDetail.numeroCommand}" />  </strong> <span class="float-right">
+						<strong>Status:</strong> <h:outputText value="#{CarPool.commandEtat}" />
+					</span>
+
+				</div>
+				<div class="card-body">
+					<div class="row mb-4">
+						<div class="col-sm-6">
+							<h6 class="mb-3">For:</h6>
+							<div>
+								<strong><h:outputText value="#{CarPool.username}" /></strong>
+							</div>
+							<div>Email: <h:outputText value="#{CarPool.email}" /></div>
+							
+							<div>Type :  <h:outputText value="#{CarPool.commandType}" /></div>
+							<div>Date :  <h:outputText value="#{CarPool.commandDate}" /></div>
+						</div>
+
+						
+
+					<div class="table-responsive-sm">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th class="center">#</th>
+									<th>name of Product</th>
+									<th>Description</th>
+
+									<th class="right">Unit Cost</th>
+									<th class="center">Qty</th>
+									<th class="right">Total</th>
+								</tr>
+							</thead>
+							<tbody>
+							<p:repeat value="#{CarPool.afficheProductCommand()}" var="produit">
+								<tr>
+									<td class="center"><h:outputText value="#{produit.key.id}" /></td>
+									<td class="left strong"><h:outputText value="#{produit.key.name}" /></td>
+									<td class="left"><h:outputText value="#{produit.key.size}" /></td>
+
+									<td class="right"><h:outputText value="#{produit.key.price}" /></td>
+									<td class="center"><h:outputText value="#{produit.value}" /></td>
+									
+
+								</tr>
+							</p:repeat>
+							</tbody>
+						</table>
+					</div>
+					<div class="row">
+						<div class="col-lg-4 col-sm-5"></div>
+
+						<div class="col-lg-4 col-sm-5 ml-auto">
+							<table class="table table-clear">
+								<tbody>
+									
+									<tr>
+										<td class="left"><strong>Total</strong></td>
+										<td class="right"><strong><h:outputText value="#{CarPool.montantTTC}" /></strong></td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+	</div>
+</h:form>
+
+</f:view>
+	</ui:define>
+	
+</ui:composition>

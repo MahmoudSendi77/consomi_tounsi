@@ -1,0 +1,176 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<f:facet name="first">
+
+		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css' />
+		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|Raleway:300,400,600&amp;subset=latin-ext' />
+		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css' />
+		<h:outputStylesheet library="css" name="paymentstyle.css" />
+
+	</f:facet>
+</h:head>
+<body>
+<h:form id="manag_payment">
+
+	<div class="container-fluid background">
+		<div class="row padding-top-20">
+			<div
+				class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-8 offset-md-1 offset-lg-1 offset-xl-2 padding-horizontal-40">
+				<div class="row">
+					<div class="col-12 main-wrapper">
+						<div class="row">
+							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+								<div id="template" class="row panel-wrapper">
+									<div class="col-12 panel-header basket-header">
+										<div class="row">
+											<div class="col-6 basket-title">
+												<span class="description">review your</span><br />
+												<span class="emphasized">Cart Summary</span>
+											</div>
+											<div class="col-6 order-number align-right">
+												<span class="description">order #</span><br />
+												<span class="emphasized"></span>
+											</div>
+										</div>
+										<div class="row column-titles padding-top-10">
+											<div class="col-2 align-center">
+												<span>Photo</span>
+											</div>
+											<div class="col-5 align-center">
+												<span>Name</span>
+											</div>
+											<div class="col-2 align-center">
+												<span>Quantity</span>
+											</div>
+											<div class="col-3 align-right">
+												<span>Price</span>
+											</div>
+										</div>
+									</div>
+									
+									<div class="col-12 panel-body basket-body">
+										<p:repeat value="#{cartControllerimpl.affichageProductForPayment}" var="prod">
+											<div class="row product">
+												<div class="col-2 product-image">
+													<h:graphicImage library="images" name="logo.png" />
+												</div>
+												<div class="col-5">
+													<h:outputText value="#{prod.name}" /><br />
+												</div>
+												<div class="col-2 align-right">
+													<span class="sub">unit</span>
+												</div>
+												<div class="col-3 align-right">
+													<span class="sub"></span> <h:outputText value="#{prod.price}" />
+												</div>
+												
+										</div>
+									   </p:repeat>
+									</div>
+									
+									<div class="col-12 panel-footer basket-footer">
+										<hr />
+										<div class="row">
+											<div class="col-8 align-right description">
+												<div class="dive">Subtotal</div>
+											</div>
+											<div class="col-4 align-right">
+												<span class="emphasized">total</span>
+											</div>
+											<div class="col-8 align-right description">
+												<div class="dive">Taxes</div>
+											</div>
+											<div class="col-4 align-right">
+												<span class="emphasized">taxes</span>
+											</div>
+											<div class="col-8 align-right description">
+												<div class="dive">Shipping</div>
+											</div>
+											<div class="col-4 align-right">
+												<span class="emphasized">shipping</span>
+											</div>
+										</div>
+										<hr />
+										<div class="row">
+											<div class="col-8 align-right description">
+												<div class="dive">Total</div>
+											</div>
+											<div class="col-4 align-right">
+												<span class="very emphasized">total</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+								<div class="row panel-wrapper">
+									<div class="col-12 panel-header creditcard-header">
+										<div class="row">
+											<div class="col-12 creditcard-title">
+												<span class="description">please enter your</span><br /> <span
+													class="emphasized">Credit Card Information</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 panel-body creditcard-body">
+										
+											<fieldset>
+											<h:outputText></h:outputText>
+												<label for="card-name">Email of the card</label><br /> <i
+													class="fa fa-user-o" aria-hidden="true"></i>
+												<h:inputText  id='card-name' name='card-name'
+													value="#{paymentControllerimpl.email}" />
+											</fieldset>
+											<fieldset>
+												<label for="card-number">Card Number</label><br /> <i
+													class="fa fa-credit-card" aria-hidden="true"></i>
+												<h:inputText  id='card-number' name='card-number'
+													value="#{paymentControllerimpl.creditCardNumber}" />
+											</fieldset>
+											<fieldset>
+												<label for="card-expiration">CVC</label><br /> <i
+													class="fa fa-calendar" aria-hidden="true"></i>
+												<h:inputText  id='card-expiration'
+													name='card-expiration' 
+													value="#{paymentControllerimpl.cvc}" />
+											</fieldset>
+										
+									</div>
+									<div class="col-12 panel-footer creditcard-footer">
+										<div class="row">
+											<div class="col-12 align-right">
+												<button class="cancel">Cancel</button>
+												
+												<h:commandButton id="confirm_payment" value="Confirm and Pay"
+														action="#{paymentControllerimpl.makeCharge()}"
+														class="confirm" />
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- partial -->
+
+
+
+
+
+</h:form>
+
+	<h:outputScript library="js" name="paymentscript.js" />
+
+</body>
+</html>

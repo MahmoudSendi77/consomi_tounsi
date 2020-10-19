@@ -1,0 +1,200 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+
+	<ui:define name="menu">
+
+		<ui:insert name="productCard" />
+		<ui:insert name="productSideBar" />
+		
+	
+	<h:head></h:head>
+	
+
+
+	
+
+
+	
+	<h:panelGroup class="product-area shop-sidebar shop section">
+		
+<style>
+
+.floowdate{
+  
+    float: right;
+    vertical-align: middle;
+
+    margin-right: 2px;
+    padding: 0 10px;
+    background-color: #e1001b;
+    color: #fff;
+    font-size: 14px;
+ 
+}
+
+
+</style>
+	
+			
+			<div class="container">
+				<div class="row">
+			
+					<p:repeat value="#{eventControllerImpl.events}" var="event" > 
+				
+							<div class="col-lg-4 col-md-6 col-12">
+								<div class="single-product">
+								 <div class=" pad-10 animated fadeInRight visible" p:data-animation="fadeInRight">
+								 <div class="item grids size1of1 mix all category-30" style="display: inline-block;">
+    <div class="visible card-1">
+								
+								<div class="img-wrapper">
+                
+                <div class="tags-fund-right animated fadeIn visible" p:data-animation="fadeIn"><i class="fa fa-eye"></i><h:outputText value="#{event.nbr_vue}"/></div>
+                
+                  <div><h:outputText class=" floowdate" value="#{event.date_start_event}"/> </div>
+                               			
+						<div class="thumb-fund"><h:graphicImage value="#{event.eventimage}" style="width:500px;height:300px;"  /></div>
+						 <div class="fund-organizer text-white text-left">Organisé par : Consomi Tounsi</div>
+            </div>
+						
+									<div class="product-img">
+										<a href="product-details.html">
+											
+										</a>
+										<div class="button-head">
+											<div class="product-action">
+												<a p:data-toggle="modal" p:data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+											</div>
+											<div class="product-action-2">
+												<a title="Add to cart" href="#">Add to cart</a>
+											</div>
+										</div>
+									</div>
+									<hr class="margin-10"/>
+									<div class="product-content">
+									
+										<h3><a href="product-details.html"><h:outputText value="#{event.titre_event}" /></a></h3>
+										
+										<div style="max-height: 80px; height: 80px; overflow: hidden; text-align: justify ; minlength:4; maxlength:18">
+                                         <p class="sp"><h:outputText value="#{event.description}" /></p>
+                                            </div>
+                                               <hr class="margin-10"/>
+										<div class="row">
+										
+										
+										
+										
+										
+										<div class="col-xs-4 col-sm-4 text-center fund-bottom-border lr-pad-10">
+										Location :
+                                           <strong><span style="color: red"><h:outputText value="#{event.location} " /></span></strong> 
+                                         
+                                             
+                                               </div>
+                               
+                               
+                               
+                               <div class="col-xs-4 col-sm-4 text-center fund-bottom-border lr-pad-10">
+                               
+                               Prix d'event :
+                    <strong><span style="color: red">#{event.price} DT</span></strong> 
+
+                </div>
+                               
+                               
+                               <div class="col-xs-4 col-sm-4 text-center lr-pad-10">
+                               
+                               Get Tiket :
+                               
+                 
+                    
+                    
+                               <h:form>
+                             
+                                        <h:commandButton class=" floowdate" style="margin-top: 5px;line-height: 30px; background-color:#D4AF37;" id = "submit" 
+            value = "Tiket ici !" action = "#{Stockdataevent.showdataevent(event.id)}"
+            >
+         </h:commandButton>
+  
+                                    
+                                 </h:form>   
+                    
+                    
+                    
+                    
+             
+                 </div>
+										</div>
+									
+                 
+        
+
+                                    <div class="product-content text-center pad-5">
+                                    
+                                          
+                 
+        
+                                          <div><span style="color: red"> <h:outputText value="Date Fin " />   le  <h:outputText value="#{event.date_end_event}" pattern="MM/dd/yyyy" type="date" /> </span></div>
+                         
+                                    
+                                        
+                                            
+                                               
+                                               </div>
+                                              
+                        
+                                             
+									</div>
+								</div>
+							</div>
+					</div></div>
+				 </div>
+				</p:repeat>
+				
+				
+						</div>
+					</div>
+		
+			
+		</h:panelGroup >
+
+
+
+	
+	<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+ 
+ 
+       <h:form prependId="false">
+    <p:growl id="growl" showDetail="true" />
+ 
+    <p:gmap id="gmap" center="36.765953,10.212814" zoom="7" type="HYBRID" model="#{markerSelectionView.simpleModel}"  style="width:100%;height:400px">
+        <p:ajax event="overlaySelect" listener="#{markerSelectionView.onMarkerSelect}" update="growl" />
+    </p:gmap>
+</h:form>
+
+
+
+</ui:define>
+
+
+
+</ui:composition>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	

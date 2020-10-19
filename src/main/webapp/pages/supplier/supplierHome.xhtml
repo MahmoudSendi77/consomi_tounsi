@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/suplierT.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+
+	<ui:define name="products">
+
+		<style>
+.ui-selectonemenu .ui-selectonemenu-trigger .ui-icon {
+	margin-top: 9px;
+	margin-right: 0;
+	margin-left: -25px;
+}
+
+.form-control:disabled, .form-control[readonly] {
+	background-color: #ffffff;
+	opacity: 1;
+}
+
+.ui-widget-content {
+	border: 1px solid #d3d8dd;
+	background: #fff;
+	color: #4f4f4f;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default {
+	border: 1px solid #a8a8a8;
+	background: #c4c4c4
+		url(/javax.faces.resource/images/ui-bg_highlight-hard_80_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #e9ecef
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	font-weight: bold;
+	color: #4f4f4f;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-widget-header {
+	border: 1px solid #b6d5ea;
+	background: #ffffff
+		url(/javax.faces.resource/images/ui-bg_highlight-soft_100_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #ffffff00
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	color: #fff;
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-selectonemenu .ui-selectonemenu-trigger {
+	border-right: 0;
+	border-top: 0;
+	border-bottom: 0;
+	cursor: pointer;
+	width: 0;
+	height: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 0 3px;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight,
+	.ui-widget-header .ui-state-highlight {
+	border: 1px solid #fbfbfb;
+	background: #fd2439;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.ui-shadow {
+	-webkit-box-shadow: 0 5px 10px rgba(255, 255, 255, 0.8);
+	box-shadow: 0 5px 10px rgba(255, 255, 255, 0.8);
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-list-item {
+	border: 0 none;
+	margin: 3px -8px;
+	padding: 3px 7px;
+	text-align: left;
+	white-space: nowrap;
+	font-family: auto;
+	overflow: auto;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-items-wrapper {
+	overflow-anchor: none;
+	overflow-x: hidden;
+	overflow-y: inherit;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button
+	{
+	font-family: auto;
+	font-size: 1em;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-filter {
+	padding-right: 15px;
+	padding: 4px;
+	width: 100%;
+	box-sizing: border-box;
+	border-radius: .25rem;
+}
+
+/* .ui-selectonemenu-panel{ */
+
+/* } */
+.ui-selectonemenu-panel .ui-selectonemenu-filter-container .ui-icon {
+	position: absolute;
+	top: 18px;
+	right: 14px;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-filter-container {
+	position: relative;
+	margin: 0;
+	padding: .4em;
+	display: inline-block;
+	width: 100%;
+}
+
+.ui-widget-header {
+	color: #ff0c0c;
+}
+</style>
+
+
+<br />
+		<h:panelGroup>
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">List Des Factures</h3>
+				</div>
+				<!-- /.card-header -->
+				<div class="card-body">
+
+					<table id="example1" class="table table-bordered table-striped">
+						<thead>
+							<tr role="row">
+
+								<th>id</th>
+								<th>numero</th>
+								<th>Date</th>
+								<th>Cost</th>
+
+							</tr>
+						</thead>
+						<tbody>
+
+							<p:repeat id="homeAdssList11"
+								value="#{aisleController.listFacture}" var="ads">
+								<tr role="row" onmouseover="">
+									<td>#{empty ads.id ? '-' : ads.id}</td>
+
+
+
+									<td>#{ads.numero}</td>
+									<td>#{ads.date}</td>
+									<td>#{ads.price}</td>
+
+								</tr>
+							</p:repeat>
+
+						</tbody>
+						<tfoot>
+							<tr>
+								<th rowspan="1" colspan="1">id</th>
+								<th rowspan="1" colspan="1">numero</th>
+								<th rowspan="1" colspan="1">Date</th>
+								<th rowspan="1" colspan="1">Cost</th>
+
+							</tr>
+						</tfoot>
+					</table>
+
+				</div>
+				<!-- /.card-body -->
+			</div>
+		</h:panelGroup>
+
+		<br />
+		<br />
+
+
+		<br />
+
+
+		<h:panelGroup>
+			<div class="card card-info">
+
+				<h:form id="f2012">
+					<div class="card-header">
+						<h3 class="card-title">Reply For Supply Request</h3>
+
+					</div>
+				</h:form>
+				<h:panelGroup class="card-body" id="brandShow4770">
+					<p:repeat id="homeAdssList"
+						value="#{aisleController.listSupplying}" var="fac">
+						<p:repeat id="_22220" value="#{aisleController.produ(fac)}"
+							var="prod">
+							<h:form>
+
+								<div class="row">
+									<div class="col-md-4">
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text"> product: </span>
+											</div>
+											<h:outputText pt:placeholder="quantity" type="text"
+												class="form-control" value="#{prod.reference}_#{prod.name}" />
+
+
+
+										</div>
+									</div>
+
+									<div class="col-md-3">
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text"> product: </span>
+											</div>
+											<h:outputText pt:placeholder="quantity" type="text"
+												class="form-control" value="#{fac.products[prod]}" />
+
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="input-group mb-3">
+											<center>
+												<h:commandLink class="btn btn-success"
+													value=" Supply Request "
+													action="#{aisleController.supplyFor(fac.id)}">
+												</h:commandLink>
+											</center>
+
+										</div>
+									</div>
+
+								</div>
+
+							</h:form>
+							<br />
+						</p:repeat>
+					</p:repeat>
+				</h:panelGroup>
+			</div>
+		</h:panelGroup>
+		<br />
+
+<script>
+			$(function() {
+				$("#example1").DataTable();
+				$("#example3").DataTable();
+				$("#example4").DataTable();
+				$("#example5").DataTable();
+				$('#example2').DataTable({
+					"paging" : true,
+					"lengthChange" : false,
+					"searching" : false,
+					"ordering" : true,
+					"info" : true,
+					"autoWidth" : false,
+				});
+			});
+		</script>
+
+	</ui:define>
+
+</ui:composition>

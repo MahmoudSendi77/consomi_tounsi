@@ -1,0 +1,159 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+	 template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	
+	<ui:define name="menu">
+		<ui:insert name="productCard" />
+		<ui:insert name="productSideBar" />
+		
+
+<h:panelGroup class="cown-down">
+			<!-- Start Most Popular -->
+			<div class="product-area most-popular section">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="section-title">
+								<h2>Top Sells Products</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<div class="owl-carousel popular-slider">
+								<p:repeat value="#{productController.listProduct}" var="product">
+
+									<div class="single-product" >
+										<p:repeat value="#{product.picture}" size="1" var="image">
+											<div class="product-img" style="">
+												<h:commandLink href="product-details.html"> <h:graphicImage
+														library="uploads" name="product/image/#{image.image}"
+														class="default-img" /> <h:graphicImage library="uploads"
+														name="product/image/#{image.image}" class="hover-img" />
+													<span class="out-of-stock">out-of-stock</span>
+												</h:commandLink>
+												<h:form>
+													<div class="button-head">
+														<div class="product-action">
+															<h:commandLink title="Quick View" href="#">
+																<i class=" ti-eye"></i>
+																<span>Quick Shop</span>
+															</h:commandLink>
+															<h:commandLink title="Wishlist"
+																action="#{productController.goToProductHome()}">
+																<i class=" ti-heart "></i>
+																<span>Add to Wishlist</span>
+															</h:commandLink>
+															<h:commandLink title="Statistic"
+																action="#{productController.navigateToProductDetails(product.reference)}">
+																<i class="ti-bar-chart-alt"></i>
+																<span>See Statistic</span>
+															</h:commandLink>
+														</div>
+														<div class="product-action-2">
+															<h:commandLink title="Add to cart"
+																action="#{productController.goToLogin()}">Add to
+																cart</h:commandLink>
+														</div>
+													</div>
+												</h:form>
+											</div>
+										</p:repeat>
+
+										<div class="product-content">
+											<h3>
+												<h:outputText value= "#{product.name}" />
+
+											</h3>
+											<div class="product-price">
+												<span> #{product.price} DT</span>
+
+											</div>
+										</div>
+									</div>
+									
+								</p:repeat>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Most Popular Area -->
+			
+
+		</h:panelGroup >
+
+
+			
+
+
+
+
+<br/><br/><br/><br/><br/>
+		<h:panelGroup>
+
+
+<br/><br/><br/><br/><br/>
+<!-- Start Most Popular -->
+
+			<div class="cown-down col-lg-8 col-8">
+			<div class="section-inner ">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-4 col-4 padding-right">
+							<div class="image">
+								<h:graphicImage library="images"
+									name="uploads/product/barCode/image1.jpg" />
+							</div>
+						</div>
+						<div class="col-lg-4 col-4 padding-left">
+							<div class="content col-lg-4 col-4">
+								<div class="heading-block ">
+									<p class="small-title">Promos</p>
+									<h3 class="title">Promos Product + Category</h3>
+									<p class="text">Our Promos Categegory</p>
+									<h1 class="price">
+										$1200 <s>$1890</s>
+									</h1>
+									<div class="coming-time">
+										<div class="clearfix" data-countdown="2021/02/30">
+											<div class="cdown">
+												<span class="days"><strong>306</strong>
+												Days.</span>
+											</div>
+											<div class="cdown">
+												<span class="hour"><strong> 23</strong>
+												Hours.</span>
+											</div>
+											<div class="cdown">
+												<span class="minutes"><strong>17</strong>
+													MINUTES.</span>
+											</div>
+											<div class="cdown">
+												<span class="second"><strong> 02</strong>
+												SECONDS.</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+
+		</h:panelGroup>
+		<br/><br/>
+		</ui:define>
+	
+</ui:composition>

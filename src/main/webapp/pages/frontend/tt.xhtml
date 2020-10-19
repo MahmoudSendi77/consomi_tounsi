@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="menu">
+		<ui:insert name="productCard" />
+		<ui:insert name="productSideBar" />
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<h:panelGroup class="product-area shop-sidebar shop section">
+			<div class="container">
+				<div class="row">
+
+<!-- tri des produit par  -->
+			<div class="col-lg-9 col-md-8 col-12">
+
+
+				<div class="col-12">
+					<!-- Shop Top -->
+					<div class="shop-top">
+						
+						<ul class="view-mode">
+							<li class="active"><div class="single-shorter">
+								
+							</div> ConsommiTounsi</li>
+						</ul>
+					</div>
+					<!--/ End Shop Top -->
+				</div>
+
+<!-- list des produit by filter -->
+				<div class="row">
+
+					<!-- 	<h:dataTable value="#{employeController.employes}" var="employe" -->
+					<!-- 					border="1"> -->
+					<p:repeat value="#{productController.listProduct}" var="product">
+						<div class="col-lg-4 col-md-6 col-12">
+							<div class="single-product">
+								<p:repeat value="#{product.picture}" var="image">
+									<div class="product-img">
+										<a href="product-details.html"> <h:graphicImage
+												library="images"
+												name="uploads/product/barCode/#{image.image}"
+												class="default-img" width="550" height="750" /> <h:graphicImage
+												library="images"
+												name="uploads/product/barCode/#{image.image}"
+												class="hover-img" width="550" heigh="750" /> 
+										</a>
+										<h:form>
+											<div class="button-head">
+												<div class="product-action">
+													<h:commandLink title="Quick View" href="#">
+														<i class=" ti-eye"></i>
+														<span>Quick Shop</span>
+													</h:commandLink>
+													<h:commandLink title="Wishlist"
+														action="#{productController.goToProductHome()}">
+														<i class=" ti-heart "></i>
+														<span>Add to Wishlist</span>
+													</h:commandLink>
+													<h:commandLink title="Statistic"
+														action="#{productController.goToProductHome()}">
+														<i class="ti-bar-chart-alt"></i>
+														<span>See Statistic</span>
+													</h:commandLink>
+												</div>
+												<div class="product-action-2">
+													<h:commandLink title="Add to cart"
+														action="#{productController.goToLogin()}">Add to
+																cart</h:commandLink>
+												</div>
+											</div>
+										</h:form>
+									</div>
+								</p:repeat>
+									<h:form>
+<!-- 									if review = nbr rank  so do  yellow tistar -->
+									
+										</h:form>
+								<div class="product-content">
+									<h3>
+										<h:outputText value="#{product.name}" />
+
+									</h3>
+									<div class="product-price">
+										<span>#{product.price} DT</span>
+
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</p:repeat>
+				</div>
+			</div>
+			</div></div>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

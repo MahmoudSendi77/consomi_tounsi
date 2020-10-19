@@ -1,0 +1,747 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	 xmlns:ct="http://www.chartistjsf.org/charts"
+	template="/login/name.xhtml" xmlns:p="http://primefaces.org/ui">
+
+
+
+
+	<ui:param name="page_name" value="Connexion" />
+
+	<ui:define name="contentProfile">
+
+
+		<h:body style="background-color: white;">
+
+
+<style>
+  
+  
+   
+ 
+ 
+    #myChart {
+      height: 100%;
+      width: 100%;
+      min-height: 150px;
+    }
+ 
+    .zc-ref {
+      display: none;
+    }
+    
+  </style>
+
+			<style>
+.jqplot-target {
+	position: relative;
+	color: maroon;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 1em;
+}
+
+.jqplot-series-canvas {
+	background: transparent;
+}
+
+.jqplot-target {
+	position: relative;
+	color: #ca9c9c;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 1em;
+}
+
+.jqplot-meterGauge-label {
+	font-size: 1em;
+	color: #ca9c9c;
+	position: relative;
+}
+</style>
+
+
+
+			<style>
+.ui-slider .ui-slider-handle {
+	position: absolute;
+	z-index: 2;
+	width: 2.5em;
+	height: 3.2em;
+	color: #e23636;
+}
+
+.ui-slider .ui-slider-handle {
+	background: url("../resources/images/Curseur.png");
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+	top: -1.3em;
+	margin-left: -.6em;
+}
+
+.ui-state-default, .ui-widget-header .ui-state-default {
+	
+}
+
+.ui-corner-all {
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.ui-slider {
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background: #005ba0;
+}
+
+.ui-slider-horizontal {
+	height: 0.8em;
+	width: 311px;
+}
+
+#credit-valeur {
+	height: 52px;
+	background: url("../resources/images/Calendre.png");
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	width: 100%;
+	position: relative;
+}
+
+#out {
+	font-family: impact;
+	font-size: 42px;
+	width: 100%;
+	height: 58px;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	text-align: center;
+	color: #005ba0;
+}
+
+.form-box-tounsi {
+	border-top: 5px solid #fa0504;
+	-webkit-box-shadow: 0px 5px 21px -2px rgba(0, 0, 0, 0.47);
+	-moz-box-shadow: 0px 5px 21px -2px rgba(0, 0, 0, 0.47);
+	box-shadow: 0px 5px 21px -2px rgba(0, 0, 0, 0.47);
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: white;
+}
+
+.margin-10 {
+	margin: 10px;
+}
+
+.fs20 {
+	font-size: 20px !important;
+}
+
+.igive-btn {
+	color: white !important;
+	min-width: 240px;
+}
+</style>
+
+
+
+			<style>
+.container1 {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 220px;
+	width: 320px;
+	text-align: center;
+}
+
+#title {
+	position: absolute;
+	top: 90px;
+	left: -208px;
+	height: 40px;
+	width: 500px;
+	border-radius: 40px;
+	line-height: 40px;
+	background: black;
+}
+
+#share {
+	position: absolute;
+	top: 80px;
+	left: 284px;
+	height: 60px;
+	width: 60px;
+	border-radius: 40px;
+	line-height: 60px;
+	font-size: 20px;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	background: black;
+}
+
+#copy, #twitter, #android {
+	position: absolute;
+	top: 95px;
+	left: 400px;
+	height: 0px;
+	width: 0px;
+	border-radius: 40px;
+	line-height: 60px;
+	font-size: 0px;
+	transition: 0.5s all cubic-bezier(.87, -.41, .19, 1.44);
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	background: black;
+}
+
+#c1, #c2, #c3 {
+	position: absolute;
+	top: 105px;
+	left: 325px;
+	height: 10px;
+	width: 0px;
+	transition: 0.5s all cubic-bezier(.87, -.41, .19, 1.44);
+	background: #df0101;
+}
+
+#c1 {
+	transform: rotate(45deg)
+}
+
+#c1 {
+	transform: rotate(45deg)
+}
+
+#c3 {
+	transform: rotate(-45deg)
+}
+
+#message {
+	position: absolute;
+	top: 220px;
+	left: 80px;
+	height: 20px;
+	width: 160px;
+	line-height: 20px;
+	font-size: 16px;
+	color: var(- -secondcolor);
+	opacity: 0;
+	transition: 1s all
+}
+
+#txt {
+	opacity: 0;
+	cursor: default;
+}
+
+#insta, #twit {
+	position: absolute;
+	bottom: 0;
+	font-size: 25px;
+	margin: 10px;
+	cursor: pointer;
+	color: #000;
+}
+
+#twit {
+	right: 0;
+}
+
+
+
+@media (min-width: 992px)
+.col-lg-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 17%;
+}
+
+
+.dico_title_1 {
+    color: #e41129;
+    font-size: 2.25em;
+    font-weight: bold;
+    display: block;
+    line-height: 1.5em;
+}
+
+
+.dictionary .dico_main_title .dico_title_1 {
+    color: #e41129;
+    font-size: 2.25em;
+    font-weight: bold;
+    display: block;
+    line-height: 1.5em;
+}
+
+
+.dictionary .dico_main_title {
+    color: #303030;
+    margin-bottom: 0em;
+    margin-top: 28px;
+}
+
+
+
+.dico_main_title .dico_title_1:first-letter {
+    display: block;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 3em;
+    line-height: 1em;
+    color: #B8B8B8;
+    line-height: 50px;
+    text-transform: uppercase;
+    margin-top: 8px;
+}
+
+
+.dictionary .dico_main_title .dico_title_1:first-letter {
+    display: block;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 3em;
+    line-height: 1em;
+    color: #B8B8B8;
+    line-height: 50px;
+    text-transform: uppercase;
+    margin-top: 8px;
+}
+
+
+
+</style>
+
+
+
+			<div class="col-lg-6 col-md-4 col-12">
+
+
+
+				<div class="box_couleurs_stat form-box-tounsi">
+
+
+<!--  <h3 style="text-align: center;color: black;;">  Votre code de parrainage !   </h3> -->
+
+<div class="grid_line dico_main_title grid--norwd">
+        <h1 class="dico_title_1">parrainage</h1>
+       
+    </div>
+             
+             
+             
+<!-- 					<h:graphicImage library="images" name="sssss.jpg" -->
+<!-- 						style="width: 1000px;  height: 179px; position:Center;" /> -->
+
+  
+					<br /><hr class="margin-10"/> <br /> 
+					<br /> <br /> <br /> <br />
+					 
+					<div class="container1">
+
+
+
+						<div id="title">
+							<h5 style="color: white; margin: 6px;">#{Profile.getrandomparrainage()}</h5>
+						</div>
+
+						<div class="connector" id="c1"></div>
+						<div class="connector" id="c2"></div>
+						<div class="connector" id="c3"></div>
+
+						<div id="copy" align="center"
+							>
+							<i class="fa fa-copy" style="color: white; margin: 19px;"></i>
+						</div>
+						<div id="twitter" align="center"
+							>
+							<i class="fa fa-twitter" style="color: white; margin: 19px;"></i>
+						</div>
+						<div id="android" align="center"
+							>
+							<i class="fa fa-share-alt" style="color: white; margin: 19px;"></i>
+						</div>
+
+						<div id="share" align="center">
+							<i class="fa fa-share-square" style="color: white; margin: 19px;"></i>
+						</div>
+
+						<div id="message" align="center"></div>
+
+						<input id="txt"></input>
+
+
+
+
+
+					</div>
+
+				</div>
+				
+				
+				
+				
+				<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+				
+  
+
+ 
+
+  <div id='myChart'><a class="zc-ref" href="https://www.zingchart.com/">Charts by ZingChart</a></div>
+  <script>
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "b55b025e438fa8a98e32482b5f768ff5"];
+    window.feed = function(callback) {
+      var tick = {};
+      tick.plot0 = Math.ceil(10 );
+      callback(JSON.stringify(tick));
+    };
+ 
+    var myConfig = {
+      type: "gauge",
+      globals: {
+        fontSize: 25
+      },
+      plotarea: {
+        marginTop: 80
+      },
+      plot: {
+        size: '100%',
+        valueBox: {
+          placement: 'center',
+          text: '%v', //default
+          fontSize: 35,
+          rules: [{
+              rule: '%v >= 700',
+              text: '%v<br>EXCELLENT</br>'
+            },
+            {
+              rule: '%v &lt; 700 &amp;&amp; %v > 640',
+              text: '%v<br>Good</br>'
+            },
+            {
+              rule: '%v &lt; 640 &amp;&amp; %v > 580',
+              text: '%v<br>Fair</br>'
+            },
+            {
+              rule: '%v &lt;  580',
+              text: '%v<br>Bad</br>'
+            }
+          ]
+        }
+      },
+      tooltip: {
+        borderRadius: 5
+      },
+      scaleR: {
+        aperture: 180,
+        minValue: 0,
+        maxValue: 850,
+        step: 50,
+        center: {
+          visible: false
+        },
+        tick: {
+          visible: false
+        },
+        item: {
+          offsetR: 0,
+          rules: [{
+            rule: '%i == 9',
+            offsetX: 15
+          }]
+        },
+//         labels: ['300', '', '', '', '', '', '580', '640', '700', '750', '', '850'],
+        ring: {
+          size: 50,
+          rules: [
+        	  
+        	  {
+              rule: '%v &lt;= 580',
+              backgroundColor: '#E53935'
+            },
+            {
+              rule: '%v > 580 &amp;&amp; %v &lt; 640',
+              backgroundColor: '#EF5350'
+            },
+            {
+              rule: '%v >= 640 &amp;&amp; %v &lt; 700',
+              backgroundColor: '#FFA726'
+            },
+            {
+              rule: '%v >= 700',
+              backgroundColor: '#29B6F6'
+            }
+          ]
+        }
+      },
+      refresh: {
+        type: "feed",
+        transport: "js",
+        url: "feed()",
+        interval: 1500,
+        resetTimeout: 1000
+      },
+      series: [{
+        values: [755], // starting value
+        backgroundColor: 'black',
+        indicator: [10, 10, 10, 10, 0.75],
+        animation: {
+          effect: 2,
+          method: 1,
+          sequence: 4,
+          speed: 900
+        },
+      }]
+    };
+ 
+    zingchart.render({
+      id: 'myChart',
+      data: myConfig,
+      height: 500,
+      width: '100%'
+    });
+  </script>
+				
+				
+
+			</div>
+
+
+			<div class="col-lg-3 col-md-4 col-12"  style="max-width: 22%;">
+
+
+				<div class="box_couleurs_stat form-box-tounsi">
+				
+			<h:graphicImage library="images" name="bonus-parrainage.png"
+						style="width: 100%;  height: 94px; position:Center;" />
+				<h3 style="text-align: center;color: black;;">  Liste des amies parrains   </h3>
+				<hr>
+				</hr>
+				
+				
+<div style="width: 114%; margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: auto;">
+   <ct:chart id="pieChart" type="pie" model="#{UserPieChartBean.pieChartModel}" >
+      <p:ajax event="itemSelect" listener="#{UserPieChartBean.pieItemSelect}" update="pieChartMessage" />
+   </ct:chart>
+   <p:message id="pieChartMessage" for="pieChart" showDetail="true" />
+ </div>
+				
+				</div>
+
+
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</h:body>
+		<script type="text/javascript">
+			
+	
+
+			let share = document.getElementById("share");
+			let copy = document.getElementById("copy");
+			let twitter = document.getElementById("twitter");
+			let android = document.getElementById("android");
+
+			let c1 = document.getElementById("c1");
+			let c2 = document.getElementById("c2");
+			let c3 = document.getElementById("c3");
+
+			let message = document.getElementById("message");
+
+			let exp = false;
+
+	
+			share.addEventListener(
+				"click",
+				function(e) {
+					e.stopPropagation();
+					if (exp) {
+						contract();
+					} else {
+						expand();
+					}
+				},
+				false
+			);
+
+			
+			document.addEventListener(
+				"click",
+				function() {
+					contract();
+				},
+				false
+			);
+
+			function expand() {
+				copy.style.top = "5px";
+				copy.style.left = "400px";
+				copy.style.height = "60px";
+				copy.style.width = "60px";
+				copy.style.fontSize = "20px";
+
+				twitter.style.top = "80px";
+				twitter.style.left = "400px";
+				twitter.style.height = "60px";
+				twitter.style.width = "60px";
+				twitter.style.fontSize = "20px";
+
+				android.style.top = "155px";
+				android.style.left = "400px";
+				android.style.height = "60px";
+				android.style.width = "60px";
+				android.style.fontSize = "20px";
+
+				c1.style.width = "90px";
+				c1.style.top = "150px";
+				c2.style.width = "80px";
+				c3.style.width = "90px";
+				c3.style.top = "60px";
+
+				exp = true;
+			}
+
+			function contract() {
+				copy.style.top = "95px";
+				copy.style.left = "185px";
+				copy.style.height = "0px";
+				copy.style.width = "0px";
+				copy.style.fontSize = "0px";
+
+				twitter.style.top = "95px";
+				twitter.style.left = "185px";
+				twitter.style.height = "0px";
+				twitter.style.width = "0px";
+				twitter.style.fontSize = "0px";
+
+				android.style.top = "95px";
+				android.style.left = "185px";
+				android.style.height = "0px";
+				android.style.width = "0px";
+				android.style.fontSize = "0px";
+
+				c1.style.width = "0px";
+				c1.style.top = "105px";
+				c2.style.width = "0px";
+				c3.style.width = "0px";
+				c3.style.top = "105px";
+
+				exp = false;
+			}
+
+			
+			copy.addEventListener(
+				"click",
+				function(e) {
+					e.stopPropagation();
+					copie();
+				},
+				false
+			);
+
+			
+			twitter.addEventListener(
+				"click",
+				function(e) {
+					e.stopPropagation();
+					window.open(
+						"http://twitter.com/share?text=Happy%202019!%20%F0%9F%8E%89%20%0avia&amp;url=https://codepen.io/nitnelav/full/yGzxNv&amp;hashtags=HappyNewYear",
+						"",
+						"left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0"
+					);
+				},
+				false
+			);
+
+			
+			android.addEventListener(
+				"click",
+				function(e) {
+					e.stopPropagation();
+					if (!navigator.share) {
+					
+						setMessage("Sorry, that only works on Chrome on Android... 😞");
+					} else {
+						navigator.share({
+							title: "Happy 2019! 🎉",
+							text: "Happy 2019! 🎉",
+							url: "https://codepen.io/nitnelav/pen/yGzxNv?editors=0011"
+						});
+					}
+				},
+				false
+			);
+
+			
+			function setMessage(txt) {
+				message.style.opacity = "1";
+				message.innerHTML = txt;
+				setTimeout(function() {
+					message.style.opacity = "0";
+					message.innerHTML = "";
+				}, 3000);
+			}
+
+			//stop prop on some links
+			let links = document.getElementsByClassName("somelinks");
+			for (var i = 0; i &lt; links.length; i++) {
+				links[i].addEventListener(
+					"click",
+					function(e) {
+						e.stopPropagation();
+					},
+					false
+				);
+			}
+
+			function copie() {
+			
+				title.textContent = '#{Profile.getrandomparrainage()}' ;
+				let snipRange = document.createRange();
+				snipRange.selectNodeContents(title);
+				let selection = window.getSelection();
+				selection.removeAllRanges();
+				selection.addRange(snipRange);
+				let result = false;
+				try {
+					result = document.execCommand("copy");
+					setMessage("copiiied! 🤗");
+				} catch (err) {
+					// Copy command is not available
+					console.error(err);
+					setMessage("something went wrong :(");
+				}
+				selection.removeAllRanges();
+				return result;
+			}
+
+		
+			</script>
+
+
+	</ui:define>
+</ui:composition>
+

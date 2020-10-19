@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/adminTemplate.xhtml">
+
+	<ui:define name="products">
+	<h:head>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		</h:head>
+
+		<style>
+.ui-selectonemenu .ui-selectonemenu-trigger .ui-icon {
+	margin-top: 9px;
+	margin-right: 0;
+	margin-left: -25px;
+}
+
+.form-control:disabled, .form-control[readonly] {
+	background-color: #ffffff;
+	opacity: 1;
+}
+
+.ui-widget-content {
+	border: 1px solid #d3d8dd;
+	background: #fff;
+	color: #4f4f4f;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default {
+	border: 1px solid #a8a8a8;
+	background: #c4c4c4
+		url(/javax.faces.resource/images/ui-bg_highlight-hard_80_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #e9ecef
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	font-weight: bold;
+	color: #4f4f4f;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-widget-header {
+	border: 1px solid #b6d5ea;
+	background: #ffffff
+		url(/javax.faces.resource/images/ui-bg_highlight-soft_100_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #ffffff00
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	color: #fff;
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-selectonemenu .ui-selectonemenu-trigger {
+	border-right: 0;
+	border-top: 0;
+	border-bottom: 0;
+	cursor: pointer;
+	width: 0;
+	height: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 0 3px;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight,
+	.ui-widget-header .ui-state-highlight {
+	border: 1px solid #fbfbfb;
+	background: #fd2439;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.ui-shadow {
+	-webkit-box-shadow: 0 5px 10px rgba(255, 255, 255, 0.8);
+	box-shadow: 0 5px 10px rgba(255, 255, 255, 0.8);
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-list-item {
+	border: 0 none;
+	margin: 3px -8px;
+	padding: 3px 7px;
+	text-align: left;
+	white-space: nowrap;
+	font-family: auto;
+	overflow: auto;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-items-wrapper {
+	overflow-anchor: none;
+	overflow-x: hidden;
+	overflow-y: inherit;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button
+	{
+	font-family: auto;
+	font-size: 1em;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-filter {
+	padding-right: 15px;
+	padding: 4px;
+	width: 100%;
+	box-sizing: border-box;
+	border-radius: .25rem;
+}
+
+/* .ui-selectonemenu-panel{ */
+
+/* } */
+.ui-selectonemenu-panel .ui-selectonemenu-filter-container .ui-icon {
+	position: absolute;
+	top: 18px;
+	right: 14px;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-filter-container {
+	position: relative;
+	margin: 0;
+	padding: .4em;
+	display: inline-block;
+	width: 100%;
+}
+</style>
+		<br />
+
+		<center>
+
+			<h:panelGroup>
+				
+						
+						<div class="card-body">
+					<h:form enctype="multipart/form-data" id="myfform1">
+						<h:panelGroup id="panelBarCodeImage" class=""
+							style="display: #{adminProductController.showBarCodePanelImage};">
+							<p:messages id="messages" showDetail="true" closable="true"
+								autoUpdate="true">
+							</p:messages>
+							<br />
+
+							<h:inputFile value="#{adminProductController.testFile}"
+								
+							  />
+							  <h:commandButton value="add the image " action="#{adminProductController.testPart}">
+							  </h:commandButton>
+						</h:panelGroup>
+						
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> product barCode :</span>
+							</div>
+							<h:inputText id="jasser" pt:placeholder="product barCod"
+								type="text" class="form-control" disabled="true"
+								value="#{adminProductController.productBarCode}"  >
+								
+								</h:inputText>
+								<br />
+						</div>
+					
+</h:form>
+		<h:form enctype="multipart/form-data" id="jasser1">			
+<div>
+						<h:panelGroup 
+							style="display: #{adminProductController.showForm2};"  >
+
+							<h:panelGroup id="panelBarCode" class=""
+								style="display: #{adminProductController.showBarCodePanel};">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text"> barCode :</span>
+									</div>
+									<h:inputText pt:placeholder="product barCod" type="text"
+										class="form-control" />
+								</div>
+							</h:panelGroup>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> name
+										&#160;&#160;&#160;:&#160;&#160;&#160;</span>
+								</div>
+								<h:inputText pt:placeholder="product name" type="text"
+									class="form-control"
+									value="#{adminProductController.product.name}" />
+							</div>
+
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> price
+										&nbsp;&nbsp;&nbsp;:&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span>
+								</div>
+								<h:inputText pt:placeholder="product price" type="text"
+									value="#{adminProductController.product.price}"
+									class="form-control" />
+								<div class="input-group-append">
+									<span class="input-group-text">DT</span>
+									
+								</div>
+							</div>
+
+							<h:panelGroup id="paneColor"
+								style="display: #{adminProductController.showColor};">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text"> color
+											&nbsp;&nbsp;&nbsp;:&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span>
+									</div>
+									<h:inputText pt:placeholder="product color" type="text"
+										class="form-control"
+										value="#{adminProductController.product.color}">
+										<p:ajax event="keyup" update="paneColor" />
+									</h:inputText>
+									<div class="input-group-append">
+										<span class="input-group-text"> <i class="fa fa-square"
+											style="color: #{adminProductController.product.color}"> </i>
+										</span>
+									</div>
+								</div>
+							</h:panelGroup>
+
+							
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> weight
+										:&#160;&#160;&#160;&#160;</span>
+								</div>
+								<h:inputText pt:placeholder="product weight" type="text"
+									class="form-control"
+									value="#{adminProductController.product.weight}" />
+								<div class="input-group-append">
+									<span class="input-group-text">&#160; g&#160;</span>
+								</div>
+							</div>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> TVA
+										:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span>
+								</div>
+								<h:inputText pt:placeholder="product TVA" type="text"
+									class="form-control"
+									value="#{adminProductController.product.tva}" />
+								<div class="input-group-append">
+									<span class="input-group-text">&#160;%</span>
+								</div>
+							</div>
+							
+					
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Select Category</label>
+											<p:selectOneMenu class="select2bs4 " effect="fold"
+												editable="true" filter="true" filterMatchMode="contains"
+												style="width: 100%; padding-right: 0em;"
+												onchange="submit();"
+												value="#{adminProductController.categorySelect}">
+												<p:ajax event="change"
+													listener="#{adminProductController.onCategoryyChange}"
+													update="subCategory" />
+												<f:selectItem itemLabel="select Category" itemValue=""
+													noSelectionOption="false" itemDisabled="true" />
+												<f:selectItems value="#{adminProductController.categories}" />
+											</p:selectOneMenu>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Select SubCategory</label>
+											<p:selectOneMenu id="subCategory" class="select2bs4"
+												effect="fold" editable="true" filter="true"
+												filterMatchMode="contains"
+												style="width: 100%; padding-right: 0em;"
+												value="#{adminProductController.subCategorySelect}">
+												<p:ajax event="change"
+													listener="#{adminProductController.onSubCategoryChange}"
+													update="subCategory" />
+												<f:selectItem itemLabel="Select SubCategory" itemValue=""
+													noSelectionOption="flase" itemDisabled="true" />
+												<f:selectItems
+													value="#{adminProductController.subCategories}">
+													<p:autoComplete />
+												</f:selectItems>
+
+											</p:selectOneMenu>
+										</div>
+									</div>
+								</div>
+
+							
+
+							<div class="row">
+								<div class="col-md-12">
+									<!-- 										<div class="form-group"> -->
+									<!-- 											<h:selectOneMenu value="#{adminProductController.subCategorySelect}" class="form-control select2bs4" style="width: 100%;"> -->
+									<!-- 												<f:selectItem selected="selected">select Brand</f:selectItem> -->
+									<!-- 												<f:selectItems value="#{adminProductController.categories}"></f:selectItems> -->
+
+									<!-- 											</h:selectOneMenu> -->
+									<!-- 										</div> -->
+								</div>
+							</div>
+
+
+							<h:panelGroup id="paneDate" class=""
+								style="display: #{adminProductController.showDate};">
+								<!-- Date dd/mm/yyyy -->
+								<div class="form-group">
+									<label>Fabrication Date :</label>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i
+												class="fa fa-calendar"></i> </span>
+										</div>
+										<h:inputText type="text" class="form-control"
+											data-inputmask-alias="datetime"
+											data-inputmask-inputformat="dd/mm/yyyy" data-mask="yes" />
+										<!-- 										<p:inputMask id="date1" value="#{adminProductController.date1}" mask="99/99/2099" -->
+										<!-- 											placeholder="" -->
+										<!-- 											/> -->
+									</div>
+									<!-- /.input group -->
+								</div>
+								<!-- Date dd/mm/yyyy -->
+								<div class="form-group">
+									<label>Expiration Date :</label>
+
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i
+												class="fa fa-calendar"></i> </span>
+											<h:inputText type="text" class="form-control"
+												data-inputmask-alias="datetime"
+												data-inputmask-inputformat="dd/mm/yyyy" data-mask="yes"
+												value="#{adminProductController.date2}" />
+
+										</div>
+
+
+									</div>
+									<!-- /.input group -->
+								</div>
+							</h:panelGroup>
+
+
+						</h:panelGroup>
+
+						<p:messages id="messages2" for="uplaodImage" showDetail="true"
+							closable="true" autoUpdate="true">
+
+						</p:messages>
+						<br />
+						<p:fileUpload id="uplaodImage"
+							fileUploadListener="#{adminProductController.handleFileUpload}"
+							multiple="true" update="" />
+						
+
+
+						<!-- /.card-body -->
+						<br />
+						<br />
+						<center>
+							<h:commandButton value="Add Product"
+								action="#{adminProductController.addTheProduct()}"></h:commandButton>
+						</center>
+						<br />
+</div>
+					</h:form>
+					
+				</div>
+
+			</h:panelGroup>
+		</center>
+
+	</ui:define>
+</ui:composition>

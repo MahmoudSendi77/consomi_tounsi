@@ -1,0 +1,632 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/adminTemplate.xhtml">
+
+	<ui:define name="products">
+
+		<style>
+.ui-widget-header {
+	border: 1px solid #a8a8a8;
+	background: #c4c4c4
+		url(/javax.faces.resource/images/ui-bg_highlight-soft_100_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #f3f3f3
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	color: #007bff;
+	font-weight: lighter;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+	align-items: center;
+	place-items: center;
+}
+</style>
+
+		<!-- 		brand  -->
+		<div class="card ">
+			<div class="card-header">
+				<h3 class="card-title">Brands</h3>
+			</div>
+			<!-- /.card-header -->
+			<div class="card-body">
+
+				<table id="example5" class="table table-bordered table-striped">
+					<thead>
+						<tr role="row">
+							<th>id</th>
+							<th>image</th>
+
+							<th>name</th>
+
+
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<p:repeat id="brandid"
+							value="#{adminProductController.listProductbrand}" var="brand">
+
+							<tr role="row" onmouseover="">
+								<td>#{brand.id}</td>
+
+								<td><p:graphicImage library="uploads"
+										name="brand/image/#{brand.logo.image}" height="80" width="80"
+										style="width : 80 ; height : 80" /></td>
+								<td>#{brand.name}</td>
+								<td class="project-actions text-right">
+									<center>
+										<h:form>
+											<p:commandLink update=":formPro2:display3"
+												onstart="#{adminProductController.setBrand(brand)}"
+												oncomplete="PF('carDialog3').show()"
+												class="btn btn-primary btn-sm" ajax="false">
+												<i class="fa fa-folder"> </i> View  <f:setPropertyActionListener
+													value="#{brand}" target="#{adminProductController.brand}" />
+													
+											</p:commandLink>
+										
+											<p:commandLink onstart="#{adminUpdateController.doShow(2)}"
+												action="#{navigateTo.updateProduct()}"
+												oncomplete="#{adminUpdateController.doShow(2)}"
+												class="btn btn-info btn-sm" ajax="false">
+												<i class="fa fa-pencil"> </i> Edit  <f:setPropertyActionListener
+													value="#{brand}" target="#{adminUpdateController.brand}" />
+													<f:setPropertyActionListener
+													value="2"
+													target="#{adminUpdateController.showForm}" />
+											</p:commandLink>
+										
+
+											<p:commandLink update=":formPro2:display32"
+												onstart="#{adminProductController.setBrand(brand)}"
+												oncomplete="PF('carDialogdelete3').show()"
+												class="btn btn-danger btn-sm">
+												<i class="fa fa-trash"> </i> delete  <f:setPropertyActionListener
+													value="#{brand}" target="#{adminProductController.brand}" />
+											</p:commandLink>
+										</h:form>
+									</center>
+								</td>
+
+							</tr>
+						</p:repeat>
+
+					</tbody>
+					<tfoot>
+						<tr>
+							<th rowspan="1" colspan="1">id</th>
+							<th rowspan="1" colspan="1">images</th>
+							<th rowspan="1" colspan="1">name</th>
+							<th rowspan="1" colspan="1">Action</th>
+						</tr>
+					</tfoot>
+				</table>
+
+
+				<h:form id="formPro2">
+					<p:dialog header="Catalogue Page Detail" widgetVar="carDialog3"
+						resizable="false" draggable="false" showEffect="fade"
+						hideEffect="fade" modal="true">
+						<p:outputPanel id="display3">
+							<h:panelGrid columns="2" cellpadding="5"
+								rendered="#{not empty adminProductController.brand}">
+								<f:facet name="header">
+
+									<p:graphicImage library="uploads"
+										name="brand/image/#{brand.logo.image}" />
+
+								</f:facet>
+
+								<h:outputText value="Id" />
+								<h:outputText value="#{adminProductController.brand.id}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Name:" />
+								<h:outputText value="#{adminProductController.brand.name}"
+									style="font-weight:bold" />
+
+
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+
+					<p:dialog header="Update Brand" widgetVar="carDialogUpdate3"
+						resizable="true" draggable="true" showEffect="fade"
+						hideEffect="fade" modal="true" onHide="">
+
+						<p:outputPanel id="display31">
+							<h:panelGrid columns="2" cellpadding="5"
+								rendered="#{not empty adminProductController.brand}">
+								<f:facet name="header">
+
+									<p:graphicImage library="uploads"
+										name="brand/image/#{brand.logo.image}" />
+
+								</f:facet>
+
+								<h:outputText value="Id" />
+								<h:outputText value="#{adminProductController.brand.id}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Name:" />
+								<h:inputText value="#{adminProductController.brand.name}"
+									style="font-weight:bold" />
+
+
+								<br />
+								<h:commandLink type="button"
+									class="btn btn-success toastrDefaultSuccess">
+									<i class="fa fa-pencil"> </i> update brand
+              						  </h:commandLink>
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+
+					<p:dialog header="Delete 
+						brand"
+						widgetVar="carDialogDelete3" resizable="false" draggable="true"
+						showEffect="fade" hideEffect="fade" modal="true" onHide="">
+
+						<p:outputPanel id="display32">
+							<h:panelGrid columns="2" cellpadding="5"
+								rendered="#{not empty adminProductController.brand}">
+								<f:facet name="header">
+
+									<p:graphicImage library="uploads"
+										name="brand/image/#{brand.logo.image}" />
+
+								</f:facet>
+
+								<h:outputText value="Id" />
+								<h:inputText value="#{adminProductController.brand.id}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Name:" />
+								<h:outputText value="#{adminProductController.brand.name}"
+									style="font-weight:bold" />
+
+
+								<br />
+								<h:commandLink type="button" class="btn btn-danger ">
+									<i class="fa fa-trash"> </i> Delete brand
+              						  </h:commandLink>
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+
+
+
+
+				</h:form>
+
+				<!-- /.card-body -->
+			</div>
+		</div>
+
+		<!-- 		subCat -->
+		<div class="card ">
+			<div class="card-header">
+				<h3 class="card-title">SubCategories</h3>
+			</div>
+			<!-- /.card-header -->
+			<div class="card-body">
+
+				<table id="example4" class="table table-bordered table-striped">
+					<thead>
+						<tr role="row">
+							<th>id</th>
+							<th>image</th>
+
+							<th>name</th>
+							<th>description</th>
+
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<p:repeat id="subCategoryId"
+							value="#{adminProductController.listProductSubCategory}"
+							var="subCategory">
+
+							<tr role="row" onmouseover="">
+								<td>#{subCategory.id}</td>
+
+								<td><p:graphicImage library="uploads"
+										name="subCategory/image/#{subCategory.logo.image}" height="80"
+										width="80" style="width : 80 ; height : 80" /></td>
+								<td>#{subCategory.name}</td>
+								<td>#{empty subCategory.description ? subCategory.name :
+									subCategory.name}</td>
+								<td class="project-actions text-right">
+									<center>
+										<h:form>
+											<p:commandLink update=":formPro1:display2"
+												onstart="#{adminProductController.setSubCategory(subCategory)}"
+												oncomplete="PF('carDialog2').show()"
+												class="btn btn-primary btn-sm">
+												<i class="fa fa-folder"> </i> View  <f:setPropertyActionListener
+													value="#{subCategory}"
+													target="#{adminProductController.subCategory}" />
+											</p:commandLink>
+										
+											<p:commandLink onstart="#{adminUpdateController.doShow(4)}"
+												action="#{navigateTo.updateProduct()}"
+												class="btn btn-info btn-sm" ajax="false">
+												<i class="fa fa-pencil"> </i> Edit  <f:setPropertyActionListener
+													value="#{subCategory}"
+													target="#{adminUpdateController.subCategory}" />
+													
+													<f:setPropertyActionListener
+													value="4"
+													target="#{adminUpdateController.showForm}" />
+											</p:commandLink>
+										
+											<p:commandLink update=":formPro1:display22"
+												onstart="#{adminProductController.setSubCategory(subCategory)}"
+												oncomplete="PF('carDialogdelete2').show()"
+												class="btn btn-danger btn-sm">
+												<i class="fa fa-trash"> </i> delete  <f:setPropertyActionListener
+													value="#{subCategory}"
+													target="#{adminProductController.subCategory}" />
+											</p:commandLink>
+										</h:form>
+
+									</center>
+								</td>
+
+							</tr>
+						</p:repeat>
+
+					</tbody>
+					<tfoot>
+						<tr>
+							<th rowspan="1" colspan="1">id</th>
+							<th rowspan="1" colspan="1">images</th>
+							<th rowspan="1" colspan="1">name</th>
+							<th rowspan="1" colspan="1">description</th>
+							<th rowspan="1" colspan="1">Action</th>
+						</tr>
+					</tfoot>
+				</table>
+
+
+
+				<h:form id="formPro1">
+					<p:dialog header="SubCategory View" widgetVar="carDialog2"
+						resizable="false" draggable="false" showEffect="fade"
+						hideEffect="fade" modal="true">
+						<p:outputPanel id="display2">
+							<h:panelGrid columns="2" cellpadding="5"
+								rendered="#{not empty adminProductController.subCategory}">
+								<f:facet name="header">
+
+									<p:graphicImage library="uploads"
+										name="subCategory/image/#{subCategory.logo.image}" />
+
+								</f:facet>
+
+								<h:outputText value="Id" />
+								<h:outputText value="#{adminProductController.subCategory.id}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Name:" />
+								<h:outputText value="#{adminProductController.subCategory.name}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Description:" />
+								<h:outputText
+									value="#{adminProductController.subCategory.description}"
+									style="font-weight:bold" />
+
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+
+					<p:dialog header="Update SubCategory" widgetVar="carDialogUpdate2"
+						resizable="false" draggable="true" showEffect="fade"
+						hideEffect="fade" modal="true" onHide="">
+
+						<p:outputPanel id="display21">
+							<h:panelGrid columns="2" cellpadding="5"
+								rendered="#{not empty adminProductController.subCategory}">
+								<f:facet name="header">
+									<p:graphicImage library="uploads"
+										name="subCategory/image/#{subCategory.logo.image}" />
+								</f:facet>
+								<h:outputText value="Id" />
+								<h:outputText value="#{adminProductController.subCategory.id}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Name:" />
+								<h:inputText value="#{adminProductController.subCategory.name}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Description:" />
+								<h:inputText
+									value="#{adminProductController.subCategory.description}"
+									style="font-weight:bold" />
+								<br />
+								<h:commandLink type="button"
+									class="btn btn-success toastrDefaultSuccess">
+									<i class="fa fa-pencil"> </i> update subCategory
+              						  </h:commandLink>
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+
+					<p:dialog header="Delete 
+						subCategory"
+						widgetVar="carDialogDelete2" resizable="false" draggable="true"
+						showEffect="fade" hideEffect="fade" modal="true" onHide="">
+
+						<p:outputPanel id="display22">
+							<h:panelGrid columns="2" cellpadding="5"
+								rendered="#{not empty adminProductController.subCategory}">
+								<f:facet name="header">
+
+									<p:graphicImage library="uploads"
+										name="subCategory/image/#{subCategory.logo.image}" />
+
+								</f:facet>
+
+								<h:outputText value="Id" />
+								<h:inputText value="#{adminProductController.subCategory.id}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Name:" />
+								<h:outputText value="#{adminProductController.subCategory.name}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Description:" />
+								<h:outputText
+									value="#{adminProductController.subCategory.description}"
+									style="font-weight:bold" />
+								<br />
+								<h:commandLink type="button" class="btn btn-danger ">
+									<i class="fa fa-trash"> </i> Delete subCategory
+              						  </h:commandLink>
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+
+
+
+
+
+				</h:form>
+			</div>
+			<!-- /.card-body -->
+		</div>
+
+		<!-- 		cat -->
+		<div class="card ">
+			<div class="card-header">
+				<h3 class="card-title">Categories</h3>
+			</div>
+			<!-- /.card-header -->
+			<div class="card-body">
+
+				<table id="example3" class="table table-bordered table-striped">
+					<thead>
+						<tr role="row">
+							<th>id</th>
+							<th>image</th>
+							<th>name</th>
+							<th>description</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<p:repeat id="categoryId"
+							value="#{adminProductController.listProductCategory}"
+							var="category">
+							<tr role="row" onmouseover="">
+								<td>#{category.id}</td>
+								<td><p:graphicImage library="uploads"
+										name="category/image/#{category.logo.image}" height="80"
+										width="80" style="width : 80 ; height : 80" /></td>
+								<td>#{category.categoryName}</td>
+								<td>#{empty category.categoryDescription ?
+									category.categoryName : category.categoryDescription}</td>
+								<td class="project-actions text-right">
+									<center>
+										<h:form>
+											<p:commandLink update=":formPro:display"
+												onstart="#{adminProductController.setCategory(category)}"
+												oncomplete="PF('carDialog').show()"
+												class="btn btn-primary btn-sm">
+												<i class="fa fa-folder"> </i> View  <f:setPropertyActionListener
+													value="#{category}"
+													target="#{adminProductController.category}" />
+											</p:commandLink>
+										
+											<h:commandLink onstart="#{adminUpdateController.doShow(3)}"
+												action="#{navigateTo.updateProduct()}"
+												class="btn btn-info btn-sm" >
+												<i class="fa fa-pencil"> </i> Edit  <f:setPropertyActionListener
+													value="#{category}"
+													target="#{adminUpdateController.category}" />
+													
+													<f:setPropertyActionListener
+													value="3"
+													target="#{adminUpdateController.showForm}" />
+											</h:commandLink>
+
+										
+											<p:commandLink update=":formPro:display2"
+												onstart="#{adminProductController.setCategory(category)}"
+												oncomplete="PF('carDialogdelete').show()"
+												class="btn btn-danger btn-sm">
+												<i class="fa fa-trash"> </i> delete  <f:setPropertyActionListener
+													value="#{category}"
+													target="#{adminProductController.category}" />
+											</p:commandLink>
+										</h:form>
+									</center>
+								</td>
+							</tr>
+						</p:repeat>
+
+					</tbody>
+					<tfoot>
+						<tr>
+							<th rowspan="1" colspan="1">id</th>
+							<th rowspan="1" colspan="1">images</th>
+							<th rowspan="1" colspan="1">name</th>
+							<th rowspan="1" colspan="1">description</th>
+							<th rowspan="1" colspan="1">Action</th>
+						</tr>
+					</tfoot>
+				</table>
+				<h:form id="formPro">
+					<p:dialog header="Catalogue Page Detail" widgetVar="carDialog"
+						resizable="false" draggable="false" showEffect="fade"
+						hideEffect="fade" modal="true">
+						<p:outputPanel id="display">
+							<h:panelGrid columns="2" cellpadding="5"
+								rendered="#{not empty adminProductController.category}">
+								<f:facet name="header">
+
+									<p:graphicImage library="uploads"
+										name="category/image/#{category.logo.image}" />
+
+								</f:facet>
+
+								<h:outputText read-only="true" value="Id" />
+								<h:outputText read-only="true"
+									value="#{adminProductController.category.id}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Name:" />
+								<h:outputText read-only="true"
+									value="#{adminProductController.category.categoryName}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Description:" />
+								<h:outputText read-only="true"
+									value="#{adminProductController.category.categoryDescription}"
+									style="font-weight:bold" />
+
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+
+					<p:dialog header="Update Category" widgetVar="carDialogUpdate"
+						resizable="false" draggable="true" showEffect="fade"
+						hideEffect="fade" modal="true" onHide="">
+
+						<p:outputPanel id="display1">
+							<h:panelGrid columns="2" cellpadding="5"
+								rendered="#{not empty adminProductController.category}">
+								<f:facet name="header">
+
+									<p:graphicImage library="uploads"
+										name="category/image/#{category.logo.image}" />
+
+								</f:facet>
+
+								<h:inputFile value="#{detailsController.uploadedFile}">
+									<f:ajax event="change" immediate="true"
+										listener="#{detailsController.saveFile}" />
+								</h:inputFile>
+
+
+								<h:outputText value="Id" />
+								<h:inputText read-only="true"
+									value="#{adminProductController.category.id}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Name:" />
+								<h:inputText read-only="true"
+									value="#{adminProductController.category.categoryName}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Description:" />
+								<h:inputText read-only="true"
+									value="#{adminProductController.category.categoryDescription}"
+									style="font-weight:bold" />
+								<br />
+								<h:commandLink type="button"
+									class="btn btn-success toastrDefaultSuccess">
+									<i class="fa fa-pencil"> </i> update Category
+              						  </h:commandLink>
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+
+					<p:dialog header="Delete 
+						category"
+						widgetVar="carDialogDelete" resizable="false" draggable="true"
+						showEffect="fade" hideEffect="fade" modal="true" onHide="">
+
+						<p:outputPanel id="display2">
+							<h:panelGrid columns="2" cellpadding="5"
+								rendered="#{not empty adminProductController.category}">
+								<f:facet name="header">
+
+									<p:graphicImage library="uploads"
+										name="category/image/#{category.logo.image}" />
+
+								</f:facet>
+
+								<h:outputText value="Id" />
+								<h:inputText value="#{adminProductController.category.id}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Name:" />
+								<h:outputText
+									value="#{adminProductController.category.categoryName}"
+									style="font-weight:bold" />
+
+								<h:outputText value="Description:" />
+								<h:outputText
+									value="#{adminProductController.category.categoryDescription}"
+									style="font-weight:bold" />
+								<br />
+								<h:commandLink  class="btn btn-danger " >
+									<i class="fa fa-trash"> </i> Delete Category
+              						  </h:commandLink>
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:dialog>	
+
+
+
+				</h:form>
+			</div>
+			<!-- /.card-body -->
+		</div>
+
+
+
+
+
+
+		<script>
+			$(function() {
+				$("#example1").DataTable();
+				$("#example3").DataTable();
+				$("#example4").DataTable();
+				$("#example5").DataTable();
+				$('#example2').DataTable({
+					"paging" : true,
+					"lengthChange" : false,
+					"searching" : false,
+					"ordering" : true,
+					"info" : true,
+					"autoWidth" : false,
+				});
+			});
+		</script>
+	</ui:define>
+</ui:composition>

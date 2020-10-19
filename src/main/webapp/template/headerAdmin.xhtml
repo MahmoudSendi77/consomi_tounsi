@@ -1,0 +1,79 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<h:panelGroup>
+		<header class="header shop">
+			<!-- Topbar -->
+			
+			<!-- End Topbar -->
+			<div class="middle-inner">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-2 col-md-3 col-12">
+							<div class="right-bar">
+								<!-- Search Form -->
+								<div class="sinlge-bar">
+									<a href="#" class="single-icon"><i class="fa fa-heart-o"
+										aria-hidden="true"></i></a>
+								</div>
+								<div class="sinlge-bar shopping">
+									<a href="#" class="single-icon"><i class="fa fa-bell"></i>
+										<span class="total-count">#{productNotifController.listNotificationLengh}</span></a>
+									<!-- Shopping Item -->
+									<div class="shopping-item">
+										<div class="dropdown-cart-header">
+											<span>#{productNotifController.listNotificationLengh}
+												- Notification</span> <a href="#">View Cart</a>
+										</div>
+										<ul class="shopping-list">
+											<p:repeat value="#{productNotifController.listNotification}"
+												size="3" var="notif">
+												<li><h:form>
+												<h:commandLink action="#{notif.deleteNotification(notif.id)}" href="#" class="remove" title="Remove this item"><i
+														class="fa fa-remove"></i></h:commandLink>
+														</h:form>
+														 <a class="cart-img" href="#">
+
+												</a>
+													<h4>
+														<a href="#">titre</a>
+													</h4>
+													<p class="quantity">
+														#{notif.message} - <span class="amount">#{notif.date}</span>
+													</p></li>
+											</p:repeat>
+										</ul>
+										<div class="bottom">
+											<div class="total">
+												<span>Seen All Notification</span> <span
+													class="total-amount">#{productNotifController.listNotificationLengh
+													}</span>
+											</div>
+											<h:form>
+											<h:commandLink action="#{productNotifController.navigateToNotificationList()}" class="btn animate">Checkout notification</h:commandLink>
+										</h:form>
+										</div>
+									</div>
+									<!--/ End Shopping Item -->
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Header Inner -->
+			
+			<!--/ End Header Inner -->
+		</header>
+
+		<!-- Slider Area -->
+		
+
+	</h:panelGroup>
+
+</ui:composition>

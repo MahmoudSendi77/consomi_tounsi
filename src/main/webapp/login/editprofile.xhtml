@@ -1,0 +1,1191 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+
+
+
+
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="menu">
+
+
+
+		<h:head>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		</h:head>
+
+		<!-- 		<link -->
+		<!-- 			href="../bredfr/%2b%2btheme%2b%2bbredfr/assets/styles/main.min.css" -->
+		<!-- 			rel="stylesheet" /> -->
+
+		<h:outputStylesheet library="css" name="main.min.css" />
+		<h:outputStylesheet library="css" name="composite.css" />
+
+
+		<style>
+h1 {
+	margin-bottom: 1.5em;
+	font-size: 30px;
+	color: #484548;
+	font-weight: 100;
+}
+
+h1 span, small {
+	display: block;
+	font-size: 14px;
+	color: #989598;
+}
+
+small {
+	font-style: italic;
+	font-size: 11px;
+}
+
+form p {
+	position: relative;
+}
+
+.password {
+	width: 90%;
+	padding: 15px 12px;
+	margin-bottom: 5px;
+	border: 1px solid #e5e5e5;
+	border-bottom: 2px solid #ddd;
+	background: rgba(255, 255, 255, 0.2);
+	color: #555;
+}
+
+.password+.unmask {
+	position: absolute;
+	right: 5%;
+	top: 10px;
+	width: 25px;
+	height: 25px;
+	background: transparent;
+	border-radius: 50%;
+	cursor: pointer;
+	border: none;
+	font-family: 'fontawesome';
+	font-size: 14px;
+	line-height: 24px;
+	-webkit-appearance: none;
+	outline: none
+}
+
+.password+.unmask:before {
+	content: "\f06e";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 25px;
+	height: 25px;
+	background: rgba(205, 205, 205, 0.2);
+	z-index: 1;
+	color: #aaa;
+	border: 2px solid;
+	border-radius: 50%;
+}
+
+.password[type="text"]+.unmask:before {
+	content: "\f070";
+	background: rgba(105, 205, 255, 0.2);
+	color: #06a
+}
+
+#valid {
+	font-size: 12px;
+	color: #daa;
+	height: 15px
+}
+
+#strong {
+	height: 20px;
+	font-size: 12px;
+	color: #daa;
+	text-transform: capitalize;
+	background: rgba(205, 205, 205, 0.1);
+	border-radius: 5px;
+	overflow: hidden
+}
+
+#strong span {
+	display: block;
+	box-shadow: 0 0 0 #fff inset;
+	height: 100%;
+	transition: all 0.8s
+}
+
+#strong .weak {
+	box-shadow: 5em 0 0 #daa inset;
+}
+
+#strong .medium {
+	color: #da6;
+	box-shadow: 10em 0 0 #da6 inset
+}
+
+#strong .strong {
+	color: #595;
+	box-shadow: 50em 0 0 #ada inset
+}
+</style>
+
+
+
+		<style>
+.sectionlabel {
+	background: transparent url(../resources/images/section_label_red.jpg)
+		no-repeat scroll 25% 0;
+	/*     height: 450px; */
+	padding: 0px;
+	padding-top: 50px; .
+	label:; {:;
+	padding-left: 100px;
+	padding-right: 500px;
+	padding-top: 50px;
+}
+
+.imglabel {
+	padding-left: 150px !important;
+	margin-left: 150px !important;
+}
+}
+</style>
+
+
+
+
+		<style>
+.ui-slider .ui-slider-handle {
+	position: absolute;
+	z-index: 2;
+	width: 2.5em;
+	height: 3.2em;
+	color: #e23636;
+}
+
+.ui-slider .ui-slider-handle {
+	background: url("../resources/images/Curseur.png");
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+	top: -1.3em;
+	margin-left: -.6em;
+}
+
+.ui-state-default, .ui-widget-header .ui-state-default {
+	
+}
+
+.ui-corner-all {
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.ui-slider {
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background: #df0101;
+}
+
+.ui-slider-horizontal {
+	height: 0.8em;
+	width: 676px;
+}
+
+#credit-valeur {
+	height: 52px;
+	background: url("../resources/images/Calendre.png");
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	width: 100%;
+	position: relative;
+}
+
+/* #out { */
+/*     font-family: impact; */
+/*     font-size: 42px; */
+/*     width: 100%; */
+/*     height: 58px; */
+/*     margin: auto; */
+/*     position: absolute; */
+/*     top: 0; */
+/*     left: 0; */
+/*     bottom: 0; */
+/*     right: 0; */
+/*     text-align: center; */
+/*     color: #005ba0; */
+/* } */
+.form-box-tounsi {
+	border-top: 5px solid #fa0504;
+	-webkit-box-shadow: 0px 5px 21px -2px rgba(0, 0, 0, 0.47);
+	-moz-box-shadow: 0px 5px 21px -2px rgba(0, 0, 0, 0.47);
+	box-shadow: 0px 5px 21px -2px rgba(0, 0, 0, 0.47);
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: white;
+}
+
+.margin-10 {
+	margin: 10px;
+}
+
+.fs20 {
+	font-size: 20px !important;
+}
+
+.igive-btn {
+	color: white !important;
+	min-width: 240px;
+}
+</style>
+
+
+
+
+
+
+
+
+		<style>
+.avatar-wrapper {
+	position: relative;
+	height: 200px;
+	width: 200px;
+	/* 	margin: 50px auto; */
+	border-radius: 50%;
+	overflow: hidden;
+	box-shadow: 1px 1px 15px -5px black;
+	transition: all 0.3s ease;
+}
+
+.avatar-wrapper:hover {
+	transform: scale(1.05);
+	cursor: pointer;
+}
+
+.avatar-wrapper:hover .profile-pic {
+	opacity: 0.5;
+}
+
+.avatar-wrapper .profile-pic {
+	height: 100%;
+	width: 100%;
+	transition: all 0.3s ease;
+}
+
+.avatar-wrapper .profile-pic:after {
+	font-family: FontAwesome;
+	content: "\f007";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	font-size: 190px;
+	background: #ecf0f1;
+	color: #34495e;
+	text-align: center;
+}
+
+.avatar-wrapper .upload-button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.avatar-wrapper .upload-button .fa-arrow-circle-up {
+	position: absolute;
+	font-size: 234px;
+	top: -17px;
+	left: 0;
+	text-align: center;
+	opacity: 0;
+	transition: all 0.3s ease;
+	color: #34495e;
+}
+
+.avatar-wrapper .upload-button:hover .fa-arrow-circle-up {
+	opacity: 0.9;
+}
+</style>
+
+
+
+		<style>
+#countdown {
+	width: 274px;
+	height: 105px;
+	text-align: center;
+	background: #222;
+	background-image: -webkit-linear-gradient(top, #222, #333, #333, #222);
+	background-image: -moz-linear-gradient(top, #222, #333, #333, #222);
+	background-image: -ms-linear-gradient(top, #222, #333, #333, #222);
+	background-image: -o-linear-gradient(top, #222, #333, #333, #222);
+	border: 1px solid #111;
+	border-radius: 5px;
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
+	/* 	margin: auto; */
+	padding: 24px 0;
+	position: absolute;
+	top: -46px;
+	bottom: 0;
+   left: 357px;
+	right: 0;
+}
+
+#countdown:before {
+	content: "";
+	width: 8px;
+	height: 65px;
+	background: #444;
+	background-image: -webkit-linear-gradient(top, #555, #444, #444, #555);
+	background-image: -moz-linear-gradient(top, #555, #444, #444, #555);
+	background-image: -ms-linear-gradient(top, #555, #444, #444, #555);
+	background-image: -o-linear-gradient(top, #555, #444, #444, #555);
+	border: 1px solid #111;
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
+	display: block;
+	position: absolute;
+	top: 21px;
+	left: -10px;
+}
+
+#countdown:after {
+	content: "";
+	width: 8px;
+	height: 65px;
+	background: #444;
+	background-image: -webkit-linear-gradient(top, #555, #444, #444, #555);
+	background-image: -moz-linear-gradient(top, #555, #444, #444, #555);
+	background-image: -ms-linear-gradient(top, #555, #444, #444, #555);
+	background-image: -o-linear-gradient(top, #555, #444, #444, #555);
+	border: 1px solid #111;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	display: block;
+	position: absolute;
+	top: 21px;
+	right: -10px;
+}
+
+#countdown #tiles {
+	position: relative;
+	z-index: 1;
+}
+
+#countdown #tiles>span {
+	max-height: 57px;
+	width: 50px;
+	max-width: 92px;
+	font: bold 28px 'Droid Sans', Arial, sans-serif;
+	text-align: center;
+	color: #111;
+	background-color: #ddd;
+	background-image: -webkit-linear-gradient(top, #bbb, #eee);
+	background-image: -moz-linear-gradient(top, #bbb, #eee);
+	background-image: -ms-linear-gradient(top, #bbb, #eee);
+	background-image: -o-linear-gradient(top, #bbb, #eee);
+	border-top: 1px solid #fff;
+	border-radius: 3px;
+	box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.7);
+	margin: 0 7px;
+	padding: 18px 0;
+	display: inline-block;
+	position: relative;
+}
+
+#countdown #tiles>span:before {
+	content: "";
+/* 	width: 50%; */
+	height: 13px;
+	background: #111;
+	display: block;
+	padding: 0 3px;
+	position: absolute;
+	top: 41%;
+	left: -3px;
+	z-index: -1;
+}
+
+#countdown #tiles>span:after {
+	content: "";
+/* 	width: 50%; */
+	height: 1px;
+	background: #eee;
+	border-top: 1px solid #333;
+	display: block;
+	position: absolute;
+	top: 48%;
+	left: 0;
+}
+
+#countdown .labels {
+	width: 100%;
+	height: 25px;
+	text-align: center;
+	/* 	position: absolute; */
+	bottom: 8px;
+}
+
+#countdown .labels li {
+	width: 61px;
+	font: bold 15px 'Droid Sans', Arial, sans-serif;
+	color: #e21919;
+	text-shadow: 1px 1px 0px #000;
+	text-align: center;
+	text-transform: uppercase;
+	display: inline-block;
+}
+</style>
+
+
+
+
+
+		<div id="mainFastAccess" class="fast-access fast-access--cover">
+			<a class="btn-regular btn-regular--small btn-contrast"
+				title="Ouvrir un compte" href="/login/editprofile.jsf">
+				<div class="fast-access__icon fast-access__icon--client"> </div> Mon
+				compte
+			</a> <a class="btn-regular btn-regular--small" title="Contact"
+				href="/login/convertirpoints.jsf">
+				<div class="fast-access__icon fast-access__icon--phone"> </div> Mes
+				points
+			</a> <a class="btn-regular btn-regular--small" title="Simulateurs"
+				href="/login/convertirpoints.jsf">
+				<div class="fast-access__icon fast-access__icon--simulator"> </div>
+				Simulateurs
+			</a> <a class="btn-regular btn-regular--small btn-contrast desktop-only"
+				title="Urgence" href="/login/parrainagetemp.jsf">
+				<div class="fast-access__icon fast-access__icon--emergency"> </div>
+				Parrainage
+			</a>
+		</div>
+
+
+
+
+		<br />
+		<br />
+		<br />
+		<br />
+		<div class="Container">
+
+			<div class="row">
+
+				<div class="col-md-12 sectionlabel" >
+					<div
+						class="col-md-offset-1 col-md-4 imglabel col-xs-offset-2 col-xs-10">
+						<!-- 					<img class="imglabel" -->
+						<!-- 						src="../resources/images/profile.png" style="    max-width: 200px; -->
+
+						<!-- 						alt="Trophées de la Banque 2019" data-linktype="image" -->
+						<!-- 						data-scale="large" /><br /> -->
+						<!-- 					<br /> -->
+
+
+						<form method="post" action="/upload" enctype="multipart/form-data" >
+
+
+
+
+							<c:if test="#{    Profile.imageuser() }">
+
+								<div class="avatar-wrapper">
+
+
+									<img class="profile-pic"
+										src="../resources/uploads/userProfileImage/#{Profile.imageUser()}" />
+									<div class="upload-button">
+										<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+									</div>
+									<input class="file-upload" type="file" accept="image/*"
+										name="file" id="image-file" />
+
+
+
+								</div>
+
+							</c:if>
+
+							<c:if test="#{  not Profile.imageuser() }">
+								<div class="avatar-wrapper">
+
+
+									<img class="profile-pic" src="" />
+									<div class="upload-button">
+										<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+									</div>
+									<input class="file-upload" type="file" accept="image/*"
+										name="file" id="image-file" />
+
+
+
+								</div>
+							</c:if>
+
+							<br /> <br /> <input type="submit" value="Upload"
+								class="btn btn-danger" style="margin-left: 56px;" />
+
+
+
+
+
+
+
+
+							<!-- 						<h:commandButton value="Update"   id="upp" style="border: 1px solid;  border-color: #ccc #ccc #bbb;   border-radius: 3px; background: #df0101;color: rgba(255, 242, 242, 0.8);line-height: 1;width: 26%;" -->
+							<!-- 							class="btn btn-primaire ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" /> -->
+						</form>
+
+						<!--  <button type="button" id="uploadBtn">Upload Example</button> -->
+
+					</div>
+					<br />
+					<div class="col-md-7 label">
+						<h3>
+							<span style="color: red;"> Username : </span>
+							#{Profile.usernameUser()} <br />
+
+						</h3>
+
+						<h3>
+							<span style="color: red;"> Email : </span> #{Profile.emailUser()}
+							<br />
+
+						</h3>
+<div id="load">
+						<h3>
+							<span style="color: red;"> Status : </span>
+							#{Profile.statusUser()} <br />
+
+
+
+
+
+
+
+
+						</h3>
+
+</div>
+
+<c:if test="#{    AbonnementFront.verificationUserHasOffres() }">
+						<div id="countdown">
+							<div id='tiles'></div>
+							<div class="labels">
+								<ul>
+									<li>Days</li>
+									<li>Hours</li>
+									<li>Mins</li>
+									<li>Secs</li>
+								</ul>
+							</div>
+						</div>
+</c:if>
+
+						<!-- 						<p align="justify"> -->
+						<!-- 						<h3> -->
+						<!-- 					<span style="color: red;">	Email :  </span> </h3>	#{Profile.emailUser()}  <br /> -->
+
+						<!-- 						</p> -->
+						<!-- 						<p> -->
+						<!-- 							<a class="link-external3" href="http://www.lesdossiers.com/" -->
+						<!-- 								target="_blank" data-linktype="external" -->
+						<!-- 								data-val="http://www.lesdossiers.com/">lesdossiers.com</a>. -->
+						<!-- 						</p> -->
+
+
+
+
+
+
+
+
+
+
+
+
+					</div>
+				</div>
+
+
+			</div>
+
+
+			<div class="row" style="margin-left: 18%;">
+
+
+
+
+
+
+
+
+
+
+				<div class="Container" style="width: 900px;">
+
+
+					<br />
+
+					<nav class="navbar1">
+
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle"
+								data-toggle="collapse" data-target=".navbar-ex1-collapse">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+						</div>
+
+
+						<div class="collapse navbar-collapse navbar-ex1-collapse">
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="#" id="nav-saisie"
+									class="nav-panel"> <span class="icon-pencil"></span>Votre
+										projet
+								</a>
+									<div class="arrow-active"></div></li>
+								<li class="desactive"><a href="#" id="nav-resultats"
+									class="nav-panel"> <span class="icon-bar-chart"></span>Résultats
+										détaillés
+								</a></li>
+							</ul>
+						</div>
+					</nav>
+
+					<form>
+						<main role="main">
+						<div id="panel-scrollpane">
+
+
+							<div id="saisie" class="panel" style="display: block;">
+								<div class="row">
+									<div class="col-md-12">
+										<section>
+											<div class="section-header">
+												<span class="icon-pencil"></span> Completer Vos informations
+											</div>
+											<div class="section-content">
+												<div class="form">
+													<div class="form-group form-radio form-radio-horizontal">
+														<div class="form-group-left">
+															<label>Type de bien <span
+																class="marqueur-obligatoire">*</span> :
+															</label>
+														</div>
+														<div class="form-group-right">
+															<ul>
+																<li><input type="radio" class="required type-bien"
+																	id="neuf" name="typeBien" value="NEUF"
+																	errormessagelbl="Veuillez renseigner le type de bien"
+																	autocomplete="off" /> <label for="neuf">Neuf</label></li>
+																<li><input type="radio" class="required type-bien"
+																	id="ancien" name="typeBien" value="ANCIEN"
+																	errormessagelbl="Veuillez renseigner le type de bien"
+																	autocomplete="off" /> <label for="ancien">Ancien</label></li>
+																<li><input type="radio" class="required type-bien"
+																	id="terrain" name="typeBien" value="TERRAIN_BATIR"
+																	errormessagelbl="Veuillez renseigner le type de bien"
+																	autocomplete="off" /> <label for="terrain">Terrain
+																		à bâtir</label></li>
+															</ul>
+															<span class="icon-info-sign" title=""
+																style="font-family: 'icomoon' !important; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;"
+																data-original-title="Logement neuf : tout logement construit ou acquis en vue de sa première occupation   Logement ancien : tout logement ayant déjà été habité. Depuis le 1er janvier 2013, tout logement VEFA ou construit sur plan achevé depuis moins de 5 ans lors de la revente par un particulier n'est plus considéré comme un logement neuf et ne bénéficie donc plus des frais de notaire réduits."
+																aria-labelledby="tooltip657241"></span>
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+
+
+
+
+													<hr />
+
+
+
+
+
+
+
+
+													<div class="form-group">
+														<div class="form-group-left">
+
+
+
+
+
+
+
+
+
+
+															<label for="france"> Password <span
+																class="marqueur-obligatoire">*</span> :
+															</label>
+														</div>
+														<div class="form-group-right">
+
+
+
+															<p>
+																<h:inputSecret type="password"
+																	value="#{Profile.password}"
+																	placeholder="Enter Password" id="p" class="password" />
+																<button class="unmask" id="unmask" type="button"></button>
+															</p>
+
+
+														</div>
+													</div>
+
+													<hr />
+
+
+
+
+													<div class="form-group">
+														<div class="form-group-left">
+															<label for="france"> Confirme password : <span
+																class="marqueur-obligatoire">*</span> :
+															</label>
+														</div>
+														<div class="form-group-right">
+
+															<p>
+																<h:inputSecret type="password"
+																	value="#{Profile.confirmepassword}"
+																	placeholder="Confirm Password" id="p-c"
+																	class="password" />
+																<button class="unmask" id="unmask" type="button"></button>
+
+
+
+
+
+															</p>
+
+
+														</div>
+													</div>
+
+
+
+													<hr />
+
+
+
+													<div class="form-group">
+
+														<div id="strong">
+															<span></span>
+														</div>
+														<div id="valid"></div>
+														<small style="text-align: center;">Must be 6+
+															characters long and contain at least 1 upper case letter,
+															1 number, 1 special character</small>
+
+
+													</div>
+													<hr />
+
+
+													<div class="form-group">
+														<div class="form-group-left">
+															<label for="france"> Change password : <span
+																class="marqueur-obligatoire">*</span> :
+															</label>
+														</div>
+														<div class="form-group-right">
+															<h:form id="formId">
+																<p:growl autoUpdate="true" style="position:static" />
+																<h:commandButton value="Update password"
+																	style="border: 1px solid;border-color: #ccc #ccc #bbb;border-radius: 3px;background: #df0101;color: rgba(255, 242, 242, 0.8);line-height: 1;width: 44%;"
+																	id="btt-calculer" action="#{Profile.changePass()}"
+																	class="btn btn-primaire ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" />
+
+
+
+
+																<h:message for="btt-calculer" />
+															</h:form>
+
+														</div>
+													</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+													<hr />
+
+
+
+
+
+
+
+
+
+													<div
+														class="form-group garantie-hypotheque-item form-group-slider"
+														style="display: none;">
+														<div class="form-group-left">
+															<label for="pret-libre">Prêt bancaire classique :</label>
+														</div>
+
+														<div class="form-group-right">
+															<input type="text" class="montantEntier" id="pret-libre"
+																name="pretLibre.montant" autocomplete="off" />
+															<div class="unit">€</div>
+														</div>
+													</div>
+													<div
+														class="form-group garantie-hypotheque-item form-group-slider"
+														style="display: none;">
+														<div class="form-group-left">
+															<label for="pret-secteur-aide">Prêts aidés, PEL,
+																CEL, etc :</label>
+														</div>
+
+														<div class="form-group-right">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+															<input type="text" class="montantEntier"
+																id="pret-secteur-aide" name="pretSecteurAide.montant"
+																maxlength="9" autocomplete="off" />
+															<div class="unit">€</div>
+															<span class="icon-info-sign" title=""
+																data-original-title="Prêts éligibles : PEL, CEL, FGAS, PAS, PSI, PAP, PLA, PTZ"></span>
+														</div>
+													</div>
+												</div>
+												<div class="champs-obligatoires">
+													<span class="marqueur-obligatoire">*</span> obligatoires
+												</div>
+											</div>
+										</section>
+									</div>
+								</div>
+
+								<div id="bt-calculer-container" class="row">
+									<div class="col-md-12">
+										<section>
+											<div class="section-content">
+												<div class="form">
+
+
+
+
+
+
+
+													<hr />
+
+
+
+
+													<div class="form-group">
+														<div class="form-group-left">
+															<label for="france">Email<span
+																class="marqueur-obligatoire">*</span> :
+															</label>
+														</div>
+														<div class="form-group-right">
+
+															<h:inputText type="email" p:placeholder="Email"
+																id="Email" value="#{SigninJsf.email}" required="true"
+																requiredMessage="Email required"
+																style="margin-right: 52%;" />
+
+
+														</div>
+
+
+
+													</div>
+
+
+
+
+													<hr />
+
+
+
+
+
+													<div class="form-group">
+														<div class="form-group-left">
+															<label for="france"> Update Email : <span
+																class="marqueur-obligatoire">*</span> :
+															</label>
+														</div>
+														<div class="form-group-right">
+															<h:form id="formIdemail">
+																<p:growl autoUpdate="true" style="position:static" />
+																<h:commandButton value="Update Eamil"
+																	style="    margin-right: 50%;   border: 1px solid;border-color: #ccc #ccc #bbb;border-radius: 3px;background: #df0101;color: rgba(255, 242, 242, 0.8);line-height: 1;width: 44%;"
+																	id="btt-calculer" action="#{Profile.changePass()}"
+																	class="btn btn-primaire ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" />
+
+
+
+
+																<h:message for="btt-calculer" />
+															</h:form>
+
+														</div>
+													</div>
+
+
+
+												</div>
+
+
+											</div>
+
+
+
+
+										</section>
+
+									</div>
+
+								</div>
+
+
+
+							</div>
+
+
+
+						</div>
+
+						</main>
+
+					</form>
+				</div>
+
+
+
+
+
+
+
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+
+
+
+
+
+		<br />
+
+		<br />
+
+		<script>
+
+$(document).ready(function() {
+	
+    var readURL = function(input) {
+        if (input.files &amp;&amp; input.files[0]) {
+        	
+        	
+ 
+        	
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.profile-pic').attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+        
+        
+        
+       
+        
+        
+        
+        
+    }
+   
+    $(".file-upload").on('change', function(){
+        readURL(this);
+      
+    });
+    
+    $(".upload-button").on('click', function() {
+       $(".file-upload").click();
+    });
+    
+    
+  
+ 
+    
+
+    
+    
+    
+    
+});
+
+
+
+
+
+
+
+
+
+</script>
+		<script>
+		var x  = document.getElementById('formId:btt-calculer');
+		  x.style.display = "none";
+$('#unmask').on('click', function(){  
+	  if($(this).prev('h:inputSecret').attr('type') == 'password')
+	    $(this).prev('h:inputSecret').prop('type', 'text');  
+	  else
+	    $(this).prev('h:inputText').prop('type', 'password');  
+	  return false;
+	});
+	//Begin supreme heuristics 
+	$('.password').on('keyup',function (){
+	  var p_c = $('#p-c');
+	  var p = $('#p');
+	  console.log(p.val() + p_c.val());
+	 if(p.val().length > 0){
+	  
+	    var s = 'weak'
+	if(p.val().length > 5 &amp;&amp; p.val().match(/\d+/g))
+	  s = 'medium';
+	if(p.val().length > 6 &amp;&amp; p.val().match(/[^\w\s]/gi))
+		{
+	  s = 'strong';
+	  
+		
+	  if(p.val() != p_c.val()) {
+		    $('#valid').html("Passwords Don't Match");
+		  } else {
+		     $('#valid').html('');  
+		var x  = document.getElementById('formId:btt-calculer');
+		     //var x = document.getElementById("btt-calculer");
+		     x.style.display = "block";
+		  }
+		
+		}   
+	   $('#strong span').addClass(s).html(s);
+	  }
+	});
+
+
+
+</script>
+
+
+
+		<script>
+
+var target_date =  '#{AbonnementFront.getTimeAbonnement()}' ; // set the countdown date
+var days, hours, minutes, seconds; // variables for time units
+
+var countdown = document.getElementById("tiles"); // get tag element
+
+getCountdown();
+
+setInterval(function () { getCountdown(); }, 1000);
+
+function getCountdown(){
+
+	// find the amount of "seconds" between now and target
+	var current_date = new Date().getTime();
+	var seconds_left = (target_date - current_date) / 1000;
+	if(seconds_left &lt; 0)
+{
+		var xx  = document.getElementById("countdown");
+		  xx.style.display = "none";
+		   $( "#load" ).load(window.location.href + " #load" );
+		}
+	days = pad( parseInt(seconds_left / 86400) );
+	seconds_left = seconds_left % 86400;
+		 
+	hours = pad( parseInt(seconds_left / 3600) );
+	seconds_left = seconds_left % 3600;
+		  
+	minutes = pad( parseInt(seconds_left / 60) );
+	seconds = pad( parseInt( seconds_left % 60 ) );
+
+	// format countdown string + set tag value
+	countdown.innerHTML = "<span>" + days + "</span><span>" + hours + "</span><span>" + minutes + "</span><span>" + seconds + "</span>"; 
+	
+}
+
+function pad(n) {
+	return (n &lt; 10 ? '0' : '') + n;
+}
+
+
+</script>
+
+
+
+	</ui:define>
+</ui:composition>

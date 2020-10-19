@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ct="http://www.chartistjsf.org/charts"
+	xmlns:b="http://bootsfaces.net/ui"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+
+
+
+
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="menu">
+	
+	<h:outputStylesheet library="css" name="main.min.css" />
+		<h:outputStylesheet library="css" name="composite.css" />
+	
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<f:view transient="true">
+
+	<style>
+	.main {
+  width: 500px;
+  margin: 20px auto;
+  padding: 50px;
+  border: 2px solid #8495A5;
+}
+	
+	</style>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+						<section class="section--bgpic bg-color-grey-3"
+							style="background-image:url('../resources/images/ban-parrainage.jpg');"
+							data-mce-style="background-image: url('../medias/images/bannieres/ban-parrainage.jpg');">
+							
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="cover cover--regular cover--no-img">
+										<div class="cover__content">
+											<h1 class="cover__title">Aider Vos Amis  Consomi  <span style="color: red;">  Tounsi </span>   </h1>
+											<div class="cover__baseline">Faites découvrir la
+												Consomi Tounsi...</div>
+										</div>
+									</div>
+									<!-- /.cover -->
+								</div>
+								
+								
+								
+							</div>
+							<!-- /.row -->
+						</div>
+						<!-- /.container --></section>
+
+
+
+
+<div id="mainFastAccess" class="fast-access fast-access--cover">
+			<a class="btn-regular btn-regular--small btn-contrast"
+				title="Ajouter Sondage" href="/login/poll.jsf">
+				<div class="fast-access__icon fast-access__icon--client"> </div> Ajouter Sondage
+			</a> <a class="btn-regular btn-regular--small" title="Aider vos amis"
+				href="/login/vote.jsf">
+				<div class="fast-access__icon fast-access__icon--phone"> </div> Aider vos amis
+			</a> <a class="btn-regular btn-regular--small" title="Mes Sondages"
+				href="/login/mesvotes.jsf">
+				<div class="fast-access__icon fast-access__icon--simulator"> </div>
+				Mes Sondages
+			</a> 
+		</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		<div class="Container">
+	<div class="row">
+	
+	
+	<b:form  id="formpoll">
+	
+	
+	
+	 <p:growl id="growl" showDetail="true" sticky="true" />  
+	
+	
+	
+	<div class="col-md-6">
+	
+	
+	   <ui:repeat var="polls" value="#{PollJsf.mespoll()}">
+	
+	
+	
+	
+
+	
+	
+		<div class="main"   > 
+  <h4>
+  Pool Archives
+  </h4>
+  <div>
+ 
+    
+    
+    
+    <ui:repeat var="poll" value="#{PollJsf.choix(polls.id)}">
+    
+    
+    <strong>#{poll.option}</strong>
+    <span class="pull-right"> #{poll.score} </span>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped bg-danger" style="width: #{poll.score}%;"></div>
+    </div>
+    
+ 
+ </ui:repeat>
+    
+    <br />
+    <br />
+    
+  
+    
+    <p class="vote-button">
+     
+<b:commandButton value="submit" update="formpoll" id="btn"  disabled="true"
+										look="success" onclick="ajax:PollJsf.voote(polls.id)" />
+    </p>
+  </div>
+</div>
+
+</ui:repeat>
+</div>
+
+</b:form>
+</div>
+</div>
+</f:view>
+	</ui:define>
+</ui:composition>

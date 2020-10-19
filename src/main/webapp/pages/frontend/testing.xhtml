@@ -1,0 +1,352 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="menu">
+
+		<style type="text/css">
+.ui-panel {
+	margin: 15px;
+	width: 300px;
+}
+</style>
+
+
+
+		<p:panel id="pnl" header="Draggable Panel">
+			<h:outputText value="I am actually a regular p:panel." />
+		</p:panel>
+		<p:draggable for="pnl" />
+
+		<p:panel id="handlepnl" header="Handle">
+			<h:outputText value="I can only be dragged with my header." />
+		</p:panel>
+		<p:draggable for="handlepnl" handle=".ui-panel-titlebar" />
+
+		<p:panel id="hpnl" header="Horizontal Only">
+			<h:outputText value="I can only be dragged horizontally." />
+		</p:panel>
+		<p:draggable for="hpnl" axis="x" />
+
+		<p:panel id="vpnl" header="Vertical Only">
+			<h:outputText value="I can only be dragged vertically" />
+		</p:panel>
+		<p:draggable for="vpnl" axis="y" />
+
+		<p:panel id="rpnl" header="Revert">
+			<h:outputText value="I will be reverted back to my original position" />
+		</p:panel>
+		<p:draggable for="rpnl" revert="true" />
+
+		<p:panel id="opnl"
+			header="consommi touns votre mailleur choix vers une economi plux puissante"
+			style="width: 900px;height: 70px">
+		</p:panel>
+		<p:draggable for="opnl" opacity="0.3" />
+
+		<p:panel id="gpnl" header="Grid" style="wi">
+			<h:outputText value="I am dragged in grid mode" />
+		</p:panel>
+		<p:draggable for="gpnl" grid="20,40" />
+
+		<p:outputPanel id="restrictPanel" layout="block"
+			style="width:400px;height:200px;border:1px solid #666666;margin-bottom:20px">
+			<p:panel id="conpnl" header="Restricted">
+				<h:outputText value="I am restricted to my parent's boundaries" />
+			</p:panel>
+		</p:outputPanel>
+		<p:draggable for="conpnl" containment="parent" />
+
+		<p:graphicImage id="pic" library="images"
+			name="uploads/product/barCode/image1.jpg" />
+		<p:draggable for="pic" />
+
+		<div class=""
+			style="width: 800px; height: 9000px">
+			111111
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<p>
+				<h:graphicImage library="images"
+					name="uploads/product/barCode/champignons-tanit.jpg"
+					style="width: 265px; height: 265px;" />
+				<h:graphicImage library="images"
+					name="uploads/product/barCode/nectar-oh.jpg"
+					style="width: 260px; height: 260px;" />
+				<h:graphicImage library="images"
+					name="uploads/product/barCode/thon-entier-la-goulette.jpg"
+					style="width: 247.625px; height: 247.625px;" />
+			</p>
+
+
+
+88888888888888888888888888888888888888oooooooooooooooo
+<br/>
+<br/><br/><br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<h3>
+				<span style="background-color: rgb(255, 0, 0);">&nbsp; &nbsp;</span><span
+					style="background-color: rgb(255, 0, 0);">consommiTounsi
+					#619&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp;Encourage the national product&nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+			</h3>
+			<p>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
+				<h:graphicImage library="images"
+														name="uploads/product/barCode/champignons-tanit.jpg"
+					style="width: 265px; height: 265px;"/>
+					<h:graphicImage
+					library="images"
+														name="uploads/product/barCode/nectar-oh.jpg" style="width: 260px; height: 260px;"/><h:graphicImage
+						library="images"
+														name="uploads/product/barCode/thon-entier-la-goulette.jpg"
+						style="width: 247.625px; height: 247.625px;"/>
+			</p>
+			<p>
+				<span style="font-family: &amp; quot;Comic Sans MS&amp;quot;;">﻿</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+					style="font-family: &amp; quot;Comic Sans MS&amp;quot;;">product11</span>&nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span
+					style="font-family: &amp; quot; Comic Sans MS&amp;quot;; font-size: 1rem;">product12</span>&nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span
+					style="font-family: &amp; quot; Comic Sans MS&amp;quot;; font-size: 1rem;">product11</span>
+			</p>
+			<p>
+				<span style="font-size: 1rem;">&nbsp; &nbsp; &nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+					style="font-size: 1rem;">&nbsp;</span><span
+					style="font-size: 1rem; font-family: &amp; quot;Comic Sans MS&amp;quot;;">20
+					DT</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp;<span style="font-size: 1rem;">&nbsp;&nbsp;</span><span
+					style="font-size: 1rem; font-family: &amp; quot;Comic Sans MS&amp;quot;;">20
+					DT</span><span style="font-size: 1rem;">&nbsp; &nbsp;</span>&nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp;&nbsp;<span style="font-size: 1rem;">&nbsp;&nbsp;</span><span
+					style="font-size: 1rem; font-family: &amp; quot;Comic Sans MS&amp;quot;;">20
+					DT</span><span style="font-size: 1rem;">&nbsp; &nbsp;</span><span
+					style="font-size: 1rem;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+			</p>
+			<p>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<h:graphicImage library="images"
+														name="uploads/product/barCode/champignons-tanit.jpg"
+					style="width: 265px; height: 265px;"/>
+					<h:graphicImage
+					library="images"
+														name="uploads/product/barCode/nectar-oh.jpg" style="width: 260px; height: 260px;"/><h:graphicImage
+						library="images"
+														name="uploads/product/barCode/thon-entier-la-goulette.jpg"
+						style="width: 247.625px; height: 247.625px;"/>
+			</p>
+			<p>
+				<span style="font-family: &amp; quot;Comic Sans MS&amp;quot;;">﻿</span>&nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp;<span
+					style="font-family: &amp; quot;Comic Sans MS&amp;quot;;">product11</span>&nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span
+					style="font-family: &amp; quot; Comic Sans MS&amp;quot;; font-size: 1rem;">product12</span>&nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span
+					style="font-family: &amp; quot; Comic Sans MS&amp;quot;; font-size: 1rem;">product11</span>
+			</p>
+			<p>
+				<span style="font-size: 1rem;">&nbsp; &nbsp; &nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+					style="font-size: 1rem; font-family: &amp; quot;Comic Sans MS&amp;quot;;">20
+					DT</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp;<span style="font-size: 1rem;">&nbsp;&nbsp;</span><span
+					style="font-size: 1rem; font-family: &amp; quot;Comic Sans MS&amp;quot;;">20
+					DT</span><span style="font-size: 1rem;">&nbsp; &nbsp;</span>&nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp;&nbsp;<span style="font-size: 1rem;">&nbsp;&nbsp;</span><span
+					style="font-size: 1rem; font-family: &amp; quot;Comic Sans MS&amp;quot;;">20
+					DT</span><span style="font-size: 1rem;">&nbsp; &nbsp;</span><span
+					style="font-size: 1rem;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+			</p>
+			<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+			<p>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<h:graphicImage library="images"
+														name="uploads/product/barCode/champignons-tanit.jpg"
+					style="width: 265px; height: 265px;"/>
+					<h:graphicImage
+					library="images"
+														name="uploads/product/barCode/nectar-oh.jpg" style="width: 260px; height: 260px;"/><h:graphicImage
+						library="images"
+														name="uploads/product/barCode/thon-entier-la-goulette.jpg"
+						style="width: 247.625px; height: 247.625px;"/>
+			</p>
+			<p>
+				<span style="font-family: &amp; quot;Comic Sans MS&amp;quot;;">﻿</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+					style="font-family: &amp; quot;Comic Sans MS&amp;quot;;">product11</span>&nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span
+					style="font-family: &amp; quot; Comic Sans MS&amp;quot;; font-size: 1rem;">product12</span>&nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+					style="font-family: &amp; quot; Comic Sans MS&amp;quot;; font-size: 1rem;">product11</span>
+			</p>
+			<p>
+				<span style="font-size: 1rem;">&nbsp; &nbsp; &nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+					style="font-size: 1rem;">&nbsp; &nbsp; &nbsp; &nbsp;
+					&nbsp;&nbsp;</span><span
+					style="font-size: 1rem; font-family: &amp; quot;Comic Sans MS&amp;quot;;">20
+					DT</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp;<span style="font-size: 1rem;">&nbsp;&nbsp;</span><span
+					style="font-size: 1rem; font-family: &amp; quot;Comic Sans MS&amp;quot;;">20
+					DT</span><span style="font-size: 1rem;">&nbsp; &nbsp;</span>&nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+					style="font-size: 1rem;">&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+					style="font-size: 1rem; font-family: &amp; quot;Comic Sans MS&amp;quot;;">2</span><span
+					style="font-size: 1rem; font-family: &amp; quot;Comic Sans MS&amp;quot;;">0
+					DT</span><span style="font-size: 1rem;">&nbsp; &nbsp;</span><span
+					style="font-size: 1rem;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+			</p>
+			<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+			<p>
+				<span style="font-size: 1rem;">&nbsp; &nbsp; &nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+					style="font-size: 1rem;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+			</p>
+			<p>
+				&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				&nbsp; &nbsp; &nbsp; &nbsp;<span
+					style="font-family: &amp; quot;Comic Sans MS&amp;quot;;"><br/></span><br/>
+			</p>
+
+			222222
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</ui:define>
+</ui:composition>

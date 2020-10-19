@@ -1,0 +1,256 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/adminTemplate.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="products">
+
+		<style>
+.ui-widget-header {
+	border: 1px solid #a8a8a8;
+	background: #c4c4c4
+		url(/javax.faces.resource/images/ui-bg_highlight-soft_100_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #f3f3f3
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	color: #007bff;
+	font-weight: lighter;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+	align-items: center;
+	place-items: center;
+}
+</style>
+		<ui:insert name="productCard" />
+		<ui:insert name="productSideBar" />
+		<h:panelGroup>
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">List Of Products</h3>
+				</div>
+				<!-- /.card-header -->
+				<div class="card-body">
+					<h:form id="formPro">
+						<table id="example1" class="table table-bordered table-striped">
+							<thead>
+								<tr role="row">
+									<th>images</th>
+									<th>id</th>
+
+									<th>bar Code</th>
+
+									<th>name</th>
+									<th>description</th>
+									<th>price</th>
+									<th>tva</th>
+									<th>color</th>
+									<th>size</th>
+									<th>Category</th>
+									<th>SubCategory</th>
+
+									<th>Brand</th>
+									<th>date</th>
+
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<p:repeat id="homeProdList"
+									value="#{adminProductController.listProduct}" var="product">
+									<tr role="row" onmouseover="">
+										<td><p:imageSwitch effect="shuffle">
+												<ui:repeat value="#{product.picture}" var="image">
+													<p:graphicImage library="uploads"
+														name="product/image/#{image.image}" height="80" width="80"
+														style="width : 80 ; height : 80" />
+												</ui:repeat>
+											</p:imageSwitch></td>
+										<td>#{empty product.id ? '-' : product.id}</td>
+										<td>#{product.reference}</td>
+										<td>#{product.name}</td>
+										<td>#{empty product.aisle ? 'not Affected yet' : product.aisle.id}</td>
+										<td>#{product.price}</td>
+										<td>#{product.tva}</td>
+										<td>#{empty product.color ? '-' : product.color}</td>
+										<td>#{empty product.size ? '-' : product.size}</td>
+										<td>#{product.category.categoryName}</td>
+										<td>#{product.subCategory.name}</td>
+										<td>#{product.brand.name}</td>
+										<td>22/5/2020-30/3/2021</td>
+
+
+										<td class="project-actions text-right">
+											<center>
+
+												<p:commandLink update=":formPro:display"
+													oncomplete="PF('carDialog').show()"
+													class="btn btn-primary btn-sm">
+													<i class="fa fa-folder"> </i> View  <f:setPropertyActionListener
+														value="#{product}"
+														target="#{adminUpdateController.product}" />
+												</p:commandLink>
+
+												<p:commandLink 
+													onstart="#{adminUpdateController.doShow(1)}"
+													action="#{navigateTo.updateProduct}"
+													class="btn btn-info btn-sm">
+													<i class="fa fa-pencil"> </i> Edit  <f:setPropertyActionListener
+														value="#{product}"
+														target="#{adminUpdateController.product}" />
+												</p:commandLink>
+										
+
+												<p:commandLink update=":formPro:display2"
+													
+													oncomplete="PF('carDialogdelete').show()"
+													class="btn btn-danger btn-sm">
+													<i class="fa fa-trash"> </i> delete  <f:setPropertyActionListener
+														value="#{product}"
+														target="#{adminUpdateController.product}" />
+												</p:commandLink>
+
+											</center>
+										</td>
+
+
+									</tr>
+								</p:repeat>
+
+							</tbody>
+							<tfoot>
+								<tr>
+									<th rowspan="1" colspan="1">images</th>
+									<th rowspan="1" colspan="1">id</th>
+									<th rowspan="1" colspan="1">bar code</th>
+									<th rowspan="1" colspan="1">name</th>
+									<th rowspan="1" colspan="1">description</th>
+									<th rowspan="1" colspan="1">price</th>
+									<th rowspan="1" colspan="1">tva</th>
+									<th rowspan="1" colspan="1">color</th>
+									<th rowspan="1" colspan="1">size</th>
+									<th rowspan="1" colspan="1">Category</th>
+									<th rowspan="1" colspan="1">SubCategory</th>
+									<th rowspan="1" colspan="1">Brand</th>
+									<th rowspan="1" colspan="1">Date</th>
+									<th rowspan="1" colspan="1">Action</th>
+								</tr>
+							</tfoot>
+						</table>
+						<p:dialog header="Catalogue Page Detail" widgetVar="carDialog"
+							resizable="false" draggable="false" showEffect="fade"
+							hideEffect="fade" modal="true">
+
+							<p:outputPanel id="display">
+								<h:panelGrid columns="2" cellpadding="5"
+									rendered="#{not empty adminUpdateController.product}">
+									<f:facet name="header">
+										<p:repeat var="image"
+											value="#{adminUpdateController.product.picture}">
+											<p:graphicImage library="uploads"
+												name="product/image/#{image.image}" />
+										</p:repeat>
+									</f:facet>
+
+									<h:outputText value="Id" />
+									<h:outputText value="#{adminUpdateController.product.id}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Name:" />
+									<h:outputText value="#{adminUpdateController.product.name}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Price:" />
+									<h:outputText value="#{adminUpdateController.product.price}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Category:" />
+									<h:outputText
+										value="#{adminUpdateController.product.category.categoryName}"
+										style="font-weight:bold" />
+									<h:outputText value="SubCategory:" />
+									<h:outputText
+										value="#{adminUpdateController.product.subCategory.name}"
+										style="font-weight:bold" />
+									<h:outputText value="Brand:" />
+									<h:outputText
+										value="#{adminUpdateController.product.brand.name}"
+										style="font-weight:bold" />
+								</h:panelGrid>
+							</p:outputPanel>
+						</p:dialog>
+						
+						
+						
+						
+						
+						
+						<p:dialog header="Delete Product" widgetVar="carDialogdelete"
+							resizable="false" draggable="false" showEffect="fade"
+							hideEffect="fade" modal="true">
+
+							<p:outputPanel id="display2">
+								<h:panelGrid columns="2" cellpadding="5"
+									rendered="#{not empty adminUpdateController.product}">
+									<f:facet name="header">
+										<p:repeat var="image"
+											value="#{adminUpdateController.product.picture}">
+											<p:graphicImage library="uploads"
+												name="product/image/#{image.image}" />
+										</p:repeat>
+									</f:facet>
+
+									<h:outputText value="Id" />
+									<h:outputText value="#{adminUpdateController.product.id}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Name:" />
+									<h:outputText value="#{adminUpdateController.product.name}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Price:" />
+									<h:outputText value="#{adminUpdateController.product.price}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Category:" />
+									<h:outputText
+										value="#{adminUpdateController.product.category.categoryName}"
+										style="font-weight:bold" />
+									<h:outputText value="SubCategory:" />
+									<h:outputText
+										value="#{adminUpdateController.product.subCategory.name}"
+										style="font-weight:bold" />
+									<h:outputText value="Brand:" />
+									<h:outputText
+										value="#{adminUpdateController.product.brand.name}"
+										style="font-weight:bold" />
+										
+										<br />
+										<h:commandLink style="width:100%"
+													action="#{adminProductController.deleteProduct(adminUpdateController.product.id)}"
+													class="btn btn-danger btn-sm" href="#">
+													<i class="fa fa-trash"> </i> Delete
+																		</h:commandLink>
+								</h:panelGrid>
+							</p:outputPanel>
+						</p:dialog>
+	
+
+					</h:form>
+				</div>
+				<!-- /.card-body -->
+			</div>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,606 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/adminTemplate.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+
+	<ui:define name="products">
+
+		<style>
+.ui-selectonemenu .ui-selectonemenu-trigger .ui-icon {
+	margin-top: 9px;
+	margin-right: 0;
+	margin-left: -25px;
+}
+
+.form-control:disabled, .form-control[readonly] {
+	background-color: #ffffff;
+	opacity: 1;
+}
+
+.ui-widget-content {
+	border: 1px solid #d3d8dd;
+	background: #fff;
+	color: #4f4f4f;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default {
+	border: 1px solid #a8a8a8;
+	background: #c4c4c4
+		url(/javax.faces.resource/images/ui-bg_highlight-hard_80_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #e9ecef
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	font-weight: bold;
+	color: #4f4f4f;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-widget-header {
+	border: 1px solid #b6d5ea;
+	background: #ffffff
+		url(/javax.faces.resource/images/ui-bg_highlight-soft_100_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #ffffff00
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	color: #fff;
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-selectonemenu .ui-selectonemenu-trigger {
+	border-right: 0;
+	border-top: 0;
+	border-bottom: 0;
+	cursor: pointer;
+	width: 0;
+	height: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 0 3px;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight,
+	.ui-widget-header .ui-state-highlight {
+	border: 1px solid #fbfbfb;
+	background: #fd2439;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.ui-shadow {
+	-webkit-box-shadow: 0 5px 10px rgba(255, 255, 255, 0.8);
+	box-shadow: 0 5px 10px rgba(255, 255, 255, 0.8);
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-list-item {
+	border: 0 none;
+	margin: 3px -8px;
+	padding: 3px 7px;
+	text-align: left;
+	white-space: nowrap;
+	font-family: auto;
+	overflow: auto;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-items-wrapper {
+	overflow-anchor: none;
+	overflow-x: hidden;
+	overflow-y: inherit;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button
+	{
+	font-family: auto;
+	font-size: 1em;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-filter {
+	padding-right: 15px;
+	padding: 4px;
+	width: 100%;
+	box-sizing: border-box;
+	border-radius: .25rem;
+}
+
+/* .ui-selectonemenu-panel{ */
+
+/* } */
+.ui-selectonemenu-panel .ui-selectonemenu-filter-container .ui-icon {
+	position: absolute;
+	top: 18px;
+	right: 14px;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-filter-container {
+	position: relative;
+	margin: 0;
+	padding: .4em;
+	display: inline-block;
+	width: 100%;
+}
+
+.ui-widget-header {
+	color: #ff0c0c;
+}
+</style>
+
+		<br />
+
+
+
+		<div class="card card-info">
+			<h:form id="f1">
+				<div class="card-header">
+					<h3 class="card-title">List Catalogue</h3>
+					<div class="card-tools">
+						<h:commandLink type="button" class="btn btn-tool"
+							action="#{aisleController.collapse(1)}">
+							<p:ajax event="click" update="productShow f1"></p:ajax>
+							<i class="#{aisleController.productButtonStyle}"></i>
+						</h:commandLink>
+
+					</div>
+				</div>
+			</h:form>
+			<h:panelGroup id="productShow" class="card-body"
+				style="display: #{aisleController.productStyle}">
+				
+
+<ui:include src="/catalogue/samples/magazine/magazinCatalogueadmin.xhtml"></ui:include>
+
+
+				<br />
+
+				
+
+			</h:panelGroup>
+			<!-- /.card-body -->
+
+		</div>
+
+
+
+
+
+		<h:panelGroup>
+			<div class="card card-info">
+
+				<h:form id="f2">
+					<div class="card-header">
+						<h3 class="card-title">Manage Storage Asile's Products</h3>
+						<div class="card-tools">
+							<h:commandLink type="button" class="btn btn-tool"
+								action="#{aisleController.collapse(2)}">
+								<p:ajax event="click" update="brandShow f2"></p:ajax>
+								<i class="#{aisleController.brandButtonStyle}"></i>
+							</h:commandLink>
+						</div>
+					</div>
+				</h:form>
+				<h:panelGroup class="card-body" id="brandShow"
+					style="display: #{aisleController.brandStyle}">
+
+					<h:form enctype="multipart/form-data" id="catalogueImages">
+						<p:messages id="messages" showDetail="true" closable="true"
+							autoUpdate="true" >
+
+						</p:messages>
+						<br />
+
+
+						<p:fileUpload 
+							fileUploadListener="#{imageController.handleCatalogueFile}"
+							multiple="true" update="@form" id="catalogueUploader"
+							required="true"  />
+
+						<div class="input-group mb-3"></div>
+					
+					</h:form>
+
+
+					<br />
+
+
+
+					<!-- /.card-body -->
+					<br />
+					<center>
+<h:form>
+<h:commandButton class="btn btn-info" value="Create Catalogue " action="#{imageController.createCatalogue()}">
+</h:commandButton>
+</h:form>
+</center>
+					<br />
+
+
+
+
+
+					<script type="text/javascript">
+						function handleDrop(event, ui) {
+
+							var droppedCar = ui.draggable;
+							droppedCar.fadeOut('fast');
+
+						}
+					</script>
+
+
+					<h:form id="carForm" binding="#{carForm}">
+						<p:fieldset id="availableCarsField"
+							legend="Catalogue Pages To Add">
+							<p:dataGrid id="availableCars" var="image"
+								value="#{imageController.catalogueImages}" columns="3">
+								<!--             <p:panel  id="pnl" header="#{car.id}" style="width:30%;text-align:center"> -->
+								<!--                 <h:panelGrid columns="1" style="width:100%"> -->
+								<p:graphicImage id="pic" library="uploads" 
+									
+									name="catalogue/image/#{image.image}"  style="text-align:center"/>
+								<!--                 </h:panelGrid> -->
+								<!--             </p:panel> -->
+
+								<p:draggable for="pic" />
+							</p:dataGrid>
+						</p:fieldset>
+
+						<p:fieldset id="selectedCars" legend="Selected Catalogue Pages "
+							style="margin-top:20px">
+							<p:outputPanel id="dropArea">
+								<h:outputText value="!!!Drop Pages here!!!"
+									rendered="#{empty imageController.catalogueImagesDropped}"
+									style="font-size:24px;" />
+								<p:dataTable id="selectedCarsTable" var="image"
+									rowIndexVar="index" rowKey="ii"
+									value="#{imageController.catalogueImagesDropped}"
+									rendered="#{not empty imageController.catalogueImagesDropped}">
+									<p:column headerText="Page N:">
+										<h:outputText value="#{index +1}" />
+									</p:column>
+
+									<p:column headerText="Year">
+										<p:graphicImage height="120" width="150" library="uploads"
+											name="product/image/#{image.image}" />
+									</p:column>
+
+									<p:column headerText="Brand">
+										<h:outputText value="#{image.image}" />
+									</p:column>
+
+
+
+									<p:column headerText="Action ">
+										<p:commandLink update=":carForm:display"
+											oncomplete="PF('carDialog').show()"
+											class="btn btn-primary btn-sm">
+											<i class="fa fa-folder"> </i> View    <f:setPropertyActionListener
+												value="#{image}" target="#{imageController.selectedImage}" />
+										</p:commandLink>
+										<p:commandLink update=":carForm:display"
+											oncomplete="PF('carDialog').show()"
+											class="btn btn-primary btn-sm">
+											<i class="fa fa-folder"> </i> delete    <f:setPropertyActionListener
+												value="#{image}" target="#{imageController.selectedImage}" />
+										</p:commandLink>
+									</p:column>
+								</p:dataTable>
+							</p:outputPanel>
+						</p:fieldset>
+
+						<p:droppable for="selectedCars" tolerance="touch"
+							activeStyleClass="ui-state-highlight" datasource="availableCars"
+							onDrop="handleDrop">
+							<p:ajax listener="#{imageController.onImageDrop}"
+								update="dropArea availableCars" form="#{carForm.clientId}" />
+						</p:droppable>
+
+						<p:dialog header="Catalogue Page Detail" widgetVar="carDialog"
+							resizable="false" draggable="false" showEffect="fade"
+							hideEffect="fade" modal="true">
+
+							<p:outputPanel id="display">
+								<h:panelGrid columns="2" cellpadding="5"
+									rendered="#{not empty imageController.selectedImage}">
+									<f:facet name="header">
+										<p:graphicImage height="180" width="180" library="uploads"
+											name="product/image/#{imageController.selectedImage.image}" />
+									</f:facet>
+
+									<h:outputText value="Id" />
+									<h:outputText value="#{imageController.selectedImage.id}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Year:" />
+									<h:outputText value="#{imageController.selectedImage.image}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Brand" />
+									<h:outputText value="#{imageController.selectedImage.image}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Color:" />
+									<h:outputText value="#{imageController.selectedImage.image}"
+										style="font-weight:bold" />
+								</h:panelGrid>
+							</p:outputPanel>
+						</p:dialog>
+					</h:form>
+
+
+
+
+
+				</h:panelGroup>
+			</div>
+		</h:panelGroup>
+
+
+
+ <div class="card card-success card-outline">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-edit"></i>
+                  SweetAlert2 Examples
+                </h3>
+              </div>
+              <div class="card-body">
+                <button type="button" class="btn btn-success swalDefaultSuccess">
+                  Launch Success Toast
+                </button>
+                <button type="button" class="btn btn-info swalDefaultInfo">
+                  Launch Info Toast
+                </button>
+                <button type="button" class="btn btn-danger swalDefaultError">
+                  Launch Error Toast
+                </button>
+                <button type="button" class="btn btn-warning swalDefaultWarning">
+                  Launch Warning Toast
+                </button>
+                <button type="button" class="btn btn-default swalDefaultQuestion">
+                  Launch Question Toast
+                </button>
+                <div class="text-muted mt-3">
+                  For more examples look at <a href="https://sweetalert2.github.io/">https://sweetalert2.github.io/</a>
+                </div>
+              </div>
+              <!-- /.card -->
+            </div>
+
+            <div class="card card-warning card-outline">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-edit"></i>
+                  Toastr Examples
+                </h3>
+              </div>
+              <div class="card-body">
+                <button type="button" class="btn btn-success toastrDefaultSuccess">
+                  Launch Success Toast
+                </button>
+                <button type="button" class="btn btn-info toastrDefaultInfo">
+                  Launch Info Toast
+                </button>
+                <button type="button" class="btn btn-danger toastrDefaultError">
+                  Launch Error Toast
+                </button>
+                <button type="button" class="btn btn-warning toastrDefaultWarning">
+                  Launch Warning Toast
+                </button>4564
+                <h:inputText  type="text" class="swalDefaultSuccessBlur" />22
+                <div class="text-muted mt-3">
+                  For more examples look at <a href="https://codeseven.github.io/toastr/">https://codeseven.github.io/toastr/</a>
+                </div>
+              </div>
+              <!-- /.card -->
+           </div>
+          <!-- /.col -->
+        
+
+<h:form>   
+    <p:growl id="growl"  showDetail="true" sticky="true" />  
+       
+    <p:panel header="Growl">  
+        <h:panelGrid columns="2" cellpadding="5">  
+            <p:outputLabel for="msg" value="Message:" />   
+            <p:inputText id="msg" value="#{growlView.message}" required="true" />  
+        </h:panelGrid>  
+   
+        <p:commandButton value="Save" action="#{growlView.saveMessage()}" update="@form" />
+    </p:panel>     
+</h:form>
+
+<script type="text/javascript">
+  $(function() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+    
+//  on blur we seee
+
+ $('.swalDefaultSuccessBlur1').focus(function() {
+          Toast.fire({
+            type: 'success',
+            title: 'that is ok thanks for your undrestanding :) '
+          })
+        });
+    $('.swalDefaultSuccessBlur').blur(function() {
+          Toast.fire({
+            type: 'success',
+            title: 'that is ok thanks for your undrestanding :) '
+          })
+        });
+    
+    
+    $('.swalDefaultSuccess').click(function() {
+      Toast.fire({
+        type: 'success',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.swalDefaultInfo').click(function() {
+      Toast.fire({
+        type: 'info',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.swalDefaultError').click(function() {
+      Toast.fire({
+        type: 'error',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.swalDefaultWarning').click(function() {
+      Toast.fire({
+        type: 'warning',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.swalDefaultQuestion').click(function() {
+      Toast.fire({
+        type: 'question',
+        title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+
+    $('.toastrDefaultSuccess').click(function() {
+      toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+    $('.toastrDefaultInfo').click(function() {
+      toastr.info('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+    $('.toastrDefaultError').click(function() {
+      toastr.error('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+    $('.toastrDefaultWarning').click(function() {
+      toastr.warning('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+
+    $('.toastsDefaultDefault').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultTopLeft').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        position: 'topLeft',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultBottomRight').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        position: 'bottomRight',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultBottomLeft').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        position: 'bottomLeft',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultAutohide').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        autohide: true,
+        delay: 750,
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultNotFixed').click(function() {
+      $(document).Toasts('create', {
+        title: 'Toast Title',
+        fixed: false,
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultFull').click(function() {
+      $(document).Toasts('create', {
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        icon: 'fas fa-envelope fa-lg',
+      })
+    });
+    $('.toastsDefaultFullImage').click(function() {
+      $(document).Toasts('create', {
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        image: '../../dist/img/user3-128x128.jpg',
+        imageAlt: 'User Picture',
+      })
+    });
+    $('.toastsDefaultSuccess').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-success', 
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultInfo').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-info', 
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultWarning').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-warning', 
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultDanger').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-danger', 
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+    $('.toastsDefaultMaroon').click(function() {
+      $(document).Toasts('create', {
+        class: 'bg-maroon', 
+        title: 'Toast Title',
+        subtitle: 'Subtitle',
+        body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+      })
+    });
+  });
+
+</script>
+
+
+
+	</ui:define>
+
+</ui:composition>

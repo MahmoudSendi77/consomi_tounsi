@@ -1,0 +1,578 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/adminTemplate.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+
+	<ui:define name="products">
+
+		<style>
+.ui-selectonemenu .ui-selectonemenu-trigger .ui-icon {
+	margin-top: 9px;
+	margin-right: 0;
+	margin-left: -25px;
+}
+
+.form-control:disabled, .form-control[readonly] {
+	background-color: #ffffff;
+	opacity: 1;
+}
+
+.ui-widget-content {
+	border: 1px solid #d3d8dd;
+	background: #fff;
+	color: #4f4f4f;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default {
+	border: 1px solid #a8a8a8;
+	background: #c4c4c4
+		url(/javax.faces.resource/images/ui-bg_highlight-hard_80_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #e9ecef
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	font-weight: bold;
+	color: #4f4f4f;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-widget-header {
+	border: 1px solid #b6d5ea;
+	background: #ffffff
+		url(/javax.faces.resource/images/ui-bg_highlight-soft_100_c4c4c4_1x100.png.jsf?ln=primefaces-aristo)
+		50% 50% repeat-x;
+	background: #c4c4c4 linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	background: #ffffff00
+		-webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255,
+		0.8)), to(rgba(255, 255, 255, 0)));
+	background: #c4c4c4 -moz-linear-gradient(top, rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0));
+	color: #fff;
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-selectonemenu .ui-selectonemenu-trigger {
+	border-right: 0;
+	border-top: 0;
+	border-bottom: 0;
+	cursor: pointer;
+	width: 0;
+	height: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 0 3px;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight,
+	.ui-widget-header .ui-state-highlight {
+	border: 1px solid #fbfbfb;
+	background: #fd2439;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.ui-shadow {
+	-webkit-box-shadow: 0 5px 10px rgba(255, 255, 255, 0.8);
+	box-shadow: 0 5px 10px rgba(255, 255, 255, 0.8);
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-list-item {
+	border: 0 none;
+	margin: 3px -8px;
+	padding: 3px 7px;
+	text-align: left;
+	white-space: nowrap;
+	font-family: auto;
+	overflow: auto;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-items-wrapper {
+	overflow-anchor: none;
+	overflow-x: hidden;
+	overflow-y: inherit;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button
+	{
+	font-family: auto;
+	font-size: 1em;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-filter {
+	padding-right: 15px;
+	padding: 4px;
+	width: 100%;
+	box-sizing: border-box;
+	border-radius: .25rem;
+}
+
+/* .ui-selectonemenu-panel{ */
+
+/* } */
+.ui-selectonemenu-panel .ui-selectonemenu-filter-container .ui-icon {
+	position: absolute;
+	top: 18px;
+	right: 14px;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-filter-container {
+	position: relative;
+	margin: 0;
+	padding: .4em;
+	display: inline-block;
+	width: 100%;
+}
+
+.ui-widget-header {
+	color: #ff0c0c;
+}
+</style>
+
+
+
+
+
+
+		<h:panelGroup>
+			<div class="card card-info">
+
+				<h:form id="f201">
+					<div class="card-header">
+						<h3 class="card-title">Affect Chef Aisle To Aisle</h3>
+						<div class="card-tools">
+							<h:commandLink type="button" class="btn btn-tool"
+								action="#{aisleController.collapse(4)}">
+								<p:ajax event="click" update="brandShow4700 f201"></p:ajax>
+								<i class="#{aisleController.productButtonStyle4}"></i>
+							</h:commandLink>
+
+						</div>
+					</div>
+				</h:form>
+				<h:panelGroup class="card-body" id="brandShow4700"
+				  style="display: #{aisleController.productStyle4}">
+					<h:form>
+
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label><span class="input-group-text"> Choose
+											Aisle :</span></label>
+									<h:selectOneMenu class="form-control select2bs4"
+										style="width: 100%;" value="#{aisleController.aisleId}">
+										<f:selectItem itemLabel="Choose Aisle" value="#{null}"></f:selectItem>
+										<f:selectItems value="#{promosController.listaisles}" />
+									</h:selectOneMenu>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label><span class="input-group-text"> Choose
+											chef Aisle :</span></label>
+									<h:selectOneMenu class="form-control select2bs4"
+										style="width: 100%;" value="#{aisleController.chefAisleId}">
+										<f:selectItem itemLabel="Choose chef Aisle" value="#{null}"></f:selectItem>
+										<f:selectItems value="#{aisleController.listUser}" />
+									</h:selectOneMenu>
+								</div>
+							</div>
+						</div>
+
+						<center>
+							<h:commandLink class="btn btn-success"
+								value=" Affect Chef Aisle To Aisle "
+								action="#{aisleController.affectToAisle()}">
+							</h:commandLink>
+						</center>
+					</h:form>
+				</h:panelGroup>
+			</div>
+		</h:panelGroup>
+		<br />
+
+
+		<h:panelGroup>
+			<div class="card card-info">
+
+				<h:form id="f2012">
+					<div class="card-header">
+						<h3 class="card-title">Supply Request</h3>
+						<div class="card-tools">
+							<h:commandLink type="button" class="btn btn-tool"
+								action="#{aisleController.collapse(5)}">
+								<p:ajax event="click" update="brandShow4770 f2012"></p:ajax>
+								<i class="#{aisleController.productButtonStyle5}"></i>
+							</h:commandLink>
+
+						</div>
+					</div>
+				</h:form>
+				<h:panelGroup class="card-body" id="brandShow4770"
+				 style="display: #{aisleController.productStyle5}">
+					<h:form>
+
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label><span class="input-group-text"> Choose
+											Product :</span></label>
+									<h:selectOneMenu class="form-control select2bs4"
+										style="width: 100%;" value="#{aisleController.productId}">
+										<f:selectItem itemLabel="Choose Aisle" value="#{null}"></f:selectItem>
+										<f:selectItems value="#{aisleController.listProducts}" />
+									</h:selectOneMenu>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label><span class="input-group-text"> Choose
+											Supplier :</span></label>
+									<h:selectOneMenu class="form-control select2bs4"
+										style="width: 100%;" value="#{aisleController.supplierId}">
+										<f:selectItem itemLabel="Choose chef Aisle" value="#{null}"></f:selectItem>
+										<f:selectItems value="#{aisleController.listsuplier}" />
+									</h:selectOneMenu>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> quantity :&#160;&#160;
+									&#160;&#160; </span>
+							</div>
+							<h:inputText pt:placeholder="quantity" type="text"
+								class="form-control" value="#{aisleController.quantity}" />
+
+						</div>
+
+						<center>
+							<h:commandLink class="btn btn-success" value=" Supply Request "
+								action="#{aisleController.askFor()}">
+							</h:commandLink>
+						</center>
+					</h:form>
+				</h:panelGroup>
+			</div>
+		</h:panelGroup>
+		<br />
+
+
+
+		<div class="card card-info">
+			<h:form id="f1">
+				<div class="card-header">
+					<h3 class="card-title">Add New Aisle</h3>
+					<div class="card-tools">
+						<h:commandLink type="button" class="btn btn-tool"
+							action="#{aisleController.collapse(1)}">
+							<p:ajax event="click" update="productShow f1"></p:ajax>
+							<i class="#{aisleController.productButtonStyle}"></i>
+						</h:commandLink>
+
+					</div>
+				</div>
+			</h:form>
+			<h:panelGroup id="productShow" class="card-body"
+				style="display: #{aisleController.productStyle}">
+				<h:form enctype="multipart/form-data" prependId="false"
+					id="myfform12354">
+					<p:messages id="messages" showDetail="true" closable="true"
+						autoUpdate="true">
+
+					</p:messages>
+					<br />
+
+					<p:fileUpload
+						fileUploadListener="#{aisleController.handleAisleFile}"
+						multiple="true" id="aisleUploader" required="true"
+						sizeLimit="9999999" />
+
+				</h:form>
+
+
+				<br />
+
+				<h:form>
+
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> name :&#160;&#160;
+								&#160;&#160;&#160;&#160;&#160;&#160;&#160; </span>
+						</div>
+						<h:inputText pt:placeholder="Aisle name" type="text"
+							class="form-control" value="#{aisleController.aisle.name}" />
+						<!-- 							<div class="input-group-append"> -->
+						<!-- 								<span class="input-group-text">DT</span> -->
+						<!-- 							</div> -->
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> position
+								:&#160;&#160;&#160;&#160;&#160;&#160;&#160;</span>
+						</div>
+						<h:inputText pt:placeholder="product price" type="text"
+							class="form-control" value="#{aisleController.aisle.position}" />
+
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> description :</span>
+						</div>
+						<h:inputText pt:placeholder="Aisle description" type="text"
+							class="form-control" value="#{aisleController.aisle.description}" />
+
+					</div>
+
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label><span class="input-group-text"> Aisle type
+										:</span></label>
+								<h:selectOneMenu class="form-control select2bs4"
+									style="width: 100%;" value="#{aisleController.aisle.type}">
+									<f:selectItem itemLabel="Choose Aisle's Type" value="#{null}"></f:selectItem>
+									<f:selectItem itemLabel="normale" itemValue="normale"></f:selectItem>
+									<f:selectItem itemLabel="réfrigérateur"
+										itemValue="réfrigérateur"></f:selectItem>
+								</h:selectOneMenu>
+							</div>
+						</div>
+					</div>
+					<br />
+					<br />
+					<center>
+
+						<h:commandButton value="Add Aisle"
+							action="#{aisleController.addTheAisle}"></h:commandButton>
+
+					</center>
+				</h:form>
+
+
+			</h:panelGroup>
+			<!-- /.card-body -->
+
+		</div>
+
+
+
+
+
+		<h:panelGroup>
+			<div class="card card-info">
+
+				<h:form id="f2">
+					<div class="card-header">
+						<h3 class="card-title">Manage Asile's Products</h3>
+						<div class="card-tools">
+							<h:commandLink type="button" class="btn btn-tool"
+								action="#{aisleController.collapse(2)}">
+								<p:ajax event="click" update="brandShow f2"></p:ajax>
+								<i class="#{aisleController.brandButtonStyle}"></i>
+							</h:commandLink>
+						</div>
+					</div>
+				</h:form>
+				<h:panelGroup class="card-body" id="brandShow"
+					style="display: #{aisleController.brandStyle}">
+
+
+					<br />
+
+					<!-- /.card-body -->
+					<br />
+
+					<br />
+
+
+
+
+
+					<script type="text/javascript">
+						function handleDrop(event, ui) {
+
+							var droppedCar = ui.draggable;
+							droppedCar.fadeOut('fast');
+
+						}
+					</script>
+
+
+					<h:form id="carForm" binding="#{carForm}">
+						<p:fieldset id="availableCarsField"
+							legend="Catalogue Pages To Add">
+							<p:dataGrid id="availableCars" var="product"
+								value="#{promosController.catalogueImages}" columns="3">
+								<p:panel id="pnl" header="#{product.name}"
+									style="width:30%;text-align:center">
+									<h:panelGrid style="width:100%">
+										<p:repeat var="image" value="#{product.picture}" size="1">
+											<p:graphicImage id="pic" library="uploads"
+												style="text-align:center"
+												name="product/image/#{image.image}" />
+										</p:repeat>
+									</h:panelGrid>
+								</p:panel>
+
+								<p:draggable for="pnl" />
+							</p:dataGrid>
+						</p:fieldset>
+
+						<p:fieldset id="selectedCars" legend="Selected Catalogue Pages "
+							style="margin-top:20px">
+							<p:outputPanel id="dropArea">
+								<h:outputText value="!!!Drop Pages here!!!"
+									rendered="#{empty promosController.catalogueImagesDropped}"
+									style="font-size:24px;" />
+								<p:dataTable id="selectedCarsTable" var="product"
+									rowIndexVar="index" rowKey="ii"
+									value="#{promosController.catalogueImagesDropped}"
+									rendered="#{not empty promosController.catalogueImagesDropped}">
+									<p:column headerText="name">
+										<h:outputText value="#{product.name}" />
+									</p:column>
+
+									<p:column headerText="Year">
+										<p:repeat var="image" value="#{product.picture}">
+											<p:graphicImage height="120" width="150" library="uploads"
+												name="product/image/#{image.image}" />
+										</p:repeat>
+									</p:column>
+
+									<p:column headerText="Brand">
+										<h:outputText value="#{product.brand.name}" />
+									</p:column>
+
+									<p:column headerText="Category">
+										<h:outputText value="#{product.category.categoryName}" />
+									</p:column>
+									<p:column headerText="SubCategory">
+										<h:outputText value="#{product.subCategory.name }" />
+									</p:column>
+
+
+
+									<p:column headerText="Action">
+										<p:commandLink update=":carForm:display"
+											oncomplete="PF('carDialog').show()"
+											class="btn btn-primary btn-sm">
+											<i class="fa fa-folder"> </i> View    <f:setPropertyActionListener
+												value="#{product}"
+												target="#{promosController.selectedImage}" />
+										</p:commandLink>
+									</p:column>
+								</p:dataTable>
+							</p:outputPanel>
+						</p:fieldset>
+
+						<p:droppable for="selectedCars" tolerance="touch"
+							activeStyleClass="ui-state-highlight" datasource="availableCars"
+							onDrop="handleDrop">
+							<p:ajax listener="#{promosController.onImageDrop}"
+								update="dropArea availableCars" form="#{carForm.clientId}" />
+						</p:droppable>
+
+						<p:dialog header="Catalogue Page Detail" widgetVar="carDialog"
+							resizable="false" draggable="false" showEffect="fade"
+							hideEffect="fade" modal="true">
+
+							<p:outputPanel id="display">
+								<h:panelGrid columns="2" cellpadding="5"
+									rendered="#{not empty promosController.selectedImage}">
+									<f:facet name="header">
+										<p:repeat var="image"
+											value="#{promosController.selectedImage.picture}">
+											<p:graphicImage library="uploads"
+												name="product/image/#{image.image}" />
+										</p:repeat>
+									</f:facet>
+
+									<h:outputText value="Id" />
+									<h:outputText value="#{promosController.selectedImage.id}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Name:" />
+									<h:outputText value="#{promosController.selectedImage.name}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Price:" />
+									<h:outputText value="#{promosController.selectedImage.price}"
+										style="font-weight:bold" />
+
+									<h:outputText value="Category:" />
+									<h:outputText
+										value="#{promosController.selectedImage.category.categoryName}"
+										style="font-weight:bold" />
+									<h:outputText value="SubCategory:" />
+									<h:outputText
+										value="#{promosController.selectedImage.subCategory.name}"
+										style="font-weight:bold" />
+									<h:outputText value="Brand:" />
+									<h:outputText
+										value="#{promosController.selectedImage.brand.name}"
+										style="font-weight:bold" />
+								</h:panelGrid>
+							</p:outputPanel>
+						</p:dialog>
+					</h:form>
+
+
+
+
+
+				</h:panelGroup>
+				<center>
+					<h:form>
+
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label><span class="input-group-text"> Shoose
+											Aisle 3:</span></label>
+									<h:selectOneMenu class="form-control select2bs4"
+										style="width: 100%;" value="#{promosController.aisleId}">
+										<f:selectItem itemLabel="Choose Aisle" value="#{null}"></f:selectItem>
+										<f:selectItems value="#{promosController.listaisles}" />
+									</h:selectOneMenu>
+								</div>
+							</div>
+						</div>
+
+
+
+
+						<h:commandLink class="btn btn-success"
+							value=" Affect Products to Aisle "
+							action="#{promosController.affectToAisle()}">
+						</h:commandLink>
+					</h:form>
+				</center>
+			</div>
+		</h:panelGroup>
+
+
+
+
+	</ui:define>
+
+</ui:composition>

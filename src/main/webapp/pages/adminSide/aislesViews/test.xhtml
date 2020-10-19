@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/template/adminTemplate.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+
+	<ui:define name="products">
+
+		<br />
+<script type="text/javascript">
+    function handleDrop(event, ui) {
+        var droppedCar = ui.draggable;
+ 
+        droppedCar.fadeOut('fast');
+    }
+</script>
+ 
+ 
+
+
+
+
+<h:form id="carForm" binding="#{carForm}">
+    <p:fieldset id="availableCarsField" legend="AvailableCars">
+        <p:dataGrid id="availableCars" var="image" value="#{promosController.catalogueImages}" columns="3">
+            <p:panel id="pnl" header="#{image.id}"  style="color: #ff0a0a; text-align:center;width:40%">
+                <h:panelGrid columns="1" style="width:30%">
+                    <p:graphicImage style="width:90%" library="uploads"
+									name="product/image/#{image.image}" />
+                </h:panelGrid>
+            </p:panel>
+ 
+            <p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar" stack=".ui-panel"/>
+        </p:dataGrid>
+    </p:fieldset>
+ 
+    <p:fieldset id="selectedCars" legend="Selected Cars" style="margin-top:20px">
+        <p:outputPanel id="dropArea">
+            <h:outputText value="!!!Drop here!!!" rendered="#{empty promosController.catalogueImagesDropped}" style="font-size:24px;" />
+            <p:dataTable id="selectedCarsTable" var="image" value="#{promosController.catalogueImagesDropped}" rendered="#{not empty promosController.catalogueImagesDropped}">
+               <p:autoComplete></p:autoComplete>
+                <p:column headerText="Id">
+                    <h:outputText value="#{image.id}" />
+                </p:column>
+ 
+                <p:column headerText="Year">
+                    <h:outputText value="#{image.image}" />
+                </p:column>
+ 
+                <p:column headerText="Brand">
+                    <h:outputText value="#{image.image}" />
+                </p:column>
+ 
+                <p:column headerText="Color">
+                    <h:outputText value="#{image.image}" />
+                </p:column>
+ 
+                <p:column style="width:32px">
+                    <p:commandButton update=":carForm:display" oncomplete="PF('carDialog').show()" icon="pi pi-search">
+                        <f:setPropertyActionListener value="#{image}" target="#{promosController.selectedImage}" />
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </p:outputPanel>
+    </p:fieldset>
+ 
+    <p:droppable   for="selectedCars" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="availableCars" onDrop="handleDrop">
+        <p:ajax  Listener="#{promosController.onImageDrop}" 
+        
+         update="dropArea availableCars" form="#{carForm.clientId}"/>
+         
+    </p:droppable>
+ 
+    <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false" draggable="false"
+              showEffect="fade" hideEffect="fade" modal="true">
+ 
+        <p:outputPanel id="display">
+            <h:panelGrid columns="2" cellpadding="5" rendered="#{not empty promosController.selectedImage}">
+                <f:facet name="header">
+                    <p:graphicImage library="uploads"
+									name="product/image/#{promosController.selectedImage.image}"/>
+                </f:facet>
+ 
+                <h:outputText value="Id" />
+                <h:outputText value="#{promosController.selectedImage.id}" style="font-weight:bold"/>
+ 
+                <h:outputText value="Year:" />
+                <h:outputText value="#{promosController.selectedImage.image}" style="font-weight:bold"/>
+ 
+                <h:outputText value="Brand" />
+                <h:outputText value="#{promosController.selectedImage.image}" style="font-weight:bold"/>
+ 
+                <h:outputText value="Color:" />
+                <h:outputText value="#{promosController.selectedImage.image}" style="font-weight:bold"/>
+            </h:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+</h:form>
+	</ui:define>
+
+
+
+
+
+
+
+
+
+</ui:composition>

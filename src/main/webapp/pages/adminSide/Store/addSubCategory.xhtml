@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	
+	>
+
+	
+
+		<style>
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button
+	{
+	font-family: auto;
+	font-size: 1em;
+}
+
+
+
+</style>
+			<h:panelGroup>
+			<h:form  enctype="multipart/form-data" >
+		<h:inputText 
+		value="#{detailsController.ff}"
+		></h:inputText>
+		<h:inputFile 		value="#{detailsController.uploadedFile}" required="true"
+											
+										/>
+										<h:commandLink value="Upload file" 
+											action="#{detailsController.saveFile()}"
+											style="color: red;font-size: 30px;"/>
+									
+			
+			</h:form>	
+			</h:panelGroup>
+	<h:form>
+		<h:commandLink value="hhkj"
+		action="#{detailsController.saveFiless()}"
+											
+		/>
+		 </h:form>
+		
+	
+
+</ui:composition>

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui"
+	template="/template/adminTemplate.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="products">
+		<h:panelGroup>
+			<h:panelGroup class="content">
+				<h:form>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="card card-primary">
+								<div class="card-header">
+									<h3 class="card-title">Add Product</h3>
+
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool"
+											data-card-widget="collapse" data-toggle="tooltip"
+											title="Collapse">
+											<i class="fas fa-minus"></i>
+										</button>
+									</div>
+								</div>
+								<!--             <ui:include src="/pages/adminSide/productViews/addProd.jsf"></ui:include> -->
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+						<div class="col-md-6">
+							<div class="card card-secondary">
+								<div class="card-header">
+									<h3 class="card-title">Add Category</h3>
+
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool"
+											data-card-widget="collapse" data-toggle="tooltip"
+											title="Collapse">
+											<i class="fas fa-minus"></i>
+										</button>
+									</div>
+								</div>
+								<ui:include src=""></ui:include>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+							<div class="card card-info">
+								<div class="card-header">
+									<h3 class="card-title">Add SubCatagory</h3>
+
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool"
+											data-card-widget="collapse" data-toggle="tooltip"
+											title="Collapse">
+											<i class="fas fa-minus"></i>
+										</button>
+									</div>
+								</div>
+								<ui:include src=""></ui:include>
+								<!-- /.card-body -->
+							</div>
+							<div class="card card-info">
+								<div class="card-header">
+									<h3 class="card-title">Add Brand</h3>
+
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool"
+											data-card-widget="collapse" data-toggle="tooltip"
+											title="Collapse">
+											<i class="fas fa-minus"></i>
+										</button>
+									</div>
+								</div>
+								<ui:include src=""></ui:include>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+
+					</div>
+				</h:form>
+			</h:panelGroup>
+
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,373 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/login/name.xhtml" xmlns:p="http://primefaces.org/ui"
+	
+	
+	>
+
+
+
+
+	<ui:param name="page_name" value="Connexion" />
+	
+	<ui:define name="contentProfile">
+	
+	<h:body style="background-color: #e4e3e369;">
+
+
+
+
+   <style>
+
+.jqplot-target {
+    position: relative;
+    color: maroon;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 1em;
+}
+
+.jqplot-series-canvas {
+  background:transparent;
+}
+
+.jqplot-target {
+    position: relative;
+    color: #ca9c9c;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 1em;
+}
+
+.jqplot-meterGauge-label {
+    font-size: 1em;
+    color: #ca9c9c;
+    position: relative;
+}
+
+</style>
+
+
+
+<style>
+.ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+	width: 2.5em;
+    height: 3.2em;
+ 
+    color: #e23636;
+    
+}
+.ui-slider .ui-slider-handle {
+
+    background: url("../resources/images/Curseur.png");
+  
+}
+.ui-slider-horizontal .ui-slider-handle {
+    top: -1.3em;
+    margin-left: -.6em;
+}
+.ui-state-default, .ui-widget-header .ui-state-default {
+
+}
+.ui-corner-all {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+
+.ui-slider {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #005ba0;
+
+}
+
+.ui-slider-horizontal {
+    height: 0.8em;
+    width: 311px;
+}
+
+#credit-valeur {
+    height: 52px;
+    background: url("../resources/images/Calendre.png");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    width: 100%;
+    position: relative;
+}
+
+#out {
+    font-family: impact;
+    font-size: 42px;
+    width: 100%;
+    height: 58px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    color: #005ba0;
+}
+
+
+
+.form-box-tounsi{
+    border-top: 5px solid #fa0504;
+    -webkit-box-shadow: 0px 5px 21px -2px rgba(0,0,0,0.47);
+    -moz-box-shadow: 0px 5px 21px -2px rgba(0,0,0,0.47);
+    box-shadow: 0px 5px 21px -2px rgba(0,0,0,0.47);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+}
+
+
+
+.margin-10 {
+    margin: 10px;
+}
+
+
+.fs20 { font-size: 20px !important; }
+
+.igive-btn{
+    color:white !important;
+    min-width: 240px;
+}
+
+
+
+
+
+
+
+</style>
+
+<div class="col-lg-6 col-md-4 col-12">
+			
+
+			
+
+
+
+
+
+
+
+
+
+
+						<div class="box_couleurs_stat form-box-tounsi"
+							                        >
+							                           
+							                             <hr class="margin-10"/>
+ 
+
+   
+      
+  
+ <div align="center"     >  
+ <h:graphicImage  
+									library="images"	name="fidelite-v3.jpg"		
+												style="width: 1000px;  height: 300px; position:Center;" />
+ </div>
+   
+   <hr class="margin-10"/>
+  
+
+  <div class="row">
+  
+
+    <div class="col-sm">
+ 
+ 
+ 
+ 
+ 
+ 
+
+							<div>
+
+								<p:chart type="metergauge"  model="#{ChartView.meterGaugeModel2}"
+									style="width:500px;height:300px;" />
+
+							</div>
+
+ 
+      
+</div>
+  <div class="col-sm">
+
+<br/>
+<br/>
+								<div class="box_couleurs_stat" style="width: 35%;">
+
+									<p:repeat var="abon" value="#{ChartView.abs}">
+
+
+										<div class="ligne_couleur_stat"
+											style="overflow: hidden; display: block; margin: 5px 0px;">
+															<div class="color_stat silver_bg"
+										style="background: ##{abon.couleur} ;width: 37px;
+    height: 37px;"></div>
+											<div class="libel_couleur_stat" style="float: left;">
+												#{abon.type}</div>
+										</div>
+
+									</p:repeat>
+								</div>
+
+</div>
+</div>
+								
+<br/>
+
+ <hr class="margin-10"/>
+  
+
+
+
+
+
+	<h:graphicImage  
+									url="https://media.giphy.com/media/1kTRymRZp5CA3f7G8u/giphy.gif"			
+												style="width: 1000px;  height: 300px; position:Center;" />
+
+
+<hr class="margin-10"/>
+ 
+
+   <br/>
+
+
+      
+  
+ <div align="center"><h:outputText value="Convertir vos points !" style=" width:20px;font-size: -webkit-xxx-large;color: #005ba0;" /></div>
+    <br/>
+
+   <hr class="margin-10"/>
+    <br/>
+
+   
+    <div id="credit-valeur">
+<!--       <span id="montant-echeance" >      215 #{sliderView.ajaxnb}   -->
+      
+      
+      
+<!--        </span> -->
+    
+     <h:outputText id="out" value="#{sliderView.ajaxnb} DT"  style=" font-family: impact;
+    font-size: 42px;
+    width: 100%;
+    height: 58px;
+    margin: auto;
+    position: relative;
+      top: -5px;
+    left: 295px;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    color: #005ba0;"/>
+
+   </div>
+   <br/>
+   
+   
+   <h:form>
+<table>
+<tr>
+ <td>    <p:inputText id="txt5" value="#{sliderView.number7}" title="Points" disabled="true"  style="width: 56px;" />
+ 
+   </td>
+<td>        <p:slider for="txt5" step="10" maxValue="#{sliderView.sliderpoints}" > 
+
+
+            <p:ajax event="slideEnd" listener="#{sliderView.onSlideEnd}" update="out" render="compElem"  />
+        </p:slider> </td>
+        
+       
+       
+       
+       
+      <td> 
+      
+
+       <h:commandButton value="Convertir"  action="#{sliderView.convertpoint()}"  class="btn btn-default fs20 white igive-btn" style="padding: 3px; background-color:#005ba0"/>
+     
+ 
+        </td>
+
+        
+        </tr> 
+    
+  </table>
+
+
+
+  </h:form>
+
+
+
+
+						</div>
+						
+						
+						
+						
+
+
+
+
+
+
+
+
+
+				
+
+			
+
+
+</div>
+
+
+  <div class="col-lg-3 col-md-4 col-12">
+
+
+	<div class="box_couleurs_stat form-box-tounsi"
+							                        >
+JQSGFKJQBKFBqs 
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+
+</h:body>
+
+</ui:define>
+</ui:composition>
+
